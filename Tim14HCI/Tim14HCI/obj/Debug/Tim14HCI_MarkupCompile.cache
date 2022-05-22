@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\PC\Desktop\fax\VI_semestar\HCI\PROJECT\Tim14HCI\Tim14HCI\obj\Debug\
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
 Tim14HCI
 none
 false
 DEBUG;TRACE
-C:\Users\PC\Desktop\fax\VI_semestar\HCI\PROJECT\Tim14HCI\Tim14HCI\App.xaml
-11151548125
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
+3184348290
 
-17782239535
-56-438739173
-MainWindow.xaml;
+20-766850311
+56-271678708
+Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;
 
 False
 

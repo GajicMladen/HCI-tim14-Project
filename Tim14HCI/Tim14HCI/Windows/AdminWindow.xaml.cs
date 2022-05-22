@@ -10,19 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tim14HCI
+namespace Tim14HCI.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdminWindow : Window
     {
-        public MainWindow()
+        public AdminWindow()
         {
             InitializeComponent();
+        }
+
+        Window parent;
+
+        public AdminWindow(Window x)
+        {
+            parent = x;
+            InitializeComponent();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            parent.Show();
         }
     }
 }

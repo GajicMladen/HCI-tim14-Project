@@ -64,5 +64,16 @@ namespace Tim14HCI.Windows
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        { 
+            RegistrationWindow registrationWindow = new RegistrationWindow(this);
+            Visibility = Visibility.Hidden;
+            registrationWindow.Show();
+        
+        }
+
+        public void setMessage(string msg) {
+            lbl_message.Content = msg;
+        }
     }
 }

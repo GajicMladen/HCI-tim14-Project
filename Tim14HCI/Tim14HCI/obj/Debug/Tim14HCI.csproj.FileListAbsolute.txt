@@ -194,3 +194,5 @@ C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.csproj.CopyComplete
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.exe
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.pdb
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Windows\RegistrationWindow.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Windows\RegistrationWindow.baml

@@ -26,5 +26,27 @@ namespace Tim14HCI.DAO
                ( userID != -1 && u.UserID == userID && u.Password == password)).FirstOrDefault();
             }
         }
+
+        public static int registerNewClient(string firsName, string lastName ,string email, string phone,string password) {
+
+            using (var context = new SerbiaRailwayContext()) {
+
+                User newUser = new User()
+                {
+                    FirstName = firsName,
+                    LastName = lastName,
+                    Password = password,
+                    Email = email,
+                    Phone = phone,
+                    UserRole = UserRole.CLIENT
+                };
+
+                context.users.Add(newUser);
+                context.SaveChanges();
+
+                return newUser.UserID;
+
+            }
+        }
     }
 }

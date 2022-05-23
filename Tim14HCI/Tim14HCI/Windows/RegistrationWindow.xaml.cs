@@ -81,7 +81,7 @@ namespace Tim14HCI.Windows
             }
 
             int newUserID = UsersDAO.registerNewClient(firsName,lastName,email,phone,password);
-            //int newUserID = 1 ;
+
             parent.setMessage("Uspesno ste se registrovali vas ID je : " + newUserID.ToString());
             parent.Show();
             Close();

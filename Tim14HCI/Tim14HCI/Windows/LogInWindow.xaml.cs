@@ -46,7 +46,7 @@ namespace Tim14HCI.Windows
                     clientWindow.Show();
                 }
                 else {
-                    AdminWindow clientWindow = new AdminWindow(this);
+                    AdminWindow clientWindow = new AdminWindow(this,user);
                     Visibility = Visibility.Hidden;
                     clientWindow.Show();
                 }

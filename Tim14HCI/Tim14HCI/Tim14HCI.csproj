@@ -255,6 +255,21 @@
   <ItemGroup>
     <Resource Include="Images\Serbian_Railways.svg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logout-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\train.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\station.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\timeSchedule.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

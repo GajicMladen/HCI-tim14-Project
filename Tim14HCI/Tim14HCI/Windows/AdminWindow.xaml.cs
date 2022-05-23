@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tim14HCI.Model;
 
 namespace Tim14HCI.Windows
 {
@@ -25,16 +26,25 @@ namespace Tim14HCI.Windows
         }
 
         Window parent;
-
-        public AdminWindow(Window x)
+        User user;
+        public AdminWindow(Window x,User user)
         {
             parent = x;
+            this.user = user;
             InitializeComponent();
+            lbl_logedUser.Content = user.FirstName + " " + user.LastName;
+            lbl_userRole.Content = user.UserRole.ToString().ToLower();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             parent.Show();
+        }
+
+        private void btn_logOut_Click(object sender, RoutedEventArgs e)
+        {
+            parent.Show();
+            Close();
         }
     }
 }

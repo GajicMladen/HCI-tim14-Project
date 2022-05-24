@@ -174,6 +174,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contorls\StationControl.xaml.cs">
+      <DependentUpon>StationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\TrainControl.xaml.cs">
+      <DependentUpon>TrainControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\StationDAO.cs" />
+    <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
@@ -191,6 +199,14 @@
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Contorls\StationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\TrainControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,6 +285,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\timeSchedule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

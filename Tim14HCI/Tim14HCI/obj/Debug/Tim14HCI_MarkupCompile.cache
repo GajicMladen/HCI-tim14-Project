@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
-4-279546481
+6767223842
 
-211311190748
+25-227776525
 56-985315497
-Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\RegistrationWindow.xaml;
+Contorls\StationControl.xaml;Contorls\TrainControl.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\RegistrationWindow.xaml;
 
 False
 

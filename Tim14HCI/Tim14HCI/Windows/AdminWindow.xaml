@@ -14,13 +14,15 @@
             <ColumnDefinition Width="65*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="97*"/>
-            <RowDefinition Height="447*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="459*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.84"/>
         </Grid.Background>
+
+        <!-- Info bar-->
         <Image Source="/Images/Serbian_Railways.svg.png"/>
         <StackPanel Grid.Column="2">
 
@@ -28,13 +30,13 @@
 
             <Label x:Name="lbl_userRole" Content="uloga"  HorizontalAlignment="Center" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalAlignment="Top" Foreground="#FFBDB7B7" FontWeight="Bold" Height="33" Width="138" FontSize="16"   FontStyle="Italic" />
         </StackPanel>
-        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0,10,-6,0" Click="btn_logOut_Click">
+        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0,10,-6,0" Click="btn_logOut_Click" Grid.RowSpan="2">
             <StackPanel VerticalAlignment="Center" Height="42" Width="67">
                 <Image  Source="/Images/logout-icon.png" Height="23"/>
                 <TextBlock HorizontalAlignment="Center">Izloguj se</TextBlock>
             </StackPanel>
         </Button>
-
+        <!-- Buttons -->
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition ></ColumnDefinition>
@@ -42,13 +44,13 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="10" Background="#FFBF1616">
+            <Button Grid.Column="0" Margin="10" Background="#FFBF1616" Click="Button_Click">
                 <StackPanel>
                     <Image Source="/Images/train.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozovi</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="1" Margin="10" Background="#FFBF1616">
+            <Button Grid.Column="1" Margin="10" Background="#FFBF1616" Click="Button_Click_1">
                 <StackPanel>
                     <Image Source="/Images/station.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Stanice</TextBlock>
@@ -67,5 +69,80 @@
                 </StackPanel>
             </Button>
         </Grid>
+
+        <!--Content-->
+        <Grid Grid.Row="2" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="121*"/>
+                <ColumnDefinition Width="589*"/>
+                <ColumnDefinition Width="137*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.ColumnSpan="4" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8">
+
+            </Border>
+            <Label x:Name="lbl_ShownData" FontSize="16" FontWeight="Bold">Vozovi</Label>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Label >Naziv:</Label>
+                <TextBox Width="127" Margin="8"></TextBox>
+            </StackPanel>
+            <Button Grid.Column="2" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Label Height="24" HorizontalAlignment="Center" VerticalAlignment="Bottom">Pretraži</Label>
+                    <Image Source="/Images/search.png" Margin="3"/>
+                </StackPanel>
+            </Button>
+            <Grid Grid.Row="1" Grid.ColumnSpan="4">
+                <Grid.Background>
+                    <SolidColorBrush Color="#FFFFF9F9" Opacity="0.5"/>
+                </Grid.Background>
+
+                <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                    <ListBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.2"/>
+                    </ListBox.Background>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <StackPanel x:Name="stack_Data" >
+                        <Grid x:Name="grid_test" Margin="10"  >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="104*"/>
+                                <ColumnDefinition Width="627*"/>
+                                <ColumnDefinition Width="130*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.Background>
+                                <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
+                            </Grid.Background>
+
+                            <Image Source="/Images/train.png" Width="100"  />
+                            <StackPanel Grid.Column="1">
+                                <Label >Naziv:</Label>
+                                <Label >Capacitet:</Label>
+                                <Label >Brzina:</Label>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Width="130" >
+                                <Button Margin="10">Oriši</Button>
+                                <Button Margin="10">Izmeni</Button>
+                                <Button Margin="10">Detalji</Button>
+                            </StackPanel>
+                        </Grid>
+                        
+                    </StackPanel>
+                </ListBox>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Window>

@@ -298,3 +298,7 @@ C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Ti
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.csproj.CopyComplete
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.exe
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.pdb
+C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.g.cs
+C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.baml
+C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.g.cs
+C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.baml

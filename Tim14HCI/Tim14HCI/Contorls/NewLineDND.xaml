@@ -11,7 +11,7 @@
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition Width="232*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="satck_AllStations">
+        <StackPanel x:Name="satck_AllStations" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" Background="#FF243AD6">
         </StackPanel>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -19,11 +19,11 @@
                 <RowDefinition Height="304*"/>
                 <RowDefinition Height="98*"/>
             </Grid.RowDefinitions>
-            <StackPanel Background="#FF936262" AllowDrop="True">
+            <StackPanel Background="#FF936262" Orientation="Horizontal" AllowDrop="True" Drop="StackPanel_Drop_1">
                 <Label>Pocetak</Label>
             </StackPanel>
-            <StackPanel Grid.Row="1" Background="#FFC1B4B4" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop"></StackPanel>
-            <StackPanel Grid.Row="2" Background="#FF937373" AllowDrop="True">
+            <StackPanel Grid.Row="1" Background="#FFC1B4B4" Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop"></StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#FF937373" AllowDrop="True" Drop="StackPanel_Drop_2">
                 <Label>Kraj</Label>
             </StackPanel>
         </Grid>

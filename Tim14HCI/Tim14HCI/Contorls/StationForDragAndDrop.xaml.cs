@@ -21,7 +21,7 @@ namespace Tim14HCI.Contorls
     /// </summary>
     public partial class StationForDragAndDrop : UserControl
     {
-        Station station;
+        public Station station;
         public StationForDragAndDrop()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace Tim14HCI.Contorls
                 data.SetData("Object", this);
 
                 // Initiate the drag-and-drop operation.
-                DragDrop.DoDragDrop(this, data, DragDropEffects.Copy | DragDropEffects.Move);
+                DragDrop.DoDragDrop(this, data,  DragDropEffects.Move);
             }
         }
 
@@ -55,13 +55,9 @@ namespace Tim14HCI.Contorls
             base.OnGiveFeedback(e);
             // These Effects values are set in the drop target's
             // DragOver event handler.
-            if (e.Effects.HasFlag(DragDropEffects.Copy))
+            if (e.Effects.HasFlag(DragDropEffects.Move))
             {
-                Mouse.SetCursor(Cursors.Cross);
-            }
-            else if (e.Effects.HasFlag(DragDropEffects.Move))
-            {
-                Mouse.SetCursor(Cursors.Pen);
+                Mouse.SetCursor(Cursors.Hand);
             }
             else
             {

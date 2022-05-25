@@ -76,5 +76,12 @@ namespace Tim14HCI.Windows
         public void setMessage(string msg) {
             lbl_message.Content = msg;
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NewTrainLine newTrainLine = new NewTrainLine(this);
+            newTrainLine.Show();
+            Visibility = Visibility.Hidden;
+        }
     }
 }

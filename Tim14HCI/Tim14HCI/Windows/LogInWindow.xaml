@@ -26,8 +26,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.84"/>
         </Grid.Background>
-        <Label Grid.Row="0" Grid.Column="0" Content="Dobrodošli" VerticalAlignment="Center" Height="44" Width="154" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
-        <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top"  Source="/Images/Serbian_Railways.svg.png" />
+        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Source="/Images/Serbian_Railways.svg.png" />
 
         <Grid Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" >
 
@@ -56,7 +55,7 @@
             <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Uloguj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Background="#FF3B3EA9" Foreground="White" Click="Button_Click" TabIndex="3"/>
 
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="0">
+        <Grid Grid.Row="2" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -71,5 +70,7 @@
             <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Content="Nemate nalog?" Foreground="#FFFD242C" FontWeight="Bold"></Label>
             <Button Grid.Row="2" Grid.Column="1" Content="Registrujte se" Foreground="White" Background="#FF3B3EA9" Click="Button_Click_1" ></Button>
         </Grid>
+        <Button Grid.Row="2" Grid.Column="0" Content="nova linija " Foreground="White" Background="#FF3B3EA9" Click="Button_Click_2"  />
+
     </Grid>
 </Window>

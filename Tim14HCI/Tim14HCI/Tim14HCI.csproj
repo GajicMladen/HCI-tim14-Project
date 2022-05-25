@@ -174,8 +174,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contorls\NewLineDND.xaml.cs">
+      <DependentUpon>NewLineDND.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contorls\StationControl.xaml.cs">
       <DependentUpon>StationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\StationForDragAndDrop.xaml.cs">
+      <DependentUpon>StationForDragAndDrop.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contorls\TrainControl.xaml.cs">
       <DependentUpon>TrainControl.xaml</DependentUpon>
@@ -199,7 +205,15 @@
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Contorls\NewLineDND.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Contorls\StationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\StationForDragAndDrop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

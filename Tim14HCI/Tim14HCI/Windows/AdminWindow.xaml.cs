@@ -60,7 +60,8 @@ namespace Tim14HCI.Windows
 
             stack_Data.Children.Clear();
 
-            List<Train> trains = TrainDAO.getAllTrains();
+            //List<Train> trains = TrainDAO.getAllTrains();
+            List<Train> trains = new List<Train>();
 
             foreach (Train train in trains) {
 
@@ -73,7 +74,8 @@ namespace Tim14HCI.Windows
         {
             stack_Data.Children.Clear();
 
-            List<Station> stations = StationDAO.getAllStations();
+            //List<Station> stations = StationDAO.getAllStations();
+            List<Station> stations = new List<Station>();
 
             foreach (Station station in stations)
             {

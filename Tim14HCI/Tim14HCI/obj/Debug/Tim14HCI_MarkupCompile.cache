@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
-6767223842
+8-120117425
 
-25-227776525
+28443958873
 56-271678708
-Contorls\StationControl.xaml;Contorls\TrainControl.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\RegistrationWindow.xaml;
+Contorls\NewLineDND.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TrainControl.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\RegistrationWindow.xaml;
 
-False
+True
 

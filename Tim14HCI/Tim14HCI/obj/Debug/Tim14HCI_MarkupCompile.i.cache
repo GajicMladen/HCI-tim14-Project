@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
+C:\Users\student\Desktop\tim14\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
 Tim14HCI
 none
 false
 DEBUG;TRACE
-C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
-6767223842
+C:\Users\student\Desktop\tim14\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
+8-120117425
 
-26-1070135892
-56-985315497
-Contorls\StationControl.xaml;Contorls\TrainControl.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\RegistrationWindow.xaml;
+28443958873
+561284736578
+Contorls\NewLineDND.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TrainControl.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\RegistrationWindow.xaml;
 
 True
 

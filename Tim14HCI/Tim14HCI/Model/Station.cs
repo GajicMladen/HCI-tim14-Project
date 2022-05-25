@@ -14,5 +14,12 @@ namespace Tim14HCI.Model
         //for Linked Stations
         public virtual ICollection<LinkedStation> stations1 { get; set; }
         public virtual ICollection<LinkedStation> stations2 { get; set; }
+
+        public Station() { 
+        }
+        public Station(Station x) {
+            this.Name = x.Name;
+            this.StationID = x.StationID;
+        }
     }
 }

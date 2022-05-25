@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tim14HCI.Model;
 
 namespace Tim14HCI.Contorls
 {
@@ -20,14 +21,53 @@ namespace Tim14HCI.Contorls
     /// </summary>
     public partial class StationForDragAndDrop : UserControl
     {
+        Station station;
         public StationForDragAndDrop()
         {
             InitializeComponent();
         }
-
-        private void Grid_MouseMove(object sender, MouseEventArgs e)
+        public StationForDragAndDrop(Station x)
         {
+            InitializeComponent();
+            this.station = new Station(x);
+            lbl_Name.Content = x.Name;
+            
+        }
 
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Package the data.
+                DataObject data = new DataObject();
+                data.SetData("Station", this.station);
+                data.SetData("Object", this);
+
+                // Initiate the drag-and-drop operation.
+                DragDrop.DoDragDrop(this, data, DragDropEffects.Copy | DragDropEffects.Move);
+            }
+        }
+
+        protected override void OnGiveFeedback(GiveFeedbackEventArgs e)
+        {
+            base.OnGiveFeedback(e);
+            // These Effects values are set in the drop target's
+            // DragOver event handler.
+            if (e.Effects.HasFlag(DragDropEffects.Copy))
+            {
+                Mouse.SetCursor(Cursors.Cross);
+            }
+            else if (e.Effects.HasFlag(DragDropEffects.Move))
+            {
+                Mouse.SetCursor(Cursors.Pen);
+            }
+            else
+            {
+                Mouse.SetCursor(Cursors.No);
+            }
+            e.Handled = true;
         }
     }
 }

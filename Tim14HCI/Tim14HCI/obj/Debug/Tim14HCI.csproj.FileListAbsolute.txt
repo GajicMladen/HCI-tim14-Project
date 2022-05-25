@@ -408,3 +408,12 @@ C:\Users\student\Desktop\tim14\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim
 C:\Users\student\Desktop\tim14\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.csproj.CopyComplete
 C:\Users\student\Desktop\tim14\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.exe
 C:\Users\student\Desktop\tim14\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.pdb
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\NewLineDND.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationForDragAndDrop.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\NewLineDND.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationForDragAndDrop.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.baml

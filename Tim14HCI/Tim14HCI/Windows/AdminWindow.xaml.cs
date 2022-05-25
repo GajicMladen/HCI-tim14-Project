@@ -60,8 +60,8 @@ namespace Tim14HCI.Windows
 
             stack_Data.Children.Clear();
 
-            //List<Train> trains = TrainDAO.getAllTrains();
-            List<Train> trains = new List<Train>();
+            List<Train> trains = TrainDAO.getAllTrains();
+            //List<Train> trains = new List<Train>();
 
             foreach (Train train in trains) {
 
@@ -74,8 +74,8 @@ namespace Tim14HCI.Windows
         {
             stack_Data.Children.Clear();
 
-            //List<Station> stations = StationDAO.getAllStations();
-            List<Station> stations = new List<Station>();
+            List<Station> stations = StationDAO.getAllStations();
+            //List<Station> stations = new List<Station>();
 
             foreach (Station station in stations)
             {
@@ -95,6 +95,14 @@ namespace Tim14HCI.Windows
         {
             fillStackDataWithStations();
             lbl_ShownData.Content = "Stanice";
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            lbl_ShownData.Content = "Stanice";
+            stack_Data.Children.Clear();
+            stack_Data.Children.Add(new NewLineDND());
+
         }
     }
 }

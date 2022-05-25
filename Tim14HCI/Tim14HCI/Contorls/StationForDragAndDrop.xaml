@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
-             mc:Ignorable="d" Height="107.812" Width="139.062">
-    <Grid Background="#FF8F7070" MouseMove="Grid_MouseMove">
-        <Image HorizontalAlignment="Left" Height="57" Margin="50,41,0,0" VerticalAlignment="Top" Width="55" Source="/Images/station.png"/>
-        <Label Content="Beograd" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="55" Width="155" FontSize="20" Foreground="White" HorizontalContentAlignment="Center"/>
+             mc:Ignorable="d" Height="107.812" Width="139.062" >
+    <Grid Background="#FF8F7070" >
+        <Image HorizontalAlignment="Center" Height="67" VerticalAlignment="Bottom" Width="68" Source="/Images/station.png"/>
+        <Label x:Name="lbl_Name" Content="Beograd" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="39" Width="139" FontSize="20" Foreground="White" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </UserControl>

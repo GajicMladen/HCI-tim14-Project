@@ -302,3 +302,7 @@ C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Co
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.baml
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.g.cs
 C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\StationControl.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainControl.baml

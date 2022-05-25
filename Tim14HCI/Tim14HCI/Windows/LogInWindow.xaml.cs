@@ -32,7 +32,8 @@ namespace Tim14HCI.Windows
             string username = txbx_username.Text;
             string password = psbx_password.Password;
 
-            User user = UsersDAO.tryLogIn(username,password);
+            //User user = UsersDAO.tryLogIn(username,password);
+            User user = new User() { FirstName="Mladen", LastName="Gajic",UserRole=UserRole.MANAGER, Password="a",UserID=1,Email="a",Phone="00532",Tickets=null};
             if (user == null)
             {
                 lbl_message.Content = "Neispravni kredencijali";

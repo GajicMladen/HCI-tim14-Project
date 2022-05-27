@@ -150,12 +150,12 @@ namespace Tim14HCI.Model
                 );
 
             modelBuilder.Entity<Station>().HasData(
-                new Station { StationID = 1, Name = "Beograd", stations1 = null , stations2 =null},
-                new Station { StationID = 2, Name = "Novi Sad", stations1 = null, stations2 = null },
-                new Station { StationID = 3, Name = "Subotica", stations1 = null, stations2 = null },
-                new Station { StationID = 4, Name = "Zrenjanin", stations1 = null, stations2 = null },
-                new Station { StationID = 5, Name = "Niš", stations1 = null, stations2 = null },
-                new Station { StationID = 6, Name = "Leskovac", stations1 = null, stations2 = null }
+                new Station { StationID = 1, Name = "Beograd", stations1 = null , stations2 =null , position_x =85, position_y=95},
+                new Station { StationID = 2, Name = "Novi Sad", stations1 = null, stations2 = null , position_x = 30, position_y= 50},
+                new Station { StationID = 3, Name = "Subotica", stations1 = null, stations2 = null , position_x = 40, position_y = 10},
+                new Station { StationID = 4, Name = "Zrenjanin", stations1 = null, stations2 = null , position_x = 70 , position_y = 60},
+                new Station { StationID = 5, Name = "Niš", stations1 = null, stations2 = null , position_x = 130, position_y= 160},
+                new Station { StationID = 6, Name = "Leskovac", stations1 = null, stations2 = null , position_x = 160, position_y= 230}
                 );
 
             modelBuilder.Entity<LinkedStation>().HasData(

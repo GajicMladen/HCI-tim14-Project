@@ -38,16 +38,16 @@ namespace Tim14HCI.Contorls
 
         private void StationForDragAndDrop_DragEnter(object sender, DragEventArgs e)
         {
-            
+
         }
 
         private void StackPanel_DragOver(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("Object"))
             {
-                
-                    e.Effects = DragDropEffects.Move;
-                
+
+                e.Effects = DragDropEffects.Move;
+
             }
         }
 
@@ -69,7 +69,10 @@ namespace Tim14HCI.Contorls
                         {
                             _parent.Children.Remove(_element);
                             _panel.Children.Add(_element);
+                            removeStationFromLists(station);
                             OnWayStations.Add(station);
+                            drawStationsOnMap();
+
                             e.Effects = DragDropEffects.Move;
                         }
                     }
@@ -95,8 +98,10 @@ namespace Tim14HCI.Contorls
                         {
                             _parent.Children.Remove(_element);
                             _panel.Children.Add(_element);
-                            e.Effects = DragDropEffects.Move;
                             removeStationFromLists(station);
+                            drawStationsOnMap();
+                            e.Effects = DragDropEffects.Move;
+
                         }
                     }
                 }
@@ -136,12 +141,14 @@ namespace Tim14HCI.Contorls
                             {
                                 StationForDragAndDrop toBeBack = (StationForDragAndDrop)_panel.Children[1];
                                 _panel.Children.RemoveAt(1);
-                                satck_AllStations.Children.Add(toBeBack);
                                 removeStationFromLists(toBeBack.station);
+                                satck_AllStations.Children.Add(toBeBack);
                             }
 
                             _panel.Children.Add(_element);
+                            removeStationFromLists(station);
                             StartStation = station;
+                            drawStationsOnMap();
                             e.Effects = DragDropEffects.Move;
                         }
                     }
@@ -175,7 +182,9 @@ namespace Tim14HCI.Contorls
                                 removeStationFromLists(toBeBack.station);
                             }
                             _panel.Children.Add(_element);
+                            removeStationFromLists(station);
                             EndStation = station;
+                            drawStationsOnMap();
                             e.Effects = DragDropEffects.Move;
                         }
                     }
@@ -183,9 +192,9 @@ namespace Tim14HCI.Contorls
             }
         }
 
-        private void removeStationFromLists(Station x) { 
-            
-            if(StartStation == x)
+        private void removeStationFromLists(Station x) {
+
+            if (StartStation == x)
             {
                 StartStation = null;
                 return;
@@ -200,7 +209,44 @@ namespace Tim14HCI.Contorls
                     return;
                 }
             }
-        
+
+        }
+
+        private void drawStationsOnMap() {
+
+            canvas_map.Children.Clear();
+            if (StartStation != null) drawStationOnMap(StartStation,false);
+            if (EndStation != null) drawStationOnMap(EndStation, false);
+            if (OnWayStations.Count > 0) {
+                foreach (Station onWayStation in OnWayStations) {
+                    drawStationOnMap(onWayStation, true);
+                }
+            }
+        }
+
+        private void drawStationOnMap(Station x,bool onWay) {
+
+            Rectangle rectangle = new Rectangle() { Width = 5, Height = 5 };
+            TextBlock textBlock = new TextBlock() { Text = x.Name };
+
+            if (onWay)
+            {
+                rectangle.Fill = Brushes.Blue;
+                textBlock.Foreground = Brushes.Blue;
+            }
+            else
+            {
+                rectangle.Fill = Brushes.Black;
+                textBlock.Foreground = Brushes.Black;
+            }
+
+            Canvas.SetLeft(rectangle, x.position_x);
+            Canvas.SetLeft(textBlock, x.position_x + 10);
+            Canvas.SetTop(rectangle, x.position_y);
+            Canvas.SetTop(textBlock, x.position_y);
+
+            canvas_map.Children.Add(rectangle);
+            canvas_map.Children.Add(textBlock);
         }
 
     }

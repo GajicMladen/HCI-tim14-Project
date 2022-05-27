@@ -25,11 +25,17 @@
             <Syncfusion:StepViewItem Content="Cene" />
             <Syncfusion:StepViewItem Content="Potvrda" />
         </Syncfusion:SfStepProgressBar>
-        <Button Content="Button" HorizontalAlignment="Left" Height="51" Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" Width="153" Click="Button_Click"/>
+        <Button Content="Dalje" HorizontalAlignment="Left" Height="51" Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" Width="153" Click="Button_Click"/>
         <Grid x:Name="grid_display" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
             <uc:NewLineDND x:Name="control_newLineDND"></uc:NewLineDND>
         </Grid>
-        <StackPanel x:Name="stack_Route" Grid.Row="1" Grid.Column="2">
+        <StackPanel  Grid.Row="1" Grid.Column="2">
+            <Label>Putanja:</Label>
+            <StackPanel x:Name="stack_Route"></StackPanel>
+            <StackPanel>
+                <Label>Voz:</Label>
+                <Label x:Name="lbl_SelectedTrain" ></Label>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

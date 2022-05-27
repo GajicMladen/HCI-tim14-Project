@@ -204,9 +204,19 @@
     <Compile Include="Contorls\TrainControl.xaml.cs">
       <DependentUpon>TrainControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contorls\TrainForDragAndDrop.xaml.cs">
+      <DependentUpon>TrainForDragAndDrop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\TrainPicker.xaml.cs">
+      <DependentUpon>TrainPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DAO\StationDAO.cs" />
     <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
+    <Compile Include="Migrations\20220527222017_Positions.cs" />
+    <Compile Include="Migrations\20220527222017_Positions.designer.cs">
+      <DependentUpon>20220527222017_Positions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -239,6 +249,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contorls\TrainControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\TrainForDragAndDrop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\TrainPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,6 +345,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SerbiaMap.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

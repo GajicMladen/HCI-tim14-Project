@@ -11,6 +11,11 @@ namespace Tim14HCI.Model
         public int StationID { get; set; }
         public string Name { get; set; }
 
+        public int position_x { get; set; }
+
+        public int position_y { get; set; }
+
+
         //for Linked Stations
         public virtual ICollection<LinkedStation> stations1 { get; set; }
         public virtual ICollection<LinkedStation> stations2 { get; set; }
@@ -20,6 +25,8 @@ namespace Tim14HCI.Model
         public Station(Station x) {
             this.Name = x.Name;
             this.StationID = x.StationID;
+            this.position_x = x.position_x;
+            this.position_y = x.position_y;
         }
     }
 }

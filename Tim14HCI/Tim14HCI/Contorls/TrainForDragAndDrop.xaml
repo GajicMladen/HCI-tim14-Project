@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Tim14HCI.Contorls.TrainForDragAndDrop"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tim14HCI.Contorls"
+             mc:Ignorable="d" Height="202.448" Width="215.735"  MouseLeftButtonDown="UserControl_MouseLeftButtonDown_1" >
+    <StackPanel x:Name="stack_main" Background="#FF592A2A">
+        <Image Source="/images/train.png" Height="70"></Image>
+        <Label x:Name="lbl_Name" Content="Naziv" HorizontalAlignment="Center"></Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Kapacitet:" HorizontalAlignment="Center"></Label>
+            <Label x:Name="lbl_Capacity" ></Label>
+            <Label>osoba</Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Brzina:" HorizontalAlignment="Center"></Label>
+            <Label x:Name="lbl_MaxSpeed"></Label>
+            <Label> km/h</Label>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

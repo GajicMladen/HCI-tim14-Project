@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
-9829261818
+111624475446
 
-28-2093973487
+328480941
 62-1206639815
-Contorls\NewLineDND.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TrainControl.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\NewTrainLine.xaml;Windows\RegistrationWindow.xaml;
+Contorls\NewLineDND.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TrainControl.xaml;Contorls\TrainForDragAndDrop.xaml;Contorls\TrainPicker.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\NewTrainLine.xaml;Windows\RegistrationWindow.xaml;
 
 False
 

@@ -5,26 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:uc ="clr-namespace:Tim14HCI.Contorls"
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
-             mc:Ignorable="d" Height="479.062" Width="632.187">
+             mc:Ignorable="d" Height="435.862" Width="777.387">
     <Grid Background="#FFB2B2B2">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="85*"/>
-            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="621*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="satck_AllStations" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" Background="#FF243AD6">
+        <StackPanel x:Name="satck_AllStations" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" Background="#FF243AD6" Margin="0,0,3,-0.4">
         </StackPanel>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="13,0,-0.2,-0.4">
             <Grid.RowDefinitions>
-                <RowDefinition Height="77*"/>
-                <RowDefinition Height="304*"/>
-                <RowDefinition Height="98*"/>
+                <RowDefinition Height="46*"/>
+                <RowDefinition Height="368*"/>
+                <RowDefinition Height="63*"/>
             </Grid.RowDefinitions>
-            <StackPanel Background="#FF936262" Orientation="Horizontal" AllowDrop="True" Drop="StackPanel_Drop_1">
-                <Label>Pocetak</Label>
+            <StackPanel Background="#FF936262" Orientation="Horizontal" AllowDrop="True" Drop="StackPanel_Drop_1" Margin="0,0,0,303.858" Grid.RowSpan="2">
+                <Label>Pocetna stanica:</Label>
             </StackPanel>
-            <StackPanel Grid.Row="1" Background="#FFC1B4B4" Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop"></StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#FF937373" AllowDrop="True" Drop="StackPanel_Drop_2">
-                <Label>Kraj</Label>
+            <Grid Grid.Row="1" Background="#FFC1B4B4" Margin="0,2.942,0,63.058" Grid.RowSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="373*"/>
+                    <ColumnDefinition Width="235*"/>
+                </Grid.ColumnDefinitions>
+                <WrapPanel Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop" Background="#FF564D4D" >
+
+                </WrapPanel>
+                <Canvas x:Name="canvas_map" Grid.Column="1">
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="/Images/SerbiaMap.jpg"/>
+                    </Canvas.Background>
+                </Canvas>
+            </Grid>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#FF937373" AllowDrop="True" Drop="StackPanel_Drop_2" Margin="0,3.142,0,-0.942">
+                <Label>Krajnja stanica:</Label>
             </StackPanel>
         </Grid>
 

@@ -434,3 +434,15 @@ C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainPicker.g.cs
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainForDragAndDrop.baml
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainPicker.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\RoutePicker.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\RoutePicker.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\SetPriceForNewTrainLine.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\SetPriceForNewTrainLine.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainLineControl.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainLineControl.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\MapControl.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\MapControl.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\PriceList.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\PriceListItem.g.cs
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\PriceList.baml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\PriceListItem.baml

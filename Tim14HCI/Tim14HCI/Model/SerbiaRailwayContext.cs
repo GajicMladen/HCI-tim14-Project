@@ -93,7 +93,7 @@ namespace Tim14HCI.Model
 
 
             //OnWayStation
-            modelBuilder.Entity<OnWayStation>().HasKey(ow => new { ow.TrainLineID, ow.StationOrder });
+            modelBuilder.Entity<OnWayStation>().HasKey(ow => ow.OnWayStationID);
 
             modelBuilder.Entity<OnWayStation>()
                 .HasOne<TrainLine>(ow => ow.TrainLine)

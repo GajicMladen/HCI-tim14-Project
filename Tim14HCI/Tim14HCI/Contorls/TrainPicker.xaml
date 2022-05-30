@@ -6,18 +6,23 @@
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
              xmlns:uc="clr-namespace:Tim14HCI.Contorls"
              mc:Ignorable="d" Height="387.063" Width="732.867" >
-    <Grid Background="#FFF6F6F6">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#FFF6F6F6" Opacity="0.5"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="43*"/>
             <RowDefinition Height="407*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
-            <Button Margin="5">
+        <Label Foreground="Black" FontWeight="Bold" FontSize="16"  >Odaberite voz:</Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBox HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+            <Button Margin="5" Background="#FF3B3EA9" >
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Label VerticalAlignment="Center">Pretarži</Label>
+                    <Label VerticalAlignment="Center" Foreground="White">Pretarži</Label>
                     <Image Source="/images/search.png"></Image>
-                </StackPanel></Button>
+                </StackPanel>
+            </Button>
         </StackPanel>
         <ListBox x:Name="lsbx_items" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" >
             <ListBox.Background>

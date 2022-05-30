@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
              mc:Ignorable="d" Height="49.658" Width="138.81" >
-    <StackPanel Orientation="Horizontal" Background="#FF8F7070" >
+    <StackPanel Orientation="Horizontal" >
+        <StackPanel.Background>
+            <SolidColorBrush Color="#FF620D0D"/>
+        </StackPanel.Background>
         <Image HorizontalAlignment="Center" Height="46" VerticalAlignment="Center" Width="40" Source="/Images/station.png" />
         <Label x:Name="lbl_Name" Content="Beograd" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="39" Width="139" FontSize="20" Foreground="White" />
 

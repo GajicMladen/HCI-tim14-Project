@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Tim14HCI.Contorls.MapControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tim14HCI.Contorls"
+             mc:Ignorable="d" Height="300" Width="230">
+    
+    <Canvas x:Name="canvas_map">
+        <Canvas.Background>
+            <ImageBrush ImageSource="/Tim14HCI;component/Images/SerbiaMap.jpg"/>
+        </Canvas.Background>
+        
+    </Canvas>
+</UserControl>

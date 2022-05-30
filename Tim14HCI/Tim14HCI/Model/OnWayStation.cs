@@ -8,6 +8,7 @@ namespace Tim14HCI.Model
 {
     public class OnWayStation
     {
+        public int OnWayStationID { get; set; }
         public int StationOrder { get; set; }
         public float Price { get; set; }
 

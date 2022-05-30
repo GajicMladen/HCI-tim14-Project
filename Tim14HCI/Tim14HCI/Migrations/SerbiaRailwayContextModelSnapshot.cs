@@ -89,11 +89,10 @@ namespace Tim14HCI.Migrations
 
             modelBuilder.Entity("Tim14HCI.Model.OnWayStation", b =>
                 {
-                    b.Property<int>("TrainLineID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StationOrder")
-                        .HasColumnType("int");
+                    b.Property<int>("OnWayStationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -101,19 +100,20 @@ namespace Tim14HCI.Migrations
                     b.Property<int>("StationID")
                         .HasColumnType("int");
 
+                    b.Property<int>("StationOrder")
+                        .HasColumnType("int");
+
                     b.Property<float>("Time")
                         .HasColumnType("real");
 
-                    b.Property<int?>("TrainLineID1")
+                    b.Property<int>("TrainLineID")
                         .HasColumnType("int");
 
-                    b.HasKey("TrainLineID", "StationOrder");
+                    b.HasKey("OnWayStationID");
 
                     b.HasIndex("StationID");
 
-                    b.HasIndex("TrainLineID1")
-                        .IsUnique()
-                        .HasFilter("[TrainLineID1] IS NOT NULL");
+                    b.HasIndex("TrainLineID");
 
                     b.ToTable("onWayStations");
                 });
@@ -269,6 +269,9 @@ namespace Tim14HCI.Migrations
                     b.Property<int>("EndStationID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EndStationOnWayStationID")
+                        .HasColumnType("int");
+
                     b.Property<int>("StartStationID")
                         .HasColumnType("int");
 
@@ -276,6 +279,8 @@ namespace Tim14HCI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("TrainLineID");
+
+                    b.HasIndex("EndStationOnWayStationID");
 
                     b.HasIndex("StartStationID");
 
@@ -393,10 +398,6 @@ namespace Tim14HCI.Migrations
                         .HasForeignKey("TrainLineID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("Tim14HCI.Model.TrainLine", null)
-                        .WithOne("EndStation")
-                        .HasForeignKey("Tim14HCI.Model.OnWayStation", "TrainLineID1");
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.Ticket", b =>
@@ -416,6 +417,10 @@ namespace Tim14HCI.Migrations
 
             modelBuilder.Entity("Tim14HCI.Model.TrainLine", b =>
                 {
+                    b.HasOne("Tim14HCI.Model.OnWayStation", "EndStation")
+                        .WithMany()
+                        .HasForeignKey("EndStationOnWayStationID");
+
                     b.HasOne("Tim14HCI.Model.Station", "StartStation")
                         .WithMany()
                         .HasForeignKey("StartStationID")

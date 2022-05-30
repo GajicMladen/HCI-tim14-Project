@@ -16,5 +16,13 @@ namespace Tim14HCI.DAO
                 return context.trains.ToList();
             }
         }
+
+        public static Train GetTrainByID(int id) {
+
+            using (var context = new SerbiaRailwayContext()) {
+                return context.trains.Where(t => t.TrainID == id).FirstOrDefault();
+            }
+        
+        }
     }
 }

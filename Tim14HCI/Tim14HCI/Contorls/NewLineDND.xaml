@@ -5,39 +5,65 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:uc ="clr-namespace:Tim14HCI.Contorls"
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
-             mc:Ignorable="d" Height="435.862" Width="777.387">
-    <Grid Background="#FFB2B2B2">
+             mc:Ignorable="d" Height="447.862" Width="786.987">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#FFB2B2B2" Opacity="0.15"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140*"/>
-            <ColumnDefinition Width="621*"/>
+            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="597*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="satck_AllStations" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" Background="#FF243AD6" Margin="0,0,3,-0.4">
+        <Label Foreground="Black" Height="30" VerticalAlignment="Top" FontWeight="Bold" >
+            <Label.Background>
+                <SolidColorBrush Color="#FF26299C" Opacity="0"/>
+            </Label.Background> Dostupne stanice:
+        </Label>
+        <StackPanel Orientation="Horizontal" Margin="0,30,0.4,0" Height="30" VerticalAlignment="Top" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="#FF26299C" Opacity="0"/>
+            </StackPanel.Background>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10 0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="130"/>
+            <Button Margin="5" Background="#FF26299C"   Width="39" Height="20">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="/images/search.png"></Image>
+                </StackPanel>
+            </Button>
         </StackPanel>
-        <Grid Grid.Column="1" Margin="13,0,-0.2,-0.4">
+        <StackPanel Margin="0,60,0,0" x:Name="satck_AllStations" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="#FF26299C" Opacity="0"/>
+            </StackPanel.Background>
+        </StackPanel>
+        <Grid Grid.Column="1" Margin="12.6,0,0.2,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="46*"/>
                 <RowDefinition Height="368*"/>
                 <RowDefinition Height="63*"/>
             </Grid.RowDefinitions>
-            <StackPanel Background="#FF936262" Orientation="Horizontal" AllowDrop="True" Drop="StackPanel_Drop_1" Margin="0,0,0,303.858" Grid.RowSpan="2">
-                <Label>Pocetna stanica:</Label>
+            <StackPanel Background="#FF8E3A3A" Orientation="Horizontal" AllowDrop="True" Drop="StackPanel_Drop_1" >
+                <Label Foreground="White" FontWeight="Bold">Pocetna stanica:</Label>
             </StackPanel>
-            <Grid Grid.Row="1" Background="#FFC1B4B4" Margin="0,2.942,0,63.058" Grid.RowSpan="2" >
+            <Grid Grid.Row="1" Background="#FFA69595" Margin="0,2.942,0,63.058" Grid.RowSpan="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="373*"/>
                     <ColumnDefinition Width="235*"/>
                 </Grid.ColumnDefinitions>
-                <WrapPanel Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop" Background="#FF564D4D" >
+                <WrapPanel Margin="0 30 0 0"  Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop" >
+                    <WrapPanel.Background>
+                        <SolidColorBrush Color="#FFA69595"/>
+                    </WrapPanel.Background>
 
                 </WrapPanel>
+                <Label Foreground="White" Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold">Usputne stanice:</Label>
                 <Canvas x:Name="canvas_map" Grid.Column="1">
                     <Canvas.Background>
                         <ImageBrush ImageSource="/Images/SerbiaMap.jpg"/>
                     </Canvas.Background>
                 </Canvas>
             </Grid>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#FF937373" AllowDrop="True" Drop="StackPanel_Drop_2" Margin="0,3.142,0,-0.942">
-                <Label>Krajnja stanica:</Label>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#FF8E3A3A" AllowDrop="True" Drop="StackPanel_Drop_2">
+                <Label Foreground="White" FontWeight="Bold">Krajnja stanica:</Label>
             </StackPanel>
         </Grid>
 

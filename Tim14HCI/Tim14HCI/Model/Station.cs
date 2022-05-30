@@ -9,6 +9,7 @@ namespace Tim14HCI.Model
     public class Station
     {
         public int StationID { get; set; }
+
         public string Name { get; set; }
 
         public int position_x { get; set; }

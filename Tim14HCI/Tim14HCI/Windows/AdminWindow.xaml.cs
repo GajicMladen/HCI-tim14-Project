@@ -84,6 +84,20 @@ namespace Tim14HCI.Windows
             }
 
         }
+        private void fillStackDataWithTrainLines()
+        {
+            stack_Data.Children.Clear();
+
+            List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines();
+            //List<Station> stations = new List<Station>();
+
+            foreach (TrainLine trainLine in trainLines)
+            {
+                TrainLineControl stationControl = new TrainLineControl(trainLine);
+                stack_Data.Children.Add(stationControl);
+            }
+
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -99,10 +113,18 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            lbl_ShownData.Content = "Stanice";
+            lbl_ShownData.Content ="Vozne linije";
             stack_Data.Children.Clear();
-            stack_Data.Children.Add(new NewLineDND());
+            fillStackDataWithTrainLines();
 
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            NewTrainLine newTrainLine = new NewTrainLine(this);
+            Visibility = Visibility.Hidden;
+            newTrainLine.Show();
         }
     }
 }

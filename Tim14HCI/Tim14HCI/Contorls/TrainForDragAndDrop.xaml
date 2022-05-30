@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
              mc:Ignorable="d" Height="202.448" Width="215.735"  MouseLeftButtonDown="UserControl_MouseLeftButtonDown_1" >
-    <StackPanel x:Name="stack_main" Background="#FF592A2A">
+    <StackPanel x:Name="stack_main" Background="#FF5D0F0F">
         <Image Source="/images/train.png" Height="70"></Image>
-        <Label x:Name="lbl_Name" Content="Naziv" HorizontalAlignment="Center"></Label>
+        <Label x:Name="lbl_Name" Content="Naziv" HorizontalAlignment="Center" Foreground="White"></Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="Kapacitet:" HorizontalAlignment="Center"></Label>
-            <Label x:Name="lbl_Capacity" ></Label>
-            <Label>osoba</Label>
+            <Label Content="Kapacitet:" HorizontalAlignment="Center" Foreground="White"></Label>
+            <Label x:Name="lbl_Capacity" Foreground="White"></Label>
+            <Label Foreground="White">osoba</Label>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="Brzina:" HorizontalAlignment="Center"></Label>
-            <Label x:Name="lbl_MaxSpeed"></Label>
-            <Label> km/h</Label>
+            <Label Content="Brzina:" HorizontalAlignment="Center" Foreground="White"></Label>
+            <Label x:Name="lbl_MaxSpeed" Foreground="White"></Label>
+            <Label Foreground="White"> km/h</Label>
         </StackPanel>
     </StackPanel>
 </UserControl>

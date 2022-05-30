@@ -26,9 +26,9 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.84"/>
         </Grid.Background>
-        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Source="/Images/Serbian_Railways.svg.png" />
+        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Source="/Images/Serbian_Railways.svg.png" Margin="15" />
 
-        <Grid Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" >
+        <Grid Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" Margin="10">
 
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -70,7 +70,5 @@
             <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Content="Nemate nalog?" Foreground="#FFFD242C" FontWeight="Bold"></Label>
             <Button Grid.Row="2" Grid.Column="1" Content="Registrujte se" Foreground="White" Background="#FF3B3EA9" Click="Button_Click_1" ></Button>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="0" Content="nova linija " Foreground="White" Background="#FF3B3EA9" Click="Button_Click_2"  />
-
     </Grid>
 </Window>

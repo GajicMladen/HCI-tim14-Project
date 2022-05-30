@@ -37,17 +37,30 @@ namespace Tim14HCI.Contorls
             lbl_MaxSpeed.Content = x.MaxSpeed;
         }
 
+        public TrainForDragAndDrop( Train x)
+        {
+            InitializeComponent();
+            train = x;
+            lbl_Name.Content = x.Name;
+            lbl_Capacity.Content = x.Capacity;
+            lbl_MaxSpeed.Content = x.MaxSpeed;
+        }
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             parent.selectedTrain = train;
-            parent.newTrainLineWindow.lbl_SelectedTrain.Content = train.Name;
+
+            ScaleTransform scaleTransform = new ScaleTransform(0.5, 0.5);
+            parent.newTrainLineWindow.stackPanel_selectedTrain.Children.Clear();
+            parent.newTrainLineWindow.stackPanel_selectedTrain.Children.Add(new TrainForDragAndDrop(train) { RenderTransform = scaleTransform });
         }
 
         private void UserControl_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
 
             parent.selectedTrain = train;
-            parent.newTrainLineWindow.lbl_SelectedTrain.Content = train.Name;
+            ScaleTransform scaleTransform = new ScaleTransform(0.7, 0.7);
+            parent.newTrainLineWindow.stackPanel_selectedTrain.Children.Clear();
+            parent.newTrainLineWindow.stackPanel_selectedTrain.Children.Add(new TrainForDragAndDrop(train) { RenderTransform = scaleTransform});
         }
     }
 }

@@ -26,14 +26,24 @@ namespace Tim14HCI.Contorls
             InitializeComponent();
 
             for(int i = 0; i< route.Count; i++)
-            { 
-                if(i == 0) { }
-
-                if (i == route.Count) { }
-
-                if (i > 0) { 
-                
+            {
+                PriceListItem newItem;
+                if (i > 0)
+                {
+                    newItem = new PriceListItem(route[i], i, prices[i - 1], times[i - 1], false);
                 }
+                else
+                {
+                    newItem = new PriceListItem(route[i], i, 0, 0, false);
+
+                }
+                if (i == route.Count - 1)
+                {
+                    newItem = new PriceListItem(route[i], i, prices[i - 1], times[i - 1], true);
+                }
+
+                stack_Data.Children.Add(newItem);
+
             }
         }
     }

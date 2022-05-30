@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
              mc:Ignorable="d" 
-             xmlns:uc="clr-namespace:Tim14HCI.Contorls" Height="70.28" Width="535.664">
+             xmlns:uc="clr-namespace:Tim14HCI.Contorls" Height="70.28" Width="535.664" Margin="15">
     <Grid x:Name="grid_data" Margin="10"  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="99*"/>
@@ -15,20 +15,20 @@
         <Grid.Background>
             <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
         </Grid.Background>
-        <Label Grid.Column="0" Margin="0,0,0.2,-0.6" VerticalAlignment="Center" Foreground="#FFFFFDFD">Pocetna stanica:</Label>
-        <uc:StationForDragAndDrop x:Name="test_station" Grid.Column="1" Margin="7.8,0,5.8,0.4" Height="Auto" Width="Auto"/>
+        <Label x:Name="lbl_stationOrder" Grid.Column="0" Margin="0,0,0.2,-0.6" VerticalAlignment="Center" Foreground="#FFFFFDFD">Pocetna stanica:</Label>
+        
         <StackPanel Grid.Column="2" Margin="8.2,0,99,-0.6"  VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
 
-                <Label Foreground="White" >Vreme:</Label>
+                <Label x:Name="lbl_timee" Foreground="White" >Vreme:</Label>
                 <Label x:Name="lbl_time" Foreground="White">15</Label>
-                <Label Foreground="White" >min</Label>
+                <Label x:Name="lbl_timeee" Foreground="White" >min</Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
 
-                <Label Foreground="White" >cena:</Label>
+                <Label x:Name="lbl_pricee" Foreground="White" >cena:</Label>
                 <Label x:Name="lbl_price" Foreground="White">150</Label>
-                <Label Foreground="White" >din</Label>
+                <Label x:Name="lbl_priceee" Foreground="White" >din</Label>
             </StackPanel>
         </StackPanel>
     </Grid>

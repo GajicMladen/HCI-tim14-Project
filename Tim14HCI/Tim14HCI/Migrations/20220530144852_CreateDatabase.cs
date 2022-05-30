@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tim14HCI.Migrations
 {
-    public partial class INIT : Migration
+    public partial class CreateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,9 @@ namespace Tim14HCI.Migrations
                 {
                     StationID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    position_x = table.Column<int>(nullable: false),
+                    position_y = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,6 +78,27 @@ namespace Tim14HCI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tickets",
+                columns: table => new
+                {
+                    TicketID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ForReservation = table.Column<bool>(nullable: false),
+                    DepartureID = table.Column<int>(nullable: false),
+                    UserID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tickets", x => x.TicketID);
+                    table.ForeignKey(
+                        name: "FK_tickets_users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "trainLines",
                 columns: table => new
                 {
@@ -83,6 +106,7 @@ namespace Tim14HCI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StartStationID = table.Column<int>(nullable: false),
                     EndStationID = table.Column<int>(nullable: false),
+                    EndStationOnWayStationID = table.Column<int>(nullable: true),
                     TrainID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -128,16 +152,17 @@ namespace Tim14HCI.Migrations
                 name: "onWayStations",
                 columns: table => new
                 {
+                    OnWayStationID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StationOrder = table.Column<int>(nullable: false),
-                    TrainLineID = table.Column<int>(nullable: false),
                     Price = table.Column<float>(nullable: false),
                     Time = table.Column<float>(nullable: false),
                     StationID = table.Column<int>(nullable: false),
-                    TrainLineID1 = table.Column<int>(nullable: true)
+                    TrainLineID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_onWayStations", x => new { x.TrainLineID, x.StationOrder });
+                    table.PrimaryKey("PK_onWayStations", x => x.OnWayStationID);
                     table.ForeignKey(
                         name: "FK_onWayStations_stations_StationID",
                         column: x => x.StationID,
@@ -149,52 +174,19 @@ namespace Tim14HCI.Migrations
                         column: x => x.TrainLineID,
                         principalTable: "trainLines",
                         principalColumn: "TrainLineID");
-                    table.ForeignKey(
-                        name: "FK_onWayStations_trainLines_TrainLineID1",
-                        column: x => x.TrainLineID1,
-                        principalTable: "trainLines",
-                        principalColumn: "TrainLineID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "tickets",
-                columns: table => new
-                {
-                    TicketID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ForReservation = table.Column<bool>(nullable: false),
-                    DepartureID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tickets", x => x.TicketID);
-                    table.ForeignKey(
-                        name: "FK_tickets_departures_DepartureID",
-                        column: x => x.DepartureID,
-                        principalTable: "departures",
-                        principalColumn: "DepartureID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_tickets_users_UserID",
-                        column: x => x.UserID,
-                        principalTable: "users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "stations",
-                columns: new[] { "StationID", "Name" },
+                columns: new[] { "StationID", "Name", "position_x", "position_y" },
                 values: new object[,]
                 {
-                    { 1, "Beograd" },
-                    { 2, "Novi Sad" },
-                    { 3, "Subotica" },
-                    { 4, "Zrenjanin" },
-                    { 5, "Niš" },
-                    { 6, "Leskovac" }
+                    { 1, "Beograd", 85, 95 },
+                    { 2, "Novi Sad", 30, 50 },
+                    { 3, "Subotica", 40, 10 },
+                    { 4, "Zrenjanin", 70, 60 },
+                    { 5, "Niš", 130, 160 },
+                    { 6, "Leskovac", 160, 230 }
                 });
 
             migrationBuilder.InsertData(
@@ -247,11 +239,9 @@ namespace Tim14HCI.Migrations
                 column: "StationID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_onWayStations_TrainLineID1",
+                name: "IX_onWayStations_TrainLineID",
                 table: "onWayStations",
-                column: "TrainLineID1",
-                unique: true,
-                filter: "[TrainLineID1] IS NOT NULL");
+                column: "TrainLineID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tickets_DepartureID",
@@ -264,6 +254,11 @@ namespace Tim14HCI.Migrations
                 column: "UserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_trainLines_EndStationOnWayStationID",
+                table: "trainLines",
+                column: "EndStationOnWayStationID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_trainLines_StartStationID",
                 table: "trainLines",
                 column: "StartStationID");
@@ -272,15 +267,32 @@ namespace Tim14HCI.Migrations
                 name: "IX_trainLines_TrainID",
                 table: "trainLines",
                 column: "TrainID");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_tickets_departures_DepartureID",
+                table: "tickets",
+                column: "DepartureID",
+                principalTable: "departures",
+                principalColumn: "DepartureID",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_trainLines_onWayStations_EndStationOnWayStationID",
+                table: "trainLines",
+                column: "EndStationOnWayStationID",
+                principalTable: "onWayStations",
+                principalColumn: "OnWayStationID",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "linkedStations");
+            migrationBuilder.DropForeignKey(
+                name: "FK_onWayStations_trainLines_TrainLineID",
+                table: "onWayStations");
 
             migrationBuilder.DropTable(
-                name: "onWayStations");
+                name: "linkedStations");
 
             migrationBuilder.DropTable(
                 name: "tickets");
@@ -295,10 +307,13 @@ namespace Tim14HCI.Migrations
                 name: "trainLines");
 
             migrationBuilder.DropTable(
-                name: "stations");
+                name: "onWayStations");
 
             migrationBuilder.DropTable(
                 name: "trains");
+
+            migrationBuilder.DropTable(
+                name: "stations");
         }
     }
 }

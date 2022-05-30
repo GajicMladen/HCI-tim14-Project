@@ -232,14 +232,11 @@
     <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
-    <Compile Include="Migrations\20220527222017_Positions.cs" />
-    <Compile Include="Migrations\20220527222017_Positions.designer.cs">
-      <DependentUpon>20220527222017_Positions.cs</DependentUpon>
+    <Compile Include="Migrations\20220530144852_CreateDatabase.cs" />
+    <Compile Include="Migrations\20220530144852_CreateDatabase.designer.cs">
+      <DependentUpon>20220530144852_CreateDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220528210139_OnWayStationChange.cs" />
-    <Compile Include="Migrations\20220528210139_OnWayStationChange.designer.cs">
-      <DependentUpon>20220528210139_OnWayStationChange.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -329,11 +326,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20220519102123_INIT.cs" />
-    <Compile Include="Migrations\20220519102123_INIT.designer.cs">
-      <DependentUpon>20220519102123_INIT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
     <Compile Include="Model\Departure.cs" />
     <Compile Include="Model\LinkedStation.cs" />
     <Compile Include="Model\OnWayStation.cs" />
@@ -408,6 +400,7 @@
   <ItemGroup>
     <Resource Include="Images\back.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

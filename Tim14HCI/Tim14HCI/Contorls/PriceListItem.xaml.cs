@@ -21,11 +21,34 @@ namespace Tim14HCI.Contorls
     /// </summary>
     public partial class PriceListItem : UserControl
     {
-        public PriceListItem(Station station,int price, int time)
+        public PriceListItem(Station station,int stationOrder,int price, int time,bool lastStation)
         {
             InitializeComponent();
             StationForDragAndDrop stationForDragAndDrop = new StationForDragAndDrop(station);
+           
             grid_data.Children.Add(stationForDragAndDrop);
+            Grid.SetColumn(stationForDragAndDrop, 1);
+            lbl_price.Content = price.ToString();
+            lbl_time.Content = time.ToString();
+            if (stationOrder == 0)
+            {
+                lbl_stationOrder.Content = "Pocetna stanica: ";
+                lbl_price.Visibility = Visibility.Hidden;
+                lbl_pricee.Visibility = Visibility.Hidden;
+                lbl_priceee.Visibility = Visibility.Hidden;
+                lbl_time.Visibility = Visibility.Hidden;
+                lbl_timee.Visibility = Visibility.Hidden;
+                lbl_timeee.Visibility = Visibility.Hidden;
+
+            }
+            else {
+                lbl_stationOrder.Content = "Stanica " + stationOrder.ToString()+" :";
+            }
+
+            if (lastStation)
+            {
+                lbl_stationOrder.Content = "Krajnja stanica: ";
+            }
         }
     }
 }

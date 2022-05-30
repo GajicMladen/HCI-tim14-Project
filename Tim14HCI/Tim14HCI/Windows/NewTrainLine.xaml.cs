@@ -41,6 +41,8 @@ namespace Tim14HCI.Windows
         RoutePicker routePicker;
         TrainPicker trainPicker;
         SetPriceForNewTrainLine setPricesForNewTrainLine;
+        PriceList priceList;
+
         Train selectedTrain;
         List<int> prices;
         List<int> times;
@@ -145,6 +147,8 @@ namespace Tim14HCI.Windows
                 btn_next_label.Content = "Sacuvaj";
                 btn_next_img.Source = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "/Images/confirm.png"));
                 grid_display.Children.Clear();
+
+                grid_display.Children.Add(new PriceList(selectedRoute,prices,times));
 
             }
             else {

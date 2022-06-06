@@ -7,19 +7,22 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tim14HCI.DAO;
 using Tim14HCI.Model;
+using Tim14HCI.Windows;
 
 namespace Tim14HCI.Contorls
 {
     /// <summary>
     /// Interaction logic for TrainControl.xaml
     /// </summary>
-    public partial class TrainControl : UserControl
+    public partial class TrainControl : System.Windows.Controls.UserControl
     {
 
         Train train;
@@ -33,8 +36,32 @@ namespace Tim14HCI.Contorls
             InitializeComponent();
 
             lbl_Name.Content = train.Name;
-            lbl_Capacity.Content = train.Capacity;
-            lbl_MaxSpeed.Content = train.MaxSpeed;
+            lbl_Capacity.Content = train.Capacity + " osoba";
+            lbl_MaxSpeed.Content = train.MaxSpeed + " km/h";
+        }
+
+        private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+            string message = "Da li ste sigurni da želite da obrišete voz " + train.Name + "?";
+            string title = "Brisanje voza";
+            DialogResult result = System.Windows.Forms.MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.OK)
+            {
+                TrainDAO.RemoveTrain(train);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void Change_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+            NewTrain newTrain = new NewTrain(parentWindow, train);
+            parentWindow.Hide();
+            newTrain.Show();
         }
     }
 }

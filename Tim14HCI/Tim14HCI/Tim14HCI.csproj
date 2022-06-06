@@ -219,11 +219,17 @@
     <Compile Include="Contorls\TrainControl.xaml.cs">
       <DependentUpon>TrainControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contorls\TrainDataForm.xaml.cs">
+      <DependentUpon>TrainDataForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contorls\TrainForDragAndDrop.xaml.cs">
       <DependentUpon>TrainForDragAndDrop.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contorls\TrainLineControl.xaml.cs">
       <DependentUpon>TrainLineControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\TrainLinePicker.xaml.cs">
+      <DependentUpon>TrainLinePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contorls\TrainPicker.xaml.cs">
       <DependentUpon>TrainPicker.xaml</DependentUpon>
@@ -295,11 +301,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Contorls\TrainDataForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Contorls\TrainForDragAndDrop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contorls\TrainLineControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\TrainLinePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

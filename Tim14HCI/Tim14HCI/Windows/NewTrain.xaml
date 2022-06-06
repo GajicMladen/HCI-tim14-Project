@@ -21,11 +21,6 @@
             <RowDefinition Height="123*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        <Syncfusion:SfStepProgressBar x:Name="progresBar" SelectedIndex="0" Grid.Row="0" HorizontalContentAlignment="Center" SelectedItemStatus="Indeterminate" HorizontalAlignment="Center" VerticalAlignment="Center" Height="74"   Width="312" Grid.Column="1" Margin="244,2,192,2"  >
-            <Syncfusion:StepViewItem Content="Osnovni podaci" />
-            <Syncfusion:StepViewItem Content="Linije" />
-            <Syncfusion:StepViewItem Content="Potvrda" />
-        </Syncfusion:SfStepProgressBar>
         <Grid x:Name="grid_display" Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -44,7 +39,7 @@
 
             <Border Background="White" Opacity="0.7"  Grid.ColumnSpan="4" Grid.RowSpan="5" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8"/>
 
-            <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24">Osnovni podaci</Label>
+            <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24">Podaci o vozu</Label>
 
             <Label x:Name="trainNameLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Naziv voza:</Label>
             <Label x:Name="trainCapacityLabel" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Kapacitet voza:</Label>
@@ -56,28 +51,6 @@
 
             <Label x:Name="errorLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
         </Grid>
-
-        <StackPanel Orientation="Horizontal"  Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" Height="99" >
-            <Button x:Name="btn_Back"  Margin="10"  Padding="10" HorizontalAlignment="Left"  Background="#FF3438B3"  RenderTransformOrigin="0.5,0.5" Click="Button_Click_1">
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
-                <StackPanel>
-                    <Label Foreground="White">Prethodno</Label>
-                    <Image Source="/Images/back.png" Width="30"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="btn_Next"  Margin="0 10" Padding="10" HorizontalAlignment="Left" Background="#FF3438B3" Click="Button_Click">
-                <StackPanel>
-                    <Label x:Name="btn_next_label" Foreground="White">Sledeće</Label>
-                    <Image x:Name="btn_next_img" Source="/Images/next.png"></Image>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+        <Button x:Name="addButton" Grid.Column="1" Grid.Row="2" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="Button_Click">Dodaj</Button>
     </Grid>
 </Window>

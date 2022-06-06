@@ -621,3 +621,7 @@ C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.
 C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.pdb
 C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Windows\NewTrain.g.cs
 C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Windows\NewTrain.baml
+C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainDataForm.g.cs
+C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainDataForm.baml
+C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainLinePicker.g.cs
+C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainLinePicker.baml

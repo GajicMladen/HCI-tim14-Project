@@ -20,7 +20,8 @@ namespace Tim14HCI.Contorls
     /// Interaction logic for TrainLineControl.xaml
     /// </summary>
     public partial class TrainLineControl : UserControl
-    {
+    { 
+
         public TrainLineControl(TrainLine trainLine)
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace Tim14HCI.Contorls
             }
             lbl_price.Content = trainLine.getTotalPrice().ToString();
             lbl_time.Content = trainLine.getTotalTime().ToString();
-
         }
+
     }
 }

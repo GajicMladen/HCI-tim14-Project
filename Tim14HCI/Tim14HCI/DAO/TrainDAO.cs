@@ -24,5 +24,13 @@ namespace Tim14HCI.DAO
             }
         
         }
+
+        public static bool TrainNameExists(string name)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.trains.SingleOrDefault(train => train.Name.ToLower() == name.ToLower()) != null;
+            }
+        }
     }
 }

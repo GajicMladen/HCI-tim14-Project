@@ -29,6 +29,7 @@ namespace Tim14HCI.Windows
 
         Window parent;
         User user;
+
         public AdminWindow(Window x,User user)
         {
             parent = x;
@@ -68,7 +69,6 @@ namespace Tim14HCI.Windows
                 TrainControl trainControl = new TrainControl(train);
                 stack_Data.Children.Add(trainControl);
             }
-
         }
         private void fillStackDataWithStations()
         {
@@ -82,7 +82,6 @@ namespace Tim14HCI.Windows
                 StationControl stationControl = new StationControl(station);
                 stack_Data.Children.Add(stationControl);
             }
-
         }
         private void fillStackDataWithTrainLines()
         {
@@ -96,7 +95,6 @@ namespace Tim14HCI.Windows
                 TrainLineControl stationControl = new TrainLineControl(trainLine);
                 stack_Data.Children.Add(stationControl);
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -122,9 +120,22 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NewTrainLine newTrainLine = new NewTrainLine(this);
-            Visibility = Visibility.Hidden;
-            newTrainLine.Show();
+            if ((string)lbl_ShownData.Content == "Vozne linije")
+            {
+                NewTrainLine newTrainLine = new NewTrainLine(this);
+                Visibility = Visibility.Hidden;
+                newTrainLine.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Vozovi")
+            {
+                NewTrain newTrain = new NewTrain(this);
+                Visibility = Visibility.Hidden;
+                newTrain.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Stanice")
+            {
+                Console.WriteLine("LOLO2");
+            }
         }
     }
 }

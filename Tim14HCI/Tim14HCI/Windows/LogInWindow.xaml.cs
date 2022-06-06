@@ -42,7 +42,7 @@ namespace Tim14HCI.Windows
                 lbl_message.Content = "Uspesno ulogovani";
                 if (user.UserRole == UserRole.CLIENT)
                 {
-                    ClientWindow clientWindow = new ClientWindow(this);
+                    ClientWindow clientWindow = new ClientWindow(this, user);
                     Visibility = Visibility.Hidden;
                     clientWindow.Show();
                 }

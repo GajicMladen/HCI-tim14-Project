@@ -21,5 +21,18 @@ namespace Tim14HCI.Model
 
         public virtual List<Ticket> Tickets { get; set; }
 
+        public Departure()
+        {
+
+        }
+
+        public Departure(int id, DateTime startDate, DateTime endDate, TrainLine trainLine)
+        {
+            this.DepartureID = id;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.TrainLine = trainLine;
+        }
+
     }
 }

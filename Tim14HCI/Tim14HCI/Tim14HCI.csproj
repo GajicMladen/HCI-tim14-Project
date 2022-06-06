@@ -256,6 +256,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\NewStation.xaml.cs">
+      <DependentUpon>NewStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NewTrain.xaml.cs">
       <DependentUpon>NewTrain.xaml</DependentUpon>
     </Compile>
@@ -330,6 +333,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LogInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\NewStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

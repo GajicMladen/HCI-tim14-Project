@@ -134,7 +134,9 @@ namespace Tim14HCI.Windows
             }
             else if ((string)lbl_ShownData.Content == "Stanice")
             {
-                Console.WriteLine("LOLO2");
+                NewStation newStation = new NewStation(this);
+                Visibility = Visibility.Hidden;
+                newStation.Show();
             }
         }
     }

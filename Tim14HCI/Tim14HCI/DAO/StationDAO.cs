@@ -29,5 +29,50 @@ namespace Tim14HCI.DAO
             }
 
         }
+
+        public static bool StationNameExists(string name)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.stations.SingleOrDefault(train => train.Name.ToLower() == name.ToLower()) != null;
+            }
+        }
+
+        public static void RemoveStation(Station station)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                var stationToRemove = context.stations.SingleOrDefault(t => t.Name == station.Name);
+                if (stationToRemove != null)
+                {
+                    context.stations.Remove(stationToRemove);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public static void AddStation(Station station)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                context.Add(station);
+                context.SaveChanges();
+            }
+        }
+
+        public static void ModifyTrain(Station station)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                var oldStation = context.stations.SingleOrDefault(x => x.StationID == station.StationID);
+                if (oldStation != null)
+                {
+                    oldStation.Name = station.Name;
+                    oldStation.position_x = station.position_x;
+                    oldStation.position_y = station.position_y;
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
         mc:Ignorable="d"
-        Title="Železnice Srbije" Height="642.081" Width="919.91" Closing="Window_Closing">
+        Title="Železnice Srbije" Height="690" Width="919.91" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="170*"/>
@@ -15,6 +15,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="78*"/>
+            <RowDefinition Height="67*"/>
             <RowDefinition Height="67*"/>
             <RowDefinition Height="460*"/>
         </Grid.RowDefinitions>
@@ -44,7 +45,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 10">
+            <Button Grid.Column="0" Margin="3 10" Click="ShowBoughtTickets">
                 <Button.Background>
                     <SolidColorBrush Color="#FFBF1616"/>
                 </Button.Background>
@@ -53,7 +54,7 @@
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Kupljene karte</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616">
+            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="ShowReservationTickets">
                 <StackPanel>
                     <Image Source="/Images/Ticket-reservation-icon.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Rezervisane karte</TextBlock>
@@ -73,8 +74,38 @@
             </Button>
         </Grid>
 
+        <Grid Grid.Row="1" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Polazište:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
+            <TextBox Grid.Column="0" x:Name="txbx_start_location" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+
+            <Label Grid.Column="1" Content="Odredište:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
+            <TextBox Grid.Column="1" x:Name="txbx_end_location" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+
+            <Label Grid.Column="2" Content="Vreme polaska:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
+            <TextBox Grid.Column="2" x:Name="txbx_start_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+
+            <Label Grid.Column="3" Content="Vreme dolaska:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
+            <TextBox Grid.Column="3" x:Name="txbx_end_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+
+            <Button Grid.Column="4" Margin="15 20 15 10" Background="#FF3B3EA9" Click="Search">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/search.png" Margin="3" Height="25"/>
+                    <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Pretraži</Label>
+                    
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
         <!--Content-->
-        <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3" >
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="3" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="121*"/>
                 <ColumnDefinition Width="488*"/>
@@ -121,7 +152,7 @@
                     <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Column="0" x:Name="lbl_chosen" Content="Izabrano: "  HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="146" FontSize="16" Margin="0 0 0 0"  />
-                <Label Grid.Column="1" x:Name="lbl_departure" Content="AAAAAA"  HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="146" FontSize="16" Margin="0 0 0 0"  />
+                <Label Grid.Column="1" x:Name="lbl_departure" Content=""  HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="698" FontSize="16" Margin="10,0,23,0"  />
 
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="4">
@@ -132,13 +163,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="0" Margin="10 5 10 5" Background="#FFBF1616">
+                <Button Grid.Column="0" Margin="10 5 10 5" Background="#FFBF1616" Click="ReservationClick">
                     <StackPanel>
                         <Image Source="/Images/Add-ticket-icon.png" Width="30"/>
                         <TextBlock Foreground="#FFFCFCFF" FontSize="16">Rezerviši</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="1" Margin="10 5 10 5" Background="#FFBF1616">
+                <Button Grid.Column="1" Margin="10 5 10 5" Background="#FFBF1616" Click="BuyClick">
                     <StackPanel>
                         <Image Source="/Images/Ticket-add-icon.png" Width="30"/>
                         <TextBlock Foreground="#FFFCFCFF" FontSize="16">Kupi</TextBlock>

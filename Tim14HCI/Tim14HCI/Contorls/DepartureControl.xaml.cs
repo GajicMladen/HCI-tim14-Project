@@ -67,7 +67,6 @@ namespace Tim14HCI.Contorls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Console.WriteLine(departure.DepartureID + "*******************");
             // Raise the custom routed event, this fires the event from the UserControl
             DepartureChosenEventArgs args = new DepartureChosenEventArgs(DepartureControl.DepartureChosenEvent, departure.DepartureID);
             RaiseEvent(args);

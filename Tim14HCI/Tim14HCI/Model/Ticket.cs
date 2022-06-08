@@ -15,10 +15,32 @@ namespace Tim14HCI.Model
         public int DepartureID { get; set; }
         public Departure Departure { get; set; }
 
-
+        public int StartStationID { get; set; }
+        public Station StartStation { get; set; }
+        public int EndStationID { get; set; }
+        public Station EndStation { get; set; }
+        public double Price { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
 
+        public Ticket()
+        {
+
+        }
+        
+        public Ticket(bool forReservation, Departure departure, Station endStation, double price, User user)
+        {
+            this.ForReservation = forReservation;
+            this.DepartureID = departure.DepartureID;
+            this.Departure = departure;
+            this.StartStationID = departure.TrainLine.StartStationID;
+            this.StartStation = departure.TrainLine.StartStation;
+            this.EndStationID = endStation.StationID;
+            this.EndStation = endStation;
+            this.Price = price;
+            this.UserID = user.UserID;
+            this.User = user;
+        }
 
     }
 }

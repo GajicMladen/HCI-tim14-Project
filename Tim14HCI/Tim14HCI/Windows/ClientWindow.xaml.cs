@@ -27,6 +27,7 @@ namespace Tim14HCI.Windows
         User user;
         int chosenDeparture;
         int chosenEndLocation;
+        String price;
 
         String startLocationSearch;
         String endLocationSearch = "";
@@ -62,7 +63,8 @@ namespace Tim14HCI.Windows
             chosenEndLocation = args.OnWayStationID;
             Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
             OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
-            lbl_departure.Content = departure.startDate.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + args.Price;
+            price = args.Price;
+            lbl_departure.Content = departure.startDate.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
 
         }
 
@@ -112,20 +114,18 @@ namespace Tim14HCI.Windows
 
         private void ReservationClick(object sender, RoutedEventArgs e)
         {
-            Ticket ticket = new Ticket();
-            ticket.User = user;
-            ticket.ForReservation = true;
-            ticket.Departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+            OnWayStation ows = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+            Ticket ticket = new Ticket(true, departure, ows.Station, Double.Parse(price), user);
             TicketDAO.AddNewTicket(ticket);
             MessageBox.Show("Karta uspešno rezervisana!");
         }
 
         private void BuyClick(object sender, RoutedEventArgs e)
         {
-            Ticket ticket = new Ticket();
-            ticket.User = user;
-            ticket.ForReservation = false;
-            ticket.Departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+            OnWayStation ows = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+            Ticket ticket = new Ticket(false, departure, ows.Station, Double.Parse(price), user);
             TicketDAO.AddNewTicket(ticket);
             MessageBox.Show("Karta uspešno kupljena!");
         }
@@ -142,6 +142,13 @@ namespace Tim14HCI.Windows
             TicketDisplayWindow ticketDisplayWindow = new TicketDisplayWindow(this, "Reservation", user);
             Visibility = Visibility.Hidden;
             ticketDisplayWindow.Show();
+        }
+
+        private void ShowTrainLines(object sender, RoutedEventArgs e)
+        {
+            TrainLinesDisplay trainLinesWindow = new TrainLinesDisplay(this);
+            Visibility = Visibility.Hidden;
+            trainLinesWindow.Show();
         }
 
         private void Search(object sender, RoutedEventArgs e)

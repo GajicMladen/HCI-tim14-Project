@@ -22,7 +22,8 @@ namespace Tim14HCI.Model
         public virtual List<OnWayStation> OnWayStations { get; set; }
 
         public virtual List<Departure> Departures { get; set; }
-
+        
+        /*
         public float getTotalPrice() {
             float ret = 0;
 
@@ -47,6 +48,6 @@ namespace Tim14HCI.Model
 
             return ret;
         }
-
+        */
     }
 }

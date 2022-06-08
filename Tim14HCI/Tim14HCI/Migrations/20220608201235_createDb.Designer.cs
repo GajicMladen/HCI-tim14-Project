@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    partial class SerbiaRailwayContextModelSnapshot : ModelSnapshot
+    [Migration("20220608201235_createDb")]
+    partial class createDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,26 +39,6 @@ namespace Tim14HCI.Migrations
                     b.HasIndex("TrainLineID");
 
                     b.ToTable("departures");
-
-                    b.HasData(
-                        new
-                        {
-                            DepartureID = 1,
-                            StartTime = new DateTime(2022, 6, 8, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            TrainLineID = 1
-                        },
-                        new
-                        {
-                            DepartureID = 2,
-                            StartTime = new DateTime(2022, 6, 8, 15, 40, 0, 0, DateTimeKind.Unspecified),
-                            TrainLineID = 1
-                        },
-                        new
-                        {
-                            DepartureID = 3,
-                            StartTime = new DateTime(2022, 6, 8, 20, 15, 0, 0, DateTimeKind.Unspecified),
-                            TrainLineID = 1
-                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.LinkedStation", b =>
@@ -245,15 +227,6 @@ namespace Tim14HCI.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("tickets");
-
-                    b.HasData(
-                        new
-                        {
-                            TicketID = 1,
-                            DepartureID = 1,
-                            ForReservation = false,
-                            UserID = 1
-                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.Train", b =>

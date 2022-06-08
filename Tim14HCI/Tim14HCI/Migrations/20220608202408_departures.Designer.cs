@@ -10,8 +10,8 @@ using Tim14HCI.Model;
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    [Migration("20220530144852_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20220608202408_departures")]
+    partial class departures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,23 +28,37 @@ namespace Tim14HCI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("StartTimeEveryday")
+                    b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TrainLineID")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("endDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("startDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("DepartureID");
 
                     b.HasIndex("TrainLineID");
 
                     b.ToTable("departures");
+
+                    b.HasData(
+                        new
+                        {
+                            DepartureID = 1,
+                            StartTime = new DateTime(2022, 6, 8, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            TrainLineID = 1
+                        },
+                        new
+                        {
+                            DepartureID = 2,
+                            StartTime = new DateTime(2022, 6, 8, 15, 40, 0, 0, DateTimeKind.Unspecified),
+                            TrainLineID = 1
+                        },
+                        new
+                        {
+                            DepartureID = 3,
+                            StartTime = new DateTime(2022, 6, 8, 20, 15, 0, 0, DateTimeKind.Unspecified),
+                            TrainLineID = 1
+                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.LinkedStation", b =>
@@ -111,6 +125,9 @@ namespace Tim14HCI.Migrations
                     b.Property<int>("TrainLineID")
                         .HasColumnType("int");
 
+                    b.Property<bool>("isEndStation")
+                        .HasColumnType("bit");
+
                     b.HasKey("OnWayStationID");
 
                     b.HasIndex("StationID");
@@ -118,6 +135,28 @@ namespace Tim14HCI.Migrations
                     b.HasIndex("TrainLineID");
 
                     b.ToTable("onWayStations");
+
+                    b.HasData(
+                        new
+                        {
+                            OnWayStationID = 1,
+                            Price = 10f,
+                            StationID = 1,
+                            StationOrder = 1,
+                            Time = 10f,
+                            TrainLineID = 1,
+                            isEndStation = false
+                        },
+                        new
+                        {
+                            OnWayStationID = 2,
+                            Price = 10f,
+                            StationID = 2,
+                            StationOrder = 2,
+                            Time = 10f,
+                            TrainLineID = 1,
+                            isEndStation = true
+                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.Station", b =>
@@ -289,6 +328,15 @@ namespace Tim14HCI.Migrations
                     b.HasIndex("TrainID");
 
                     b.ToTable("trainLines");
+
+                    b.HasData(
+                        new
+                        {
+                            TrainLineID = 1,
+                            EndStationID = 1,
+                            StartStationID = 1,
+                            TrainID = 1
+                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.User", b =>

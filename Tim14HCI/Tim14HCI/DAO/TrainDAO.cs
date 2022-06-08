@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Tim14HCI.DAO
         public static Train GetTrainByID(int id) {
 
             using (var context = new SerbiaRailwayContext()) {
+
+
                 return context.trains.Where(t => t.TrainID == id).FirstOrDefault();
             }
         

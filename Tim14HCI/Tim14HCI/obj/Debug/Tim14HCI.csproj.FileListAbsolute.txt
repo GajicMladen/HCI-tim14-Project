@@ -429,7 +429,6 @@ C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\bin\
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\bin\Debug\Syncfusion.Tools.WPF.xml
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Windows\NewTrainLine.g.cs
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Windows\NewTrainLine.baml
-C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainForDragAndDrop.g.cs
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainPicker.g.cs
 C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\TrainForDragAndDrop.baml

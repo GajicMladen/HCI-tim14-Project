@@ -11,15 +11,27 @@ namespace Tim14HCI.Model
 
         public int DepartureID { get; set; }
 
-        public DateTime startDate { get; set; }
-        public DateTime endDate { get; set; }
-
-        public DateTime StartTimeEveryday { get; set; }
+        public DateTime StartTime { get; set; }
 
         public int TrainLineID { get; set; }
         public TrainLine TrainLine { get; set; }
 
         public virtual List<Ticket> Tickets { get; set; }
 
+        /*
+        public DateTime getEndTime() {
+
+            DateTime ret = StartTime;
+            
+            foreach(OnWayStation onWayStation in TrainLine.OnWayStations)
+            {
+                ret.AddMinutes(onWayStation.Time);
+            }
+
+            ret.AddMinutes(TrainLine.EndStation.Time);
+
+            return ret;
+        }
+        */
     }
 }

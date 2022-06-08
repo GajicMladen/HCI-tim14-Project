@@ -23,7 +23,7 @@ namespace Tim14HCI.DAO
                                 OnWayStationID=1,Price=300,Time=30,StationOrder=0,TrainLineID=1
                             },
                             Departures= new List<Departure>(),
-                            OnWayStations = new List<OnWayStation>()
+                            //OnWayStations = new List<OnWayStation>()
             }
         };
 
@@ -58,7 +58,7 @@ namespace Tim14HCI.DAO
 
             newTrainLine.TrainLineID = getNewTrainLineID();
 
-            newTrainLine.OnWayStations = onWayStations;
+            //newTrainLine.OnWayStations = onWayStations;
 
             for (int i = 0; i < prices.Count; i++) {
 
@@ -80,7 +80,7 @@ namespace Tim14HCI.DAO
                 }
                 else {
 
-                    newTrainLine.OnWayStations.Add(onWayStation);
+                    //newTrainLine.OnWayStations.Add(onWayStation);
                 }
                 //onWayStations.Add(onWayStation);
                 

@@ -17,6 +17,7 @@ namespace Tim14HCI.Model
         public int StationID { get; set; }
         public Station Station { get; set; }
 
+        public bool isEndStation { get; set; }
 
         public int TrainLineID { get; set; }
         public TrainLine TrainLine { get; set; }

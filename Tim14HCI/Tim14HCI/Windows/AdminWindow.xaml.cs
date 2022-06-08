@@ -57,7 +57,7 @@ namespace Tim14HCI.Windows
            
         }
 
-        private void fillStackDataWithTrains() {
+        public void fillStackDataWithTrains() {
 
             stack_Data.Children.Clear();
 
@@ -70,7 +70,7 @@ namespace Tim14HCI.Windows
                 stack_Data.Children.Add(trainControl);
             }
         }
-        private void fillStackDataWithStations()
+        public void fillStackDataWithStations()
         {
             stack_Data.Children.Clear();
 

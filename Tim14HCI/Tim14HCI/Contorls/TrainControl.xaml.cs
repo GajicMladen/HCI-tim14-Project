@@ -48,7 +48,13 @@ namespace Tim14HCI.Contorls
             DialogResult result = System.Windows.Forms.MessageBox.Show(message, title, buttons);
             if (result == DialogResult.OK)
             {
+                AdminWindow parent = System.Windows.Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
                 TrainDAO.RemoveTrain(train);
+                parent.fillStackDataWithTrains();
+                message = "Voz " + train.Name + " je uspešno obrisan!";
+                buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show(message, title, buttons);
+
             }
             else
             {

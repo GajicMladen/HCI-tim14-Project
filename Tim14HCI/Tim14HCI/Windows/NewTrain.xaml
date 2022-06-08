@@ -51,6 +51,19 @@
 
             <Label x:Name="errorLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
         </Grid>
-        <Button x:Name="addButton" Grid.Column="1" Grid.Row="2" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="Button_Click">Dodaj</Button>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="Button_Click">Kreiraj voz</Button>
+            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click">Povratak</Button>
+        </Grid>
+
     </Grid>
 </Window>

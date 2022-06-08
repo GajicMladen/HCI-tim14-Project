@@ -17,6 +17,7 @@ namespace Tim14HCI.Windows
 
         private string mode;
 
+        private String oldTrainName = null;
         public NewTrain()
         {
             mode = "none";
@@ -43,6 +44,7 @@ namespace Tim14HCI.Windows
             InitializeComponent();
             train = existingTrain;
             addButton.Content = "Izmeni";
+            oldTrainName = existingTrain.Name;
             trainNameTextbox.Text = train.Name;
             trainCapacityTextbox.Text = train.Capacity.ToString();
             trainMaxSpeedTextbox.Text = train.MaxSpeed.ToString();
@@ -50,10 +52,27 @@ namespace Tim14HCI.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (TrainDAO.TrainNameExists(trainNameTextbox.Text))
+            if(mode == "new")
             {
-                errorLabel.Content = "Voz sa zadatim imenom već postoji!";
-                return;
+                if (TrainDAO.TrainNameExists(trainNameTextbox.Text))
+                {
+                    errorLabel.Content = "Voz sa zadatim imenom već postoji!";
+                    return;
+                }
+            }
+
+            else if (mode == "modify")
+            {
+                if (TrainDAO.TrainNameExists(trainNameTextbox.Text) && trainNameTextbox.Text != oldTrainName)
+                {
+                    errorLabel.Content = "Voz sa zadatim imenom već postoji!";
+                    return;
+                }
+            }
+
+            if (trainNameTextbox.Text.Trim().Length == 0)
+            {
+                errorLabel.Content = "Neispravno ime voza!";
             }
 
             else
@@ -96,6 +115,8 @@ namespace Tim14HCI.Windows
                     string message = "Voz " + train.Name + " je uspešno dodat!";
                     string title = "Dodavanje voza";
                     System.Windows.Forms.MessageBox.Show(message, title, buttons);
+                    AdminWindow parentCasted = parent as AdminWindow;
+                    parentCasted.fillStackDataWithTrains();
                     Hide();
                     parent.Show();
                     return;
@@ -108,6 +129,8 @@ namespace Tim14HCI.Windows
                     string message = "Voz " + train.Name + " je uspešno izmenjen!";
                     string title = "Izmena voza";
                     System.Windows.Forms.MessageBox.Show(message, title, buttons);
+                    AdminWindow parentCasted = parent as AdminWindow;
+                    parentCasted.fillStackDataWithTrains();
                     Hide();
                     parent.Show();
                     return;
@@ -117,6 +140,12 @@ namespace Tim14HCI.Windows
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            parent.Show();
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
             parent.Show();
         }
 

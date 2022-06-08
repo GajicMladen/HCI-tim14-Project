@@ -30,6 +30,14 @@ namespace Tim14HCI.DAO
 
         }
 
+        public static Station GetStationByName(string name)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.stations.Where(s => s.Name == name).FirstOrDefault();
+            }
+        }
+
         public static bool StationNameExists(string name)
         {
             using (var context = new SerbiaRailwayContext())
@@ -45,7 +53,30 @@ namespace Tim14HCI.DAO
                 var stationToRemove = context.stations.SingleOrDefault(t => t.Name == station.Name);
                 if (stationToRemove != null)
                 {
+                    context.linkedStations.RemoveRange(context.linkedStations.Where(x => x.Station1ID == station.StationID || x.Station2ID == station.StationID));
+                    context.SaveChanges();
                     context.stations.Remove(stationToRemove);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public static void ModifyStation(Station station, List<Station> links)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                var oldStation = context.stations.SingleOrDefault(x => x.StationID== station.StationID);
+                if (oldStation != null)
+                {
+                    oldStation.Name = station.Name;
+                    oldStation.position_x = station.position_x;
+                    oldStation.position_y = station.position_y;
+                    context.linkedStations.RemoveRange(context.linkedStations.Where(x => x.Station1ID == oldStation.StationID || x.Station2ID == oldStation.StationID));
+                    context.SaveChanges();
+                    foreach (Station s in links)
+                    {
+                        LinkedStationDAO.addLinkedStations(oldStation, s);
+                    }
                     context.SaveChanges();
                 }
             }
@@ -60,18 +91,20 @@ namespace Tim14HCI.DAO
             }
         }
 
-        public static void ModifyTrain(Station station)
+        public static List<Station> getLinkedStations(Station station)
         {
             using (var context = new SerbiaRailwayContext())
             {
-                var oldStation = context.stations.SingleOrDefault(x => x.StationID == station.StationID);
-                if (oldStation != null)
+                List<LinkedStation> links = context.linkedStations.Where(x => x.Station1ID == station.StationID || x.Station2ID == station.StationID).ToList();
+                List<Station> stations = new List<Station>();
+                foreach(var link in links)
                 {
-                    oldStation.Name = station.Name;
-                    oldStation.position_x = station.position_x;
-                    oldStation.position_y = station.position_y;
-                    context.SaveChanges();
+                    if (link.Station1ID == station.StationID)
+                        stations.Add(GetStationByID(link.Station2ID));
+                    else
+                        stations.Add(GetStationByID(link.Station1ID));
                 }
+                return stations;
             }
         }
     }

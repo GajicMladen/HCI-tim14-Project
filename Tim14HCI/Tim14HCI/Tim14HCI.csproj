@@ -234,6 +234,7 @@
     <Compile Include="Contorls\TrainPicker.xaml.cs">
       <DependentUpon>TrainPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DAO\LinkedStationDAO.cs" />
     <Compile Include="DAO\StationDAO.cs" />
     <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\TrainLinesDAO.cs" />

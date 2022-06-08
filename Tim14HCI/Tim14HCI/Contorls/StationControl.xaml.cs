@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tim14HCI.DAO;
 using Tim14HCI.Model;
+using Tim14HCI.Windows;
 
 namespace Tim14HCI.Contorls
 {
@@ -47,7 +48,12 @@ namespace Tim14HCI.Contorls
             DialogResult result = System.Windows.Forms.MessageBox.Show(message, title, buttons);
             if (result == DialogResult.OK)
             {
+                AdminWindow parent = System.Windows.Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
                 StationDAO.RemoveStation(station);
+                parent.fillStackDataWithStations();
+                message = "Stanica " + station.Name + " je uspešno obrisana!";
+                buttons = MessageBoxButtons.OK;
+                System.Windows.Forms.MessageBox.Show(message, title, buttons);
             }
             else
             {
@@ -57,7 +63,10 @@ namespace Tim14HCI.Contorls
 
         private void Change_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Window parentWindow = Window.GetWindow(this);
+            NewStation newStation = new NewStation(parentWindow, station);
+            parentWindow.Hide();
+            newStation.Show();
         }
     }
 }

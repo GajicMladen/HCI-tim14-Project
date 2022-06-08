@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
         mc:Ignorable="d"
+        Icon="/Images/zeleznicesrbije.ico"
         Title="Železnice Srbije - ADMIN" Height="689.312" Width="1158.063" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>

@@ -18,6 +18,22 @@ namespace Tim14HCI.Model
 
         public virtual List<Ticket> Tickets { get; set; }
 
+
+        public Departure()
+        {
+
+        }
+
+        public Departure(int id, DateTime startDate, DateTime endDate, int trainLineID,  TrainLine trainLine)
+        {
+            this.DepartureID = id;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.TrainLineID = trainLineID;
+            this.TrainLine = trainLine;
+        }
+
+
         /*
         public DateTime getEndTime() {
 
@@ -33,5 +49,6 @@ namespace Tim14HCI.Model
             return ret;
         }
         */
+
     }
 }

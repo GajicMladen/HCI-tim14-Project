@@ -77,7 +77,6 @@ namespace Tim14HCI.Model
                 .HasOne<Station>(tl => tl.StartStation);
 
 
-
             //OnWayStation
             modelBuilder.Entity<OnWayStation>().HasKey(ow => ow.OnWayStationID);
 
@@ -147,7 +146,7 @@ namespace Tim14HCI.Model
                 );
 
             modelBuilder.Entity<LinkedStation>().HasData(
-                new LinkedStation { Station1ID = 1, Station2ID = 2},
+                new LinkedStation { Station1ID = 1, Station2ID = 2 },
                 new LinkedStation { Station1ID = 1, Station2ID = 3 },
                 new LinkedStation { Station1ID = 1, Station2ID = 5 },
                 new LinkedStation { Station1ID = 2, Station2ID = 3 },
@@ -174,9 +173,6 @@ namespace Tim14HCI.Model
             modelBuilder.Entity<Ticket>().HasData(
                 new Ticket() { TicketID = 1 , DepartureID =1 , ForReservation =false , UserID = 1 }
                 );
-
-
-
         }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
         mc:Ignorable="d"
+        Icon="/Images/zeleznicesrbije.ico"
         Title="RegistrationWindow" Height="715" Width="762.8" MinWidth="730" MinHeight="723" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>

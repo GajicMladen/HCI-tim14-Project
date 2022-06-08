@@ -47,7 +47,21 @@ namespace Tim14HCI.Model
             ret += EndStation.Time;
 
             return ret;
+        }*/
+
+
+        public TrainLine()
+        {
+
         }
-        */
+
+        public TrainLine(int startStationId, int endStationId)
+        {
+            this.StartStationID = startStationId;
+            this.StartStation = DAO.StationDAO.GetStationByID(startStationId);
+            this.EndStationID = endStationId;
+            
+        }
+
     }
 }

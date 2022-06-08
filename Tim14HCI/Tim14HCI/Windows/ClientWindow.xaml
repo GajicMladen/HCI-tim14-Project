@@ -43,7 +43,7 @@
                 <ColumnDefinition ></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Margin="3 10" Click="ShowBoughtTickets">
                 <Button.Background>
@@ -66,12 +66,12 @@
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozne linije</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="3" Margin="3 10" Background="#FFBF1616">
+            <!--<Button Grid.Column="3" Margin="3 10" Background="#FFBF1616">
                 <StackPanel>
                     <Image Source="/Images/timeSchedule.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Red vožnje</TextBlock>
                 </StackPanel>
-            </Button>
+            </Button>-->
         </Grid>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="4">
@@ -151,6 +151,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
+                <Grid.Background>
+                    <SolidColorBrush Color="Black"  Opacity="0.5"/>
+                </Grid.Background>
                 <Label Grid.Column="0" x:Name="lbl_chosen" Content="Izabrano: "  HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="146" FontSize="16" Margin="0 0 0 0"  />
                 <Label Grid.Column="1" x:Name="lbl_departure" Content=""  HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="698" FontSize="16" Margin="10,0,23,0"  />
 

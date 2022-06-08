@@ -26,9 +26,10 @@ namespace Tim14HCI.Windows
         Window parent;
         User user;
         int chosenDeparture;
+        int chosenEndLocation;
 
         String startLocationSearch;
-        String endLocationSearch;
+        String endLocationSearch = "";
         String startDatetimeSearch;
         String endDatetimeSearch;
 
@@ -58,22 +59,43 @@ namespace Tim14HCI.Windows
         {
             DepartureChosenEventArgs args = (DepartureChosenEventArgs)e;
             chosenDeparture = args.DepartureID;
+            chosenEndLocation = args.OnWayStationID;
             Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
-            lbl_departure.Content = departure.startDate.ToString("dd.MM.yyyy. HH:mm") + "  " + departure.endDate.ToString("dd.MM.yyyy. HH:mm") + "  " + departure.TrainLine.StartStation.Name + "  Novi Sad";
+            OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+            lbl_departure.Content = departure.startDate.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + args.Price;
 
         }
 
-
+        private OnWayStation GetOnWayStationByID(TrainLine trainLine, int chosenEndLocation)
+        {
+            foreach(OnWayStation ows in trainLine.OnWayStations)
+            {
+                if (ows.OnWayStationID == chosenEndLocation)
+                {
+                    return ows;
+                }
+            }
+            if (trainLine.EndStation.OnWayStationID == chosenEndLocation)
+            {
+                return trainLine.EndStation;
+            }
+            return null;
+        }
 
         private void fillStackDataWithDepartures()
         {
             stack_Data.Children.Clear();
-            List<Departure> departures = DAO.DepartureDAO.getDapertures();
+            List<Departure> departures = DepartureDAO.getDapertures();
 
             foreach (Departure departure in departures)
             {
-                DepartureControl departureControl = new DepartureControl(departure);
-                stack_Data.Children.Add(departureControl);
+                foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+                {
+                    DepartureControl departureControl = new DepartureControl(departure, ows, false);
+                    stack_Data.Children.Add(departureControl);
+                }
+                DepartureControl endDepartureControl = new DepartureControl(departure, departure.TrainLine.EndStation, true);
+                stack_Data.Children.Add(endDepartureControl);
             }
         }
 
@@ -145,10 +167,36 @@ namespace Tim14HCI.Windows
             stack_Data.Children.Clear();
             foreach (Departure departure in endDateFiltered)
             {
-                DepartureControl departureControl = new DepartureControl(departure);
-                stack_Data.Children.Add(departureControl);
+                foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+                {
+                    if (this.endLocationSearch == "")
+                    {
+                        DepartureControl departureControl = new DepartureControl(departure, ows, false);
+                        stack_Data.Children.Add(departureControl);
+                    }
+                    else
+                    {
+                        if (ows.Station.Name.ToLower() == this.endLocationSearch.ToLower())
+                        {
+                            DepartureControl departureControl = new DepartureControl(departure, ows, false);
+                            stack_Data.Children.Add(departureControl);
+                        }
+                    }                    
+                }
+                if (this.endLocationSearch != "")
+                {
+                    if (this.endLocationSearch.ToLower() == departure.TrainLine.EndStation.Station.Name.ToLower())
+                    {
+                        DepartureControl endDepartureControl = new DepartureControl(departure, departure.TrainLine.EndStation, true);
+                        stack_Data.Children.Add(endDepartureControl);
+                    }
+                } 
+                else
+                {
+                    DepartureControl endDepartureControl = new DepartureControl(departure, departure.TrainLine.EndStation, true);
+                    stack_Data.Children.Add(endDepartureControl);
+                }
             }
-
         }
 
         private List<Departure> FilterByEndDatetime(List<Departure> departures)
@@ -195,7 +243,30 @@ namespace Tim14HCI.Windows
 
         private List<Departure> FilterByDestination(List<Departure> departures)
         {
-            return departures;
+            List<Departure> filtered = new List<Departure>();
+            if (this.endLocationSearch != "")
+            {                
+                foreach (Departure departure in departures)
+                {
+                    foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+                    {
+
+                        if (ows.Station.Name.ToLower() == this.endLocationSearch.ToLower())
+                        {
+                            filtered.Add(departure);
+                        }
+                    }
+                    if (departure.TrainLine.EndStation.Station.Name.ToLower() == this.endLocationSearch.ToLower())
+                    {
+                        filtered.Add(departure);
+                    }
+                }
+            }
+            else
+            {
+                filtered = departures;
+            }
+            return filtered;
         }
 
         private List<Departure> FilterByStartingStation(List<Departure> departures)

@@ -26,11 +26,12 @@ namespace Tim14HCI.Model
 
         }
 
-        public Departure(int id, DateTime startDate, DateTime endDate, TrainLine trainLine)
+        public Departure(int id, DateTime startDate, DateTime endDate, int trainLineID,  TrainLine trainLine)
         {
             this.DepartureID = id;
             this.startDate = startDate;
             this.endDate = endDate;
+            this.TrainLineID = trainLineID;
             this.TrainLine = trainLine;
         }
 

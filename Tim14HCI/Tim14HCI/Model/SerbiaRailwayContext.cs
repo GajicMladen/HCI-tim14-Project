@@ -75,10 +75,10 @@ namespace Tim14HCI.Model
 
             modelBuilder.Entity<TrainLine>()
                 .HasOne<Station>(tl => tl.StartStation);
-
+            
             modelBuilder.Entity<TrainLine>()
                 .HasOne<OnWayStation>(tl => tl.EndStation);
-
+            
             modelBuilder.Entity<TrainLine>()
                 .HasMany<OnWayStation>(tl => tl.OnWayStations)
                 .WithOne(ows => ows.TrainLine)
@@ -159,13 +159,27 @@ namespace Tim14HCI.Model
                 );
 
             modelBuilder.Entity<LinkedStation>().HasData(
-                new LinkedStation { Station1ID = 1, Station2ID = 2},
+                new LinkedStation { Station1ID = 1, Station2ID = 2 },
                 new LinkedStation { Station1ID = 1, Station2ID = 3 },
                 new LinkedStation { Station1ID = 1, Station2ID = 5 },
                 new LinkedStation { Station1ID = 2, Station2ID = 3 },
                 new LinkedStation { Station1ID = 5, Station2ID = 6 }
                 );
+            
+            /*modelBuilder.Entity<TrainLine>().HasData(
+                new TrainLine { TrainLineID = 1, StartStationID = 3, EndStationID = 5, TrainID = 1 }
+                );
 
+            modelBuilder.Entity<OnWayStation>().HasData(
+                new OnWayStation { OnWayStationID = 1, StationOrder = 1, Price = 800, Time = 30, StationID = 2, TrainLineID = 1},
+                new OnWayStation { OnWayStationID = 2, StationOrder = 2, Price = 500, Time = 25, StationID = 1, TrainLineID = 1},
+                new OnWayStation { OnWayStationID = 3, StationOrder = 3, Price = 1000, Time = 40, StationID = 5, TrainLineID = 1 }
+                );
+
+
+            modelBuilder.Entity<Departure>().HasData(
+                new Departure { DepartureID = 1, startDate = new DateTime(2022, 6, 10, 14, 0, 0), endDate = new DateTime(2022, 6, 10, 17, 0, 0), TrainLineID = 1 }
+                );*/
         }
     }
 }

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
 Tim14HCI
 none
 false
 DEBUG;TRACE
-C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
+C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
 17-130922876
 
-38-1381259824
-621380016758
+42-1269507422
+62-1206639815
 Contorls\MapControl.xaml;Contorls\NewLineDND.xaml;Contorls\PriceList.xaml;Contorls\PriceListItem.xaml;Contorls\RoutePicker.xaml;Contorls\SetPriceForNewTrainLine.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TrainControl.xaml;Contorls\TrainForDragAndDrop.xaml;Contorls\TrainLineControl.xaml;Contorls\TrainPicker.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\NewTrainLine.xaml;Windows\RegistrationWindow.xaml;
 
 False

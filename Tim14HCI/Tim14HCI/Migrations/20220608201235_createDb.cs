@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tim14HCI.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class createDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -132,9 +132,7 @@ namespace Tim14HCI.Migrations
                 {
                     DepartureID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    startDate = table.Column<DateTime>(nullable: false),
-                    endDate = table.Column<DateTime>(nullable: false),
-                    StartTimeEveryday = table.Column<DateTime>(nullable: false),
+                    StartTime = table.Column<DateTime>(nullable: false),
                     TrainLineID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -158,6 +156,7 @@ namespace Tim14HCI.Migrations
                     Price = table.Column<float>(nullable: false),
                     Time = table.Column<float>(nullable: false),
                     StationID = table.Column<int>(nullable: false),
+                    isEndStation = table.Column<bool>(nullable: false),
                     TrainLineID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -222,6 +221,21 @@ namespace Tim14HCI.Migrations
                     { 1, 5 },
                     { 5, 6 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "trainLines",
+                columns: new[] { "TrainLineID", "EndStationID", "EndStationOnWayStationID", "StartStationID", "TrainID" },
+                values: new object[] { 1, 1, null, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "onWayStations",
+                columns: new[] { "OnWayStationID", "Price", "StationID", "StationOrder", "Time", "TrainLineID", "isEndStation" },
+                values: new object[] { 1, 10f, 1, 1, 10f, 1, false });
+
+            migrationBuilder.InsertData(
+                table: "onWayStations",
+                columns: new[] { "OnWayStationID", "Price", "StationID", "StationOrder", "Time", "TrainLineID", "isEndStation" },
+                values: new object[] { 2, 10f, 2, 2, 10f, 1, true });
 
             migrationBuilder.CreateIndex(
                 name: "IX_departures_TrainLineID",

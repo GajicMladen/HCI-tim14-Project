@@ -232,9 +232,17 @@
     <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
-    <Compile Include="Migrations\20220530144852_CreateDatabase.cs" />
-    <Compile Include="Migrations\20220530144852_CreateDatabase.designer.cs">
-      <DependentUpon>20220530144852_CreateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\20220608201235_createDb.cs" />
+    <Compile Include="Migrations\20220608201235_createDb.designer.cs">
+      <DependentUpon>20220608201235_createDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220608202408_departures.cs" />
+    <Compile Include="Migrations\20220608202408_departures.designer.cs">
+      <DependentUpon>20220608202408_departures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20220608202740_ticket.cs" />
+    <Compile Include="Migrations\20220608202740_ticket.designer.cs">
+      <DependentUpon>20220608202740_ticket.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">

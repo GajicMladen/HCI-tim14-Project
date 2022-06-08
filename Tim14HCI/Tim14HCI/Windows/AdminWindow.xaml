@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tim14HCI.Windows"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Železnice Srbije - ADMIN" Height="634.581" Width="919.91" Closing="Window_Closing">
+        Title="Železnice Srbije - ADMIN" Height="689.312" Width="1158.063" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120*"/>
@@ -89,9 +89,9 @@
             <Border Grid.ColumnSpan="4" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Margin="0,0,-0.4,0.2">
 
             </Border>
-            <Label x:Name="lbl_ShownData" FontSize="16" FontWeight="Bold" Margin="0,0,3.8,0.2">Vozovi</Label>
+            <Label x:Name="lbl_ShownData" FontSize="16" FontWeight="Bold" Margin="0,0,3.8,0.2" VerticalAlignment="Center" HorizontalAlignment="Center">Vozovi</Label>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0.2,0,1.8,0.2">
-                <Label >Naziv:</Label>
+                <Label VerticalAlignment="Center" >Naziv:</Label>
                 <TextBox Width="127" Margin="8"></TextBox>
             </StackPanel>
             <Button Grid.Column="2" Margin="5" Background="#FF3B3EA9">

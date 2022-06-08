@@ -28,6 +28,7 @@ namespace Tim14HCI.Contorls
             lbl_EndStation.Content = trainLine.EndStation.Station.Name;
 
             lbl_OnWayStations.Content = "";
+            /*
             if (trainLine.OnWayStations.Count > 0)
             {
 
@@ -44,7 +45,7 @@ namespace Tim14HCI.Contorls
             }
             lbl_price.Content = trainLine.getTotalPrice().ToString();
             lbl_time.Content = trainLine.getTotalTime().ToString();
-
+            */
         }
     }
 }

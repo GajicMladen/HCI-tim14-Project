@@ -32,7 +32,7 @@ namespace Tim14HCI.Contorls
         {
             InitializeComponent();
             this.t = ticket;
-            lbl_start_date_time.Content = this.t.Departure.startDate.ToString("dd.MM.yyyy. HH:mm");
+            lbl_start_date_time.Content = this.t.Departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
             lbl_end_date_time.Content = CountTimeDuration();
             lbl_start_location.Content = this.t.Departure.TrainLine.StartStation.Name;
             lbl_end_location.Content = this.t.EndStation.Name;
@@ -59,7 +59,7 @@ namespace Tim14HCI.Contorls
                 minutesPassed += this.t.Departure.TrainLine.EndStation.Time;
             }
 
-            return this.t.Departure.startDate.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
+            return this.t.Departure.StartTime.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
         }
     }
 }

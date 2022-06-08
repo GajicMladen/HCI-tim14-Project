@@ -85,7 +85,7 @@ namespace Tim14HCI.Contorls
             endLocation = ows;
             isEndStation = isEndStationParam;
 
-            lbl_start_date_time.Content = departure.startDate.ToString("dd.MM.yyyy. HH:mm");
+            lbl_start_date_time.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
             lbl_end_date_time.Content = CountTimeDuration(isEndStation);
             lbl_start_location.Content = departure.TrainLine.StartStation.Name;
             lbl_end_location.Content = endLocation.Station.Name;
@@ -135,7 +135,7 @@ namespace Tim14HCI.Contorls
             {
                 minutesPassed += departure.TrainLine.EndStation.Time;
             }
-            return departure.startDate.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
+            return departure.StartTime.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

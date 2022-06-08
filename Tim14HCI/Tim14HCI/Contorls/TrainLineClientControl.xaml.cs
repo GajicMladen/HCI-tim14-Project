@@ -51,8 +51,8 @@ namespace Tim14HCI.Contorls
                 String content = lbl_OnWayStations.Content.ToString();
                 lbl_OnWayStations.Content = content.Remove(content.Length - 2);
             }
-            lbl_price.Content = trainLine.getTotalPrice().ToString();
-            lbl_time.Content = trainLine.getTotalTime().ToString();
+            //lbl_price.Content = trainLine.getTotalPrice().ToString();
+            //lbl_time.Content = trainLine.getTotalTime().ToString();
 
         }
     }

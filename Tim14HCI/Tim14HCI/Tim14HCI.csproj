@@ -192,6 +192,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contorls\DepartureControl.xaml.cs">
+      <DependentUpon>DepartureControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contorls\MapControl.xaml.cs">
       <DependentUpon>MapControl.xaml</DependentUpon>
     </Compile>
@@ -216,11 +219,17 @@
     <Compile Include="Contorls\StationForDragAndDrop.xaml.cs">
       <DependentUpon>StationForDragAndDrop.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contorls\TicketControl.xaml.cs">
+      <DependentUpon>TicketControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contorls\TrainControl.xaml.cs">
       <DependentUpon>TrainControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contorls\TrainForDragAndDrop.xaml.cs">
       <DependentUpon>TrainForDragAndDrop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\TrainLineClientControl.xaml.cs">
+      <DependentUpon>TrainLineClientControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contorls\TrainLineControl.xaml.cs">
       <DependentUpon>TrainLineControl.xaml</DependentUpon>
@@ -228,7 +237,9 @@
     <Compile Include="Contorls\TrainPicker.xaml.cs">
       <DependentUpon>TrainPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DepartureDAO.cs" />
     <Compile Include="DAO\StationDAO.cs" />
+    <Compile Include="DAO\TicketDAO.cs" />
     <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
@@ -264,6 +275,16 @@
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\TicketDisplayWindow.xaml.cs">
+      <DependentUpon>TicketDisplayWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TrainLinesDisplay.xaml.cs">
+      <DependentUpon>TrainLinesDisplay.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Contorls\DepartureControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Contorls\MapControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -296,11 +317,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Contorls\TicketControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Contorls\TrainControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contorls\TrainForDragAndDrop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\TrainLineClientControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -329,6 +358,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TicketDisplayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TrainLinesDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -407,6 +444,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ticket-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ticket-reservation-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ticket-add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Add-ticket-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\zeleznicesrbije.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

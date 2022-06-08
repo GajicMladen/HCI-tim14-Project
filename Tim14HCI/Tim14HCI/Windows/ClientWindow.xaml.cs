@@ -64,7 +64,7 @@ namespace Tim14HCI.Windows
             Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
             OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
             price = args.Price;
-            lbl_departure.Content = departure.startDate.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
+            lbl_departure.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
 
         }
 
@@ -214,10 +214,11 @@ namespace Tim14HCI.Windows
                 DateTime dt = DateTime.ParseExact(this.endDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                 foreach (Departure departure in departures)
                 {
+                    /*
                     if (DateTime.Compare(departure.endDate, dt) <= 0)
                     {
                         filtered.Add(departure);
-                    }
+                    }*/
                 }
             }
             else
@@ -235,7 +236,7 @@ namespace Tim14HCI.Windows
                 DateTime dt = DateTime.ParseExact(this.startDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
                 foreach (Departure departure in departures)
                 {
-                    if (DateTime.Compare(departure.startDate, dt) >= 0)
+                    if (DateTime.Compare(departure.StartTime, dt) >= 0)
                     {
                         filtered.Add(departure);
                     }

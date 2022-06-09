@@ -164,16 +164,19 @@ namespace Tim14HCI.Windows
                 grid_display.Children.Add(new PriceList(selectedRoute,prices,times));
 
             }
-            else {
+            else
+            {
 
                 btn_next_label.Content = "Sledeće";
                 btn_next_img.Source = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "/Images/next.png"));
             }
-            if (progresBar.SelectedIndex == 3) {
+            if (progresBar.SelectedIndex == 3)
+            {
 
-                //TrainLinesDAO.addNewTrainLine(selectedRoute, selectedTrain, prices, times);
-                //Close();
+                TrainLinesDAO.addNewTrainLine(selectedRoute, selectedTrain, prices, times);
+                Close();
             }
+
             return true;
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

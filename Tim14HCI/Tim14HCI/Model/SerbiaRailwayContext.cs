@@ -77,21 +77,6 @@ namespace Tim14HCI.Model
             modelBuilder.Entity<TrainLine>()
                 .HasOne<Station>(tl => tl.StartStation);
 
-            modelBuilder.Entity<TrainLine>()
-                .HasOne<OnWayStation>(tl => tl.EndStation);
-
-            modelBuilder.Entity<TrainLine>()
-                .HasMany<OnWayStation>(tl => tl.OnWayStations)
-                .WithOne(ows => ows.TrainLine)
-                .HasForeignKey(ows => ows.TrainLineID)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<TrainLine>()
-                .HasMany<Departure>(tl => tl.Departures)
-                .WithOne(dep => dep.TrainLine)
-                .HasForeignKey(dep => dep.TrainLineID)
-                .OnDelete(DeleteBehavior.Cascade);
-
 
             //OnWayStation
             modelBuilder.Entity<OnWayStation>().HasKey(ow => ow.OnWayStationID);
@@ -101,6 +86,14 @@ namespace Tim14HCI.Model
                 .WithMany(tl => tl.OnWayStations)
                 .HasForeignKey(ow => ow.TrainLineID)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            /*
+            modelBuilder.Entity<OnWayStation>()
+                .HasOne<TrainLine>(ow => ow.TrainLine)
+                .WithMany(tl => tl.OnWayStations)
+                .HasForeignKey(ow => ow.TrainLineID)
+                .OnDelete(DeleteBehavior.NoAction);
+            */
 
             modelBuilder.Entity<OnWayStation>().HasOne<Station>(ows => ows.Station);
 
@@ -112,12 +105,6 @@ namespace Tim14HCI.Model
                 .HasOne<TrainLine>(dep => dep.TrainLine)
                 .WithMany(tl => tl.Departures)
                 .HasForeignKey(dep => dep.TrainLineID);
-
-            modelBuilder.Entity<Departure>()
-                .HasMany<Ticket>(dep => dep.Tickets)
-                .WithOne(t => t.Departure)
-                .HasForeignKey(t => t.DepartureID);
-
 
             //Ticket
             modelBuilder.Entity<Ticket>().HasKey(t => t.TicketID);
@@ -160,12 +147,33 @@ namespace Tim14HCI.Model
                 );
 
             modelBuilder.Entity<LinkedStation>().HasData(
-                new LinkedStation { Station1ID = 1, Station2ID = 2},
+                new LinkedStation { Station1ID = 1, Station2ID = 2 },
                 new LinkedStation { Station1ID = 1, Station2ID = 3 },
                 new LinkedStation { Station1ID = 1, Station2ID = 5 },
                 new LinkedStation { Station1ID = 2, Station2ID = 3 },
                 new LinkedStation { Station1ID = 4, Station2ID = 2 },
                 new LinkedStation { Station1ID = 5, Station2ID = 6 }
+                );
+
+
+            modelBuilder.Entity<TrainLine>().HasData(
+                new TrainLine() { TrainLineID = 1, StartStationID = 1, EndStationID = 1, TrainID = 1 }
+                );
+
+
+            modelBuilder.Entity<OnWayStation>().HasData(
+                new OnWayStation() { OnWayStationID = 1, Price = 10, Time = 10, StationID = 1, StationOrder = 1, isEndStation = false, TrainLineID = 1 },
+                new OnWayStation() { OnWayStationID = 2, Price = 10, Time = 10, StationID = 2, StationOrder = 2, isEndStation = true, TrainLineID = 1 }
+                );
+
+            modelBuilder.Entity<Departure>().HasData(
+                new Departure() { DepartureID = 1, StartTime = new DateTime(2022,6,8,12,30,0), TrainLineID = 1 },
+                new Departure() { DepartureID = 2, StartTime = new DateTime(2022, 6, 8, 15, 40, 0), TrainLineID = 1 },
+                new Departure() { DepartureID = 3, StartTime = new DateTime(2022, 6, 8, 20, 15, 0), TrainLineID = 1 }
+                );
+
+            modelBuilder.Entity<Ticket>().HasData(
+                new Ticket() { TicketID = 1 , DepartureID =1 , ForReservation =false , UserID = 1 }
                 );
         }
     }

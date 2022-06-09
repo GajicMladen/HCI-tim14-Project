@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    partial class SerbiaRailwayContextModelSnapshot : ModelSnapshot
+    [Migration("20220608202408_departures")]
+    partial class departures
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,15 +247,6 @@ namespace Tim14HCI.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("tickets");
-
-                    b.HasData(
-                        new
-                        {
-                            TicketID = 1,
-                            DepartureID = 1,
-                            ForReservation = false,
-                            UserID = 1
-                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.Train", b =>

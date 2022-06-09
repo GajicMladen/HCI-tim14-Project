@@ -23,14 +23,50 @@ namespace Tim14HCI.DAO
                                 OnWayStationID=1,Price=300,Time=30,StationOrder=0,TrainLineID=1
                             },
                             Departures= new List<Departure>(),
+
                             OnWayStations = new List<OnWayStation>()
+            },
+            new TrainLine()
+            {
+                TrainLineID = 2,
+                TrainID = 4,
+                Train = TrainDAO.GetTrainByID(4),
+                StartStationID = 3,
+                StartStation = StationDAO.GetStationByID(3),
+                EndStationID = 2,
+                EndStation = new OnWayStation() {StationID = 6, Station = StationDAO.GetStationByID(6), OnWayStationID = 2,
+                                                 StationOrder = 3, Price = 300, Time = 20, TrainLineID = 4 },
+                Departures = new List<Departure>(),
+                OnWayStations = new List<OnWayStation>()
+                {
+                    new OnWayStation() {StationID = 2, Station = StationDAO.GetStationByID(2), OnWayStationID = 3,
+                                        StationOrder = 0, Price = 500, Time = 30, TrainLineID = 4},
+                    new OnWayStation() {StationID = 1, Station = StationDAO.GetStationByID(1), OnWayStationID = 4,
+                                        StationOrder = 1, Price = 400, Time = 20, TrainLineID = 4},
+                    new OnWayStation() {StationID = 5, Station = StationDAO.GetStationByID(5), OnWayStationID = 5,
+                                        StationOrder = 2, Price = 700, Time = 40, TrainLineID = 4 }
+                }
+
+                            //OnWayStations = new List<OnWayStation>()
+
             }
         };
-
 
         public static List<TrainLine> getAllTrainLines() {
 
             return TrainLines;
+        }
+
+        public static TrainLine getTrainLineByID(int id)
+        {
+            foreach (TrainLine tl in TrainLines)
+            {
+                if (tl.TrainLineID == id)
+                {
+                    return tl;
+                }
+            }
+            return null;
         }
 
         private static int getNewTrainLineID() {
@@ -58,7 +94,7 @@ namespace Tim14HCI.DAO
 
             newTrainLine.TrainLineID = getNewTrainLineID();
 
-            newTrainLine.OnWayStations = onWayStations;
+            //newTrainLine.OnWayStations = onWayStations;
 
             for (int i = 0; i < prices.Count; i++) {
 
@@ -80,7 +116,7 @@ namespace Tim14HCI.DAO
                 }
                 else {
 
-                    newTrainLine.OnWayStations.Add(onWayStation);
+                    //newTrainLine.OnWayStations.Add(onWayStation);
                 }
                 //onWayStations.Add(onWayStation);
                 

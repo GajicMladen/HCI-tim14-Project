@@ -22,7 +22,8 @@ namespace Tim14HCI.Model
         public virtual List<OnWayStation> OnWayStations { get; set; }
 
         public virtual List<Departure> Departures { get; set; }
-
+        
+        /*
         public float getTotalPrice() {
             float ret = 0;
 
@@ -46,6 +47,20 @@ namespace Tim14HCI.Model
             ret += EndStation.Time;
 
             return ret;
+        }*/
+
+
+        public TrainLine()
+        {
+
+        }
+
+        public TrainLine(int startStationId, int endStationId)
+        {
+            this.StartStationID = startStationId;
+            this.StartStation = DAO.StationDAO.GetStationByID(startStationId);
+            this.EndStationID = endStationId;
+            
         }
 
     }

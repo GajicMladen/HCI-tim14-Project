@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
+C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\
 Tim14HCI
 none
 false
 DEBUG;TRACE
-C:\Users\PC\Desktop\fax\VI_semestar\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
-17-130922876
+C:\Users\Lenovo\Desktop\Fax\HCI\HCI-tim14-Project\Tim14HCI\Tim14HCI\App.xaml
+22160854764
 
-41-427148055
-62-1206639815
-Contorls\MapControl.xaml;Contorls\NewLineDND.xaml;Contorls\PriceList.xaml;Contorls\PriceListItem.xaml;Contorls\RoutePicker.xaml;Contorls\SetPriceForNewTrainLine.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TrainControl.xaml;Contorls\TrainForDragAndDrop.xaml;Contorls\TrainLineControl.xaml;Contorls\TrainPicker.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\NewTrainLine.xaml;Windows\RegistrationWindow.xaml;
+46297609617
+621380016758
+Contorls\DepartureControl.xaml;Contorls\MapControl.xaml;Contorls\NewLineDND.xaml;Contorls\PriceList.xaml;Contorls\PriceListItem.xaml;Contorls\RoutePicker.xaml;Contorls\SetPriceForNewTrainLine.xaml;Contorls\StationControl.xaml;Contorls\StationForDragAndDrop.xaml;Contorls\TicketControl.xaml;Contorls\TrainControl.xaml;Contorls\TrainForDragAndDrop.xaml;Contorls\TrainLineClientControl.xaml;Contorls\TrainLineControl.xaml;Contorls\TrainPicker.xaml;Windows\AdminWindow.xaml;Windows\ClientWindow.xaml;Windows\LogInWindow.xaml;Windows\NewTrainLine.xaml;Windows\RegistrationWindow.xaml;Windows\TicketDisplayWindow.xaml;Windows\TrainLinesDisplay.xaml;
 
 False
 

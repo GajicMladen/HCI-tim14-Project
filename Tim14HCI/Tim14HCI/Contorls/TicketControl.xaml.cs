@@ -42,8 +42,7 @@ namespace Tim14HCI.Contorls
 
         private String CountTimeDuration()
         {
-            double minutesPassed = 0;
-            //foreach (OnWayStation ows in this.t.Departure.TrainLine.OnWayStations)
+            double minutesPassed = 0;            
             foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(this.t.Departure.TrainLineID))
             {
                 if (ows.Station.Name == this.t.EndStation.Name)
@@ -55,12 +54,7 @@ namespace Tim14HCI.Contorls
                 {
                     minutesPassed += ows.Time;
                 }
-            }
-            /*
-            if (this.t.Departure.TrainLine.StartStation.StationID == this.t.EndStationID)
-            {
-                minutesPassed += this.t.Departure.TrainLine.EndStation.Time;
-            }*/
+            }           
 
             return this.t.Departure.StartTime.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
         }

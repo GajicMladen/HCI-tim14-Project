@@ -30,7 +30,16 @@ namespace Tim14HCI.DAO
         {
             using (var context = new SerbiaRailwayContext())
             {
-                return context.onWayStations.Include(ows => ows.Station).Where(ows => ows.TrainLineID == id && ows.isEndStation == true).FirstOrDefault();            }                    
+                return context.onWayStations.Include(ows => ows.Station).Where(ows => ows.TrainLineID == id && ows.isEndStation == true).FirstOrDefault();  
+            }                    
+        }
+
+        public static OnWayStation GetOnWayStationByOrderNumber(int id, int order)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.onWayStations.Include(ows => ows.Station).Where(ows => ows.TrainLineID == id && ows.StationOrder == order).FirstOrDefault();
+            }
         }
     }
 }

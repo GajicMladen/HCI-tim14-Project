@@ -61,15 +61,32 @@ namespace Tim14HCI.Windows
         private void DepartureChosenEventHandler(object sender, RoutedEventArgs e)
         {
             DepartureChosenEventArgs args = (DepartureChosenEventArgs)e;
-            chosenDeparture = args.DepartureID;
-            chosenEndLocation = args.OnWayStationID;
-            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
-            //OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
-            OnWayStation onWayStation = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
-            price = args.Price;
-            lbl_departure.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
-            lbl_range.Content = "(1-" + TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity.ToString() + ")";
-            capacity = TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity;
+            if (args.StartStationID == 0)
+            {
+                chosenDeparture = args.DepartureID;
+                chosenEndLocation = args.EndStationID;
+                Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+                //OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+                OnWayStation onWayStation = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
+                price = args.Price;
+                lbl_departure.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
+                lbl_range.Content = "(1-" + TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity.ToString() + ")";
+                capacity = TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity;
+            }
+            else
+            {
+                chosenDeparture = args.DepartureID;
+                chosenEndLocation = args.EndStationID;
+                int chosenStartLocation = args.StartStationID;
+                Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+                //OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+                OnWayStation onWayStation = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
+                OnWayStation startStation = OnWayStationDAO.GetOnWayStationByID(chosenStartLocation);
+                price = args.Price;
+                lbl_departure.Content = args.StartTime + "    " + args.EndTime + "    " + startStation.Station.Name + "    " + onWayStation.Station.Name + "    " + price;
+                lbl_range.Content = "(1-" + TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity.ToString() + ")";
+                capacity = TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity;
+            }
 
         }
         /*
@@ -99,13 +116,37 @@ namespace Tim14HCI.Windows
                 //foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
                 foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
                 {
-                    DepartureControl departureControl = new DepartureControl(departure, ows, false);
-                    stack_Data.Children.Add(departureControl);
+                    DepartureControl departureControl = new DepartureControl(departure, ows);
+                    stack_Data.Children.Add(departureControl);                    
                 }
+                fillStacDataWithOnWayDepartures(departure);
                 /*
                 DepartureControl endDepartureControl = new DepartureControl(departure, departure.TrainLine.EndStation, true);
                 stack_Data.Children.Add(endDepartureControl);*/
-            }
+            }           
+        }
+
+        private void fillStacDataWithOnWayDepartures(Departure departure)
+        {                                
+            foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
+            {
+                int ii = 1;
+                while (true)
+                {
+                    OnWayStation endStation = OnWayStationDAO.GetOnWayStationByOrderNumber(departure.TrainLineID, ii);
+                    if (endStation == null)
+                    {
+                        break;
+                    }
+                    if (endStation.StationOrder > ows.StationOrder)
+                    {
+                        DepartureControl departureControl = new DepartureControl(departure, ows, endStation);
+                        stack_Data.Children.Add(departureControl);
+                    }
+                    ii++;
+                }
+                    
+            }            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -199,14 +240,14 @@ namespace Tim14HCI.Windows
                 {
                     if (this.endLocationSearch == "")
                     {
-                        DepartureControl departureControl = new DepartureControl(departure, ows, false);
+                        DepartureControl departureControl = new DepartureControl(departure, ows);
                         stack_Data.Children.Add(departureControl);
                     }
                     else
                     {
                         if (ows.Station.Name.ToLower() == this.endLocationSearch.ToLower())
                         {
-                            DepartureControl departureControl = new DepartureControl(departure, ows, false);
+                            DepartureControl departureControl = new DepartureControl(departure, ows);
                             stack_Data.Children.Add(departureControl);
                         }
                     }                    

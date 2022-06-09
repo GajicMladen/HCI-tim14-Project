@@ -95,18 +95,31 @@ namespace Tim14HCI.Windows
                 EndStation_I = control_newLineDND.EndStation;
                 onWayStations_I = control_newLineDND.OnWayStations;
 
-                List<List<Station>> posibleRoutes = TrainLinesDAO.checkTrainLine(StartStation, EndStation_I, onWayStations_I);
+                if (selectedRoute != null)
+                    selectedRoute.Clear();
+                else
+                    selectedRoute = new List<Station>();
 
-                if (posibleRoutes.Count == 0)
-                {
-                    MessageBox.Show("Nemoguce je napraviti ovakvu voznu liniju!\nMolimo vas promenite stanice.");
-                    return false;
+                selectedRoute.Add(StartStation);
+                foreach (Station s in onWayStations_I) {
+                    selectedRoute.Add(s);
                 }
-                routePicker = new RoutePicker(posibleRoutes, this);
+                selectedRoute.Add(EndStation_I);
+                
+                //routePicker = new RoutePicker(posibleRoutes, this);
                 grid_display.Children.Clear();
                 btn_Back.IsEnabled = true;
-                grid_display.Children.Add(routePicker);
-            }
+                //grid_display.Children.Add(routePicker);
+
+
+                MapControl mapControl = new MapControl(selectedRoute);
+                mapControl.RenderTransform = new ScaleTransform(0.5, 0.5);
+                stack_Route.Children.Clear();
+                stack_Route.Children.Add(mapControl);
+                stack_Route.Height = 150;
+                
+                grid_display.Children.Add(trainPicker);
+            }/*
             if (progresBar.SelectedIndex == 1)
             {
 
@@ -119,8 +132,8 @@ namespace Tim14HCI.Windows
                 grid_display.Children.Clear();
                 grid_display.Children.Add(trainPicker);
 
-            }
-            if (progresBar.SelectedIndex == 2)
+            }*/
+            if (progresBar.SelectedIndex == 1)
             {
                 if (trainPicker.selectedTrain == null)
                 {
@@ -134,7 +147,7 @@ namespace Tim14HCI.Windows
                 grid_display.Children.Add(setPricesForNewTrainLine);
 
             }
-            if (progresBar.SelectedIndex == 3)
+            if (progresBar.SelectedIndex == 2)
             {
                 if (!setPricesForNewTrainLine.allDataIsEnterd())
                 {
@@ -156,7 +169,7 @@ namespace Tim14HCI.Windows
                 btn_next_label.Content = "Sledeće";
                 btn_next_img.Source = new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(this), "/Images/next.png"));
             }
-            if (progresBar.SelectedIndex == 4) {
+            if (progresBar.SelectedIndex == 3) {
 
                 //TrainLinesDAO.addNewTrainLine(selectedRoute, selectedTrain, prices, times);
                 //Close();

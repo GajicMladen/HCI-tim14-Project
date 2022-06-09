@@ -10,8 +10,8 @@ using Tim14HCI.Model;
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    [Migration("20220608201235_createDb")]
-    partial class createDb
+    [Migration("20220609141747_testDAta")]
+    partial class testDAta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,26 @@ namespace Tim14HCI.Migrations
                     b.HasIndex("TrainLineID");
 
                     b.ToTable("departures");
+
+                    b.HasData(
+                        new
+                        {
+                            DepartureID = 1,
+                            StartTime = new DateTime(2022, 6, 8, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            TrainLineID = 1
+                        },
+                        new
+                        {
+                            DepartureID = 2,
+                            StartTime = new DateTime(2022, 6, 8, 15, 40, 0, 0, DateTimeKind.Unspecified),
+                            TrainLineID = 1
+                        },
+                        new
+                        {
+                            DepartureID = 3,
+                            StartTime = new DateTime(2022, 6, 8, 20, 15, 0, 0, DateTimeKind.Unspecified),
+                            TrainLineID = 1
+                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.LinkedStation", b =>
@@ -126,16 +146,6 @@ namespace Tim14HCI.Migrations
                             Time = 10f,
                             TrainLineID = 1,
                             isEndStation = false
-                        },
-                        new
-                        {
-                            OnWayStationID = 2,
-                            Price = 10f,
-                            StationID = 2,
-                            StationOrder = 2,
-                            Time = 10f,
-                            TrainLineID = 1,
-                            isEndStation = true
                         });
                 });
 
@@ -214,8 +224,17 @@ namespace Tim14HCI.Migrations
                     b.Property<int>("DepartureID")
                         .HasColumnType("int");
 
+                    b.Property<int>("EndStationID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("ForReservation")
                         .HasColumnType("bit");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("StartStationID")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
@@ -224,9 +243,25 @@ namespace Tim14HCI.Migrations
 
                     b.HasIndex("DepartureID");
 
+                    b.HasIndex("EndStationID");
+
+                    b.HasIndex("StartStationID");
+
                     b.HasIndex("UserID");
 
                     b.ToTable("tickets");
+
+                    b.HasData(
+                        new
+                        {
+                            TicketID = 1,
+                            DepartureID = 1,
+                            EndStationID = 2,
+                            ForReservation = false,
+                            Price = 0.0,
+                            StartStationID = 1,
+                            UserID = 1
+                        });
                 });
 
             modelBuilder.Entity("Tim14HCI.Model.Train", b =>
@@ -435,13 +470,25 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.Departure", "Departure")
                         .WithMany("Tickets")
                         .HasForeignKey("DepartureID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Tim14HCI.Model.Station", "EndStation")
+                        .WithMany("TicketsEndStation")
+                        .HasForeignKey("EndStationID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Tim14HCI.Model.Station", "StartStation")
+                        .WithMany("TicketsStartStation")
+                        .HasForeignKey("StartStationID")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Tim14HCI.Model.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 

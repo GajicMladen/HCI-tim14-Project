@@ -113,13 +113,26 @@ namespace Tim14HCI.Model
             modelBuilder.Entity<Ticket>()
                 .HasOne<User>(t => t.User)
                 .WithMany(u => u.Tickets)
-                .HasForeignKey(t => t.UserID);
+                .HasForeignKey(t => t.UserID)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Ticket>()
                 .HasOne<Departure>(t => t.Departure)
                 .WithMany(dep => dep.Tickets)
-                .HasForeignKey(t => t.DepartureID);
+                .HasForeignKey(t => t.DepartureID)
+                .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Ticket>()
+                .HasOne<Station>(t => t.StartStation)
+                .WithMany(st => st.TicketsStartStation)
+                .HasForeignKey(t => t.StartStationID)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Ticket>()
+                .HasOne<Station>(t => t.EndStation)
+                .WithMany(st => st.TicketsEndStation)
+                .HasForeignKey(t => t.EndStationID)
+                .OnDelete(DeleteBehavior.NoAction);
 
             //SEED
 
@@ -162,8 +175,7 @@ namespace Tim14HCI.Model
 
 
             modelBuilder.Entity<OnWayStation>().HasData(
-                new OnWayStation() { OnWayStationID = 1, Price = 10, Time = 10, StationID = 1, StationOrder = 1, isEndStation = false, TrainLineID = 1 },
-                new OnWayStation() { OnWayStationID = 2, Price = 10, Time = 10, StationID = 2, StationOrder = 2, isEndStation = true, TrainLineID = 1 }
+                new OnWayStation() { OnWayStationID = 1, Price = 10, Time = 10, StationID = 2, StationOrder = 1, isEndStation = true, TrainLineID = 1 }
                 );
 
             modelBuilder.Entity<Departure>().HasData(
@@ -173,7 +185,7 @@ namespace Tim14HCI.Model
                 );
 
             modelBuilder.Entity<Ticket>().HasData(
-                new Ticket() { TicketID = 1 , DepartureID =1 , ForReservation =false , UserID = 1 }
+                new Ticket() { TicketID = 1 , DepartureID =1 , ForReservation =false , UserID = 1 ,StartStationID=1,EndStationID=2}
                 );
         }
     }

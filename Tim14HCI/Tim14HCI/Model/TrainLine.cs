@@ -23,7 +23,7 @@ namespace Tim14HCI.Model
 
         public virtual List<Departure> Departures { get; set; }
         
-        /*
+        
         public float getTotalPrice() {
             float ret = 0;
 
@@ -47,7 +47,7 @@ namespace Tim14HCI.Model
             ret += EndStation.Time;
 
             return ret;
-        }*/
+        }
 
 
         public TrainLine()

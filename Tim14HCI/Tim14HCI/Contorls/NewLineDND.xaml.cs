@@ -26,14 +26,13 @@ namespace Tim14HCI.Contorls
         public Station StartStation = null;
         public Station EndStation = null;
         public List<Station> OnWayStations = new List<Station>();
+
+        private List<Station> lastAdded = new List<Station>();
+
         public NewLineDND()
         {
             InitializeComponent();
-            List<Station> stations = StationDAO.getAllStations();
-            foreach (Station station in stations) {
-                StationForDragAndDrop stationForDragAndDrop = new StationForDragAndDrop(station);
-                satck_AllStations.Children.Add(stationForDragAndDrop);
-            }
+            showAllStations();
         }
 
         private void StationForDragAndDrop_DragEnter(object sender, DragEventArgs e)
@@ -48,35 +47,6 @@ namespace Tim14HCI.Contorls
 
                 e.Effects = DragDropEffects.Move;
 
-            }
-        }
-
-        private void StackPanel_Drop(object sender, DragEventArgs e)
-        {
-            if (e.Handled == false)
-            {
-                Panel _panel = (Panel)sender;
-                UIElement _element = (UIElement)e.Data.GetData("Object");
-                Station station = (Station)e.Data.GetData("Station");
-
-                if (_panel != null && _element != null)
-                {
-                    Panel _parent = (Panel)VisualTreeHelper.GetParent(_element);
-
-                    if (_parent != null)
-                    {
-                        if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
-                        {
-                            _parent.Children.Remove(_element);
-                            _panel.Children.Add(_element);
-                            removeStationFromLists(station);
-                            OnWayStations.Add(station);
-                            drawStationsOnMap();
-
-                            e.Effects = DragDropEffects.Move;
-                        }
-                    }
-                }
             }
         }
 
@@ -96,11 +66,27 @@ namespace Tim14HCI.Contorls
                     {
                         if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
                         {
-                            _parent.Children.Remove(_element);
-                            _panel.Children.Add(_element);
-                            removeStationFromLists(station);
-                            drawStationsOnMap();
-                            e.Effects = DragDropEffects.Move;
+
+                            if (lastAdded[lastAdded.Count - 1].StationID == station.StationID)
+                            {
+
+                                _parent.Children.Remove(_element);
+                                _panel.Children.Add(_element);
+                                removeStationFromLists(station);
+
+                                lastAdded.Remove(station);
+                                if (lastAdded.Count != 0)
+                                    showOnlyLinkedStations(lastAdded[lastAdded.Count - 1]);
+                                else
+                                    showAllStations();
+
+                                drawStationsOnMap();
+                                e.Effects = DragDropEffects.Move;
+                            }
+                            else {
+                                MessageBox.Show("Mozete samo vratiti poslednju dodatu stanicu! U ovom slucaju to je: " + lastAdded[lastAdded.Count - 1].Name
+                                    +" \n *ili restartujte dodavanje nove linije klikom na dugme 'Restartuj'.");
+                            }
 
                         }
                     }
@@ -120,86 +106,31 @@ namespace Tim14HCI.Contorls
 
         }
 
-        private void StackPanel_Drop_1(object sender, DragEventArgs e)
-        {
-            if (e.Handled == false)
-            {
-                Panel _panel = (Panel)sender;
-                UIElement _element = (UIElement)e.Data.GetData("Object");
-                Station station = (Station)e.Data.GetData("Station");
 
-                if (_panel != null && _element != null)
-                {
-                    Panel _parent = (Panel)VisualTreeHelper.GetParent(_element);
+        private bool allreadyAddedStation(Station x) {
 
-                    if (_parent != null)
-                    {
-                        if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
-                        {
-                            _parent.Children.Remove(_element);
-                            if (_panel.Children.Count == 2)
-                            {
-                                StationForDragAndDrop toBeBack = (StationForDragAndDrop)_panel.Children[1];
-                                _panel.Children.RemoveAt(1);
-                                removeStationFromLists(toBeBack.station);
-                                satck_AllStations.Children.Add(toBeBack);
-                            }
-
-                            _panel.Children.Add(_element);
-                            removeStationFromLists(station);
-                            StartStation = station;
-                            drawStationsOnMap();
-                            e.Effects = DragDropEffects.Move;
-                        }
-                    }
-                }
+            if (StartStation != null && StartStation.StationID == x.StationID)
+                return true;
+            foreach (Station station in OnWayStations) {
+                if (station.StationID == x.StationID)
+                    return true;
             }
-        }
 
-        private void StackPanel_Drop_2(object sender, DragEventArgs e)
-        {
-            if (e.Handled == false)
-            {
-                Panel _panel = (Panel)sender;
-                UIElement _element = (UIElement)e.Data.GetData("Object");
-                Station station = (Station)e.Data.GetData("Station");
+            if (EndStation != null && EndStation.StationID == x.StationID)
+                return true;
 
-                if (_panel != null && _element != null)
-                {
-                    Panel _parent = (Panel)VisualTreeHelper.GetParent(_element);
+            return false;
 
-                    if (_parent != null)
-                    {
-                        if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
-                        {
-                            _parent.Children.Remove(_element);
-
-                            if (_panel.Children.Count == 2)
-                            {
-                                StationForDragAndDrop toBeBack = (StationForDragAndDrop)_panel.Children[1];
-                                _panel.Children.RemoveAt(1);
-                                satck_AllStations.Children.Add(toBeBack);
-                                removeStationFromLists(toBeBack.station);
-                            }
-                            _panel.Children.Add(_element);
-                            removeStationFromLists(station);
-                            EndStation = station;
-                            drawStationsOnMap();
-                            e.Effects = DragDropEffects.Move;
-                        }
-                    }
-                }
-            }
         }
 
         private void removeStationFromLists(Station x) {
 
-            if (StartStation == x)
+            if (StartStation != null && StartStation.StationID == x.StationID)
             {
                 StartStation = null;
                 return;
             }
-            if (EndStation == x) {
+            if (EndStation != null && EndStation.StationID == x.StationID) {
                 EndStation = null;
                 return;
             }
@@ -210,6 +141,14 @@ namespace Tim14HCI.Contorls
                 }
             }
 
+        }
+
+        private void clearRoute() {
+
+            StartStation = null;
+            EndStation = null;
+            OnWayStations.Clear();
+            lastAdded.Clear();
         }
 
         private void drawStationsOnMap() {
@@ -249,5 +188,176 @@ namespace Tim14HCI.Contorls
             canvas_map.Children.Add(textBlock);
         }
 
+        private void showAllStations() {
+
+            succesStaionsDropPanel.Children.Clear();
+            foreach (Station station in StationDAO.getAllStations())
+            {
+                StationForDragAndDrop stationForDragAndDrop = new StationForDragAndDrop(station);
+                succesStaionsDropPanel.Children.Add(stationForDragAndDrop);
+            }
+
+        }
+
+        private void showOnlyLinkedStations(Station station) {
+
+            succesStaionsDropPanel.Children.Clear();
+
+            List<Station> rez = new List<Station>();            
+
+            foreach (Station s in TrainLinesDAO.getLinkedStations(station)) {
+
+                if (!allreadyAddedStation(s))
+                    rez.Add(s);
+            }
+
+            foreach (Station stat in rez)
+            {
+                StationForDragAndDrop stationForDragAndDrop = new StationForDragAndDrop(stat);
+                succesStaionsDropPanel.Children.Add(stationForDragAndDrop);
+            }
+
+
+        }
+
+        private void startStation_Drop(object sender, DragEventArgs e)
+        {
+
+            if (e.Handled == false)
+            {
+                Panel _panel = (Panel)sender;
+                UIElement _element = (UIElement)e.Data.GetData("Object");
+                Station station = (Station)e.Data.GetData("Station");
+
+                if (_panel != null && _element != null)
+                {
+                    Panel _parent = (Panel)VisualTreeHelper.GetParent(_element);
+
+                    if (_parent != null)
+                    {
+                        if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
+                        {
+
+                            if (_parent.Name == "onWayStationsDropPanel" || _parent.Name == "endStationDropPanel")
+                            {
+                                MessageBox.Show("dozvoljeno je dodavanje samo iz dostupnih stanica!");
+                                return;
+                            }
+                            
+                            if (_panel.Children.Count == 2)
+                            {
+                                StationForDragAndDrop toBeBack = (StationForDragAndDrop)_panel.Children[1];
+                                _panel.Children.RemoveAt(1);
+                                removeStationFromLists(toBeBack.station);
+                            }
+
+                            clearRoute();
+                            showOnlyLinkedStations(station);
+                            
+                            onWayStationsDropPanel.Children.Clear();
+                            if (endStationDropPanel.Children.Count == 2)
+                            {
+                                endStationDropPanel.Children.RemoveAt(1);
+                            }
+
+                            _panel.Children.Add(_element);
+                            
+                            
+                            StartStation = station;
+                            lastAdded.Add(station);
+
+                            drawStationsOnMap();
+
+                            e.Effects = DragDropEffects.Move;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void endStation_drop(object sender, DragEventArgs e)
+        {
+
+            if (e.Handled == false)
+            {
+                Panel _panel = (Panel)sender;
+                UIElement _element = (UIElement)e.Data.GetData("Object");
+                Station station = (Station)e.Data.GetData("Station");
+
+                if (_panel != null && _element != null)
+                {
+                    Panel _parent = (Panel)VisualTreeHelper.GetParent(_element);
+
+                    if (_parent != null)
+                    {
+                        if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
+                        {
+                            if (_parent.Name == "onWayStationsDropPanel" || _parent.Name == "startStationDropPanel")
+                            {
+                                MessageBox.Show("dozvoljeno je dodavanje samo iz dostupnih stanica!");
+                                return;
+                            }
+                            _parent.Children.Remove(_element);
+
+                            if (_panel.Children.Count == 2)
+                            {
+                                StationForDragAndDrop toBeBack = (StationForDragAndDrop)_panel.Children[1];
+                                _panel.Children.RemoveAt(1);
+                                removeStationFromLists(toBeBack.station);
+
+                            }
+                            _panel.Children.Add(_element);
+                            removeStationFromLists(station);
+                            EndStation = station;
+                            drawStationsOnMap();
+
+                            succesStaionsDropPanel.Children.Clear();
+                            lastAdded.Add(station);
+
+                            e.Effects = DragDropEffects.Move;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void onWayStations_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Handled == false)
+            {
+                Panel _panel = (Panel)sender;
+                UIElement _element = (UIElement)e.Data.GetData("Object");
+                Station station = (Station)e.Data.GetData("Station");
+
+                if (_panel != null && _element != null)
+                {
+                    Panel _parent = (Panel)VisualTreeHelper.GetParent(_element);
+
+                    if (_parent != null)
+                    {
+                        if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
+                        {
+
+                            if (_parent.Name == "startStationDropPanel" || _parent.Name == "endStationDropPanel")
+                            {
+                                MessageBox.Show("dozvoljeno je dodavanje samo iz dostupnih stanica!");
+                                return;
+                            }
+                            _parent.Children.Remove(_element);
+                            _panel.Children.Add(_element);
+                            removeStationFromLists(station);
+                            OnWayStations.Add(station);
+                            drawStationsOnMap();
+
+                            lastAdded.Add(station);
+                            showOnlyLinkedStations(station);
+
+                            e.Effects = DragDropEffects.Move;
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }

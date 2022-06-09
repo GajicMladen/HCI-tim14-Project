@@ -30,7 +30,7 @@ namespace Tim14HCI.Windows
         Window parent;
         User user;
 
-        public AdminWindow(Window x,User user)
+        public AdminWindow(Window x, User user)
         {
             parent = x;
             this.user = user;
@@ -54,7 +54,7 @@ namespace Tim14HCI.Windows
 
         private void Grid_GotFocus(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         public void fillStackDataWithTrains() {
@@ -94,6 +94,18 @@ namespace Tim14HCI.Windows
             {
                 TrainLineControl stationControl = new TrainLineControl(trainLine);
                 stack_Data.Children.Add(stationControl);
+            }
+        }
+
+        public void fillStackDataWithDepartures()
+        {
+            stack_Data.Children.Clear();
+            List<Departure> departures = DepartureDAO.GetAllDepartures();
+
+            foreach(Departure d in departures)
+            {
+                DepartureManagerControl departureControl = new DepartureManagerControl(d);
+                stack_Data.Children.Add(departureControl);
             }
         }
 
@@ -138,30 +150,19 @@ namespace Tim14HCI.Windows
                 Visibility = Visibility.Hidden;
                 newStation.Show();
             }
+            else if ((string)lbl_ShownData.Content == "Red vožnje")
+            {
+                NewDeparture newDeparture = new NewDeparture(this);
+                Visibility = Visibility.Hidden;
+                newDeparture.Show();
+            }
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            using (var context = new SerbiaRailwayContext())
-            {
-                context.trainLines.Add(new TrainLine
-                {
-                    TrainID = 1,
-                    StartStationID = 3,
-                    EndStationID = 1,
-                    Departures = null
-                });
-                context.onWayStations.Add(new OnWayStation { StationOrder = 1, StationID = 2, Price = 200, Time = 60, TrainLineID = 1 });
-                context.departures.Add(new Departure
-                {
-                    TrainLineID = 1,
-                    startDate = new DateTime(2022, 6, 8, 12, 30, 0),
-                    endDate = new DateTime(2022, 6, 8, 14, 0, 0),
-                    Tickets = null
-                });
-
-                context.SaveChanges();
-            }
+            lbl_ShownData.Content = "Red vožnje";
+            stack_Data.Children.Clear();
+            fillStackDataWithDepartures();
         }
     }
 }

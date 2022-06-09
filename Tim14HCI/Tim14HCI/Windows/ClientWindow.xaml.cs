@@ -129,7 +129,7 @@ namespace Tim14HCI.Windows
             {
                 return;
             }
-            Ticket ticket = new Ticket(true, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID);
+            Ticket ticket = new Ticket(true, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID, sn);
             //Ticket ticket = new Ticket(true, departure, departure.TrainLine.StartStation, ows.Station, Double.Parse(price), user);
             TicketDAO.AddTicket(ticket);
             MessageBox.Show("Karta uspešno rezervisana!");
@@ -145,7 +145,7 @@ namespace Tim14HCI.Windows
             {
                 return;
             }
-            Ticket ticket = new Ticket(false, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID);
+            Ticket ticket = new Ticket(false, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID, sn);
             //Ticket ticket = new Ticket(false, departure, departure.TrainLine.StartStation, ows.Station, Double.Parse(price), user);
             TicketDAO.AddTicket(ticket);
             MessageBox.Show("Karta uspešno kupljena!");

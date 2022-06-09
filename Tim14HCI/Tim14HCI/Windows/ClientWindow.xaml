@@ -156,7 +156,7 @@
                 <Label Grid.Column="1" x:Name="lbl_departure" Content=""  HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="698" FontSize="16" Margin="10,0,23,0"  />
                 <Label Grid.Column="2" Content="Broj sedišta:"  HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" FontSize="16" Margin="0 0 0 0"  />
                 <TextBox Grid.Column="3" x:Name="txbx_seat" HorizontalAlignment="Left" Height="19" Margin="0,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
-                <Label x:Name="lbl_range" Content="(1-100)" Grid.Column="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="White" Height="48" Width="49"/>
+                <Label x:Name="lbl_range" Content="" Grid.Column="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="White" Height="48" Width="49"/>
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="4">
                 <Grid.ColumnDefinitions>

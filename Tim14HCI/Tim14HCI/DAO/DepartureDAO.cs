@@ -27,12 +27,12 @@ namespace Tim14HCI.DAO
             }
         }
 
-        public static Departure GetDepartureByID(int id)
+        /*public static Departure GetDepartureByID(int id)
         {
             using (var context = new SerbiaRailwayContext())
             {
                 return context.departures.Include(d => d.TrainLine).ToList();
             }
-        }
+        }*/
     }
 }

@@ -1,0 +1,81 @@
+﻿<Window x:Class="Tim14HCI.Windows.NewStation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tim14HCI.Windows"
+        xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="Dodavanje nove stanice" Height="588.425" Width="1108.153" MinHeight="588.425" MinWidth="1108.153" Closing="Window_Closing">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Tim14HCI;component/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.4"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="373*"/>
+            <ColumnDefinition Width="99*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="123*"/>
+            <RowDefinition Height="37*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grid_display" Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Background="White" Opacity="0.7"  Grid.ColumnSpan="5" Grid.RowSpan="7" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Margin="0,-13,0,0.5"/>
+
+            <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24">Podaci o stanici</Label>
+
+            <Label x:Name="stationNameLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Naziv stanice:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="stationNameTextbox" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="140" TabIndex="1" Margin="5,24,0,24" />
+
+            <Label x:Name="instructionLabel" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.RowSpan="2">Odaberite lokaciju stanice klikom na mapu</Label>
+
+            <Label x:Name="connectedStationsLabel" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Foreground="#000000" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="43,10,109,5">Odaberite susedne stanice:</Label>
+
+
+            <Canvas x:Name="canvas_map" Grid.RowSpan="7" Grid.Column="3" Grid.ColumnSpan="2" Margin="32,-1,24,10.5" MouseDown="canvas_map_MouseDown" Width="226" Height="339">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Images/SerbiaMap.jpg"/>
+                </Canvas.Background>
+            </Canvas>
+
+            <ListBox Grid.Row="3" Grid.Column="2" Grid.RowSpan="3" x:Name="stationsListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="171" Height="118" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonDown" Margin="10,10,0,0"/>
+            <Button x:Name="addStationButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Background="#FF3B3EA9" Foreground="White" FontSize="16" Content="Dodaj" Click="addStationButton_Click" Height="32" Margin="48,7,34,6"/>
+            <Button x:Name="removeStationsButton" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Background="#FF3B3EA9" Foreground="White" FontSize="16" Content="Resetuj susede" Click="removeStationsButton_Click" Height="32" Margin="48,6,34,7"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="addButton_Click">Kreiraj stanicu</Button>
+            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click">Povratak</Button>
+        </Grid>
+        
+
+    </Grid>
+</Window>

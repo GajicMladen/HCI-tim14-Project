@@ -29,6 +29,7 @@ namespace Tim14HCI.Windows
 
         Window parent;
         User user;
+
         public AdminWindow(Window x,User user)
         {
             parent = x;
@@ -56,7 +57,7 @@ namespace Tim14HCI.Windows
            
         }
 
-        private void fillStackDataWithTrains() {
+        public void fillStackDataWithTrains() {
 
             stack_Data.Children.Clear();
 
@@ -68,9 +69,8 @@ namespace Tim14HCI.Windows
                 TrainControl trainControl = new TrainControl(train);
                 stack_Data.Children.Add(trainControl);
             }
-
         }
-        private void fillStackDataWithStations()
+        public void fillStackDataWithStations()
         {
             stack_Data.Children.Clear();
 
@@ -82,7 +82,6 @@ namespace Tim14HCI.Windows
                 StationControl stationControl = new StationControl(station);
                 stack_Data.Children.Add(stationControl);
             }
-
         }
         private void fillStackDataWithTrainLines()
         {
@@ -96,7 +95,6 @@ namespace Tim14HCI.Windows
                 TrainLineControl stationControl = new TrainLineControl(trainLine);
                 stack_Data.Children.Add(stationControl);
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -122,9 +120,48 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NewTrainLine newTrainLine = new NewTrainLine(this);
-            Visibility = Visibility.Hidden;
-            newTrainLine.Show();
+            if ((string)lbl_ShownData.Content == "Vozne linije")
+            {
+                NewTrainLine newTrainLine = new NewTrainLine(this);
+                Visibility = Visibility.Hidden;
+                newTrainLine.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Vozovi")
+            {
+                NewTrain newTrain = new NewTrain(this);
+                Visibility = Visibility.Hidden;
+                newTrain.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Stanice")
+            {
+                NewStation newStation = new NewStation(this);
+                Visibility = Visibility.Hidden;
+                newStation.Show();
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                context.trainLines.Add(new TrainLine
+                {
+                    TrainID = 1,
+                    StartStationID = 3,
+                    EndStationID = 1,
+                    Departures = null
+                });
+                context.onWayStations.Add(new OnWayStation { StationOrder = 1, StationID = 2, Price = 200, Time = 60, TrainLineID = 1 });
+                context.departures.Add(new Departure
+                {
+                    TrainLineID = 1,
+                    startDate = new DateTime(2022, 6, 8, 12, 30, 0),
+                    endDate = new DateTime(2022, 6, 8, 14, 0, 0),
+                    Tickets = null
+                });
+
+                context.SaveChanges();
+            }
         }
     }
 }

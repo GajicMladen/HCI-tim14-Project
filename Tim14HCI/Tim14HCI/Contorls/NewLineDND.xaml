@@ -41,8 +41,10 @@
                 <RowDefinition Height="368*"/>
                 <RowDefinition Height="63*"/>
             </Grid.RowDefinitions>
+
             <StackPanel x:Name="startStationDropPanel" Background="#FF8E3A3A" Orientation="Horizontal" AllowDrop="True" Drop="startStation_Drop" >
-                <Label Foreground="White" FontWeight="Bold">Pocetna stanica:</Label>
+                <Label Foreground="White" FontWeight="Bold">Početna stanica:</Label>
+
             </StackPanel>
             <Grid Grid.Row="1" Background="#FFA69595" Margin="0,2.942,0,63.058" Grid.RowSpan="2" >
                 <Grid.ColumnDefinitions>

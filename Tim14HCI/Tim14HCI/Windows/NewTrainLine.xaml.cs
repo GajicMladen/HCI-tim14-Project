@@ -158,8 +158,8 @@ namespace Tim14HCI.Windows
             }
             if (progresBar.SelectedIndex == 4) {
 
-                TrainLinesDAO.addNewTrainLine(selectedRoute, selectedTrain, prices, times);
-                Close();
+                //TrainLinesDAO.addNewTrainLine(selectedRoute, selectedTrain, prices, times);
+                //Close();
             }
             return true;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tim14HCI.DAO;
 
 namespace Tim14HCI.Model
 {
@@ -34,21 +35,21 @@ namespace Tim14HCI.Model
         }
 
 
-        /*
-        public DateTime getEndTime() {
+        
+        public DateTime GetEndTime() {
 
             DateTime ret = StartTime;
             
-            foreach(OnWayStation onWayStation in TrainLine.OnWayStations)
+            foreach(OnWayStation onWayStation in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(TrainLineID))
             {
                 ret.AddMinutes(onWayStation.Time);
             }
 
-            ret.AddMinutes(TrainLine.EndStation.Time);
+            //ret.AddMinutes(TrainLine.EndStation.Time);
 
             return ret;
         }
-        */
+        
 
     }
 }

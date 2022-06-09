@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace Tim14HCI.DAO
             return departures;
         }
 
-        public static Departure GetDepartureByID(int id)
+        /*public static Departure GetDepartureByID(int id)
         {
             foreach (Departure d in getDapertures())
             {
@@ -37,6 +38,22 @@ namespace Tim14HCI.DAO
                 }
             }
             return null;
+        }*/
+
+        public static Departure GetDepartureByID(int id)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.departures.Include(d => d.TrainLine).ThenInclude(tr => tr.StartStation).Where(d => d.DepartureID == id).FirstOrDefault();
+            }
+        }
+
+        public static List<Departure> GetAllDepartures()
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.departures.Include(d => d.TrainLine).ToList();
+            }
         }
     }
 }

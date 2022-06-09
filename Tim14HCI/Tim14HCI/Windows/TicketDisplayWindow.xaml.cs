@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tim14HCI.Contorls;
+using Tim14HCI.DAO;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Windows
@@ -53,11 +54,11 @@ namespace Tim14HCI.Windows
             List<Ticket> tickets = new List<Ticket>();
             if (kind == "Bought")
             {
-                tickets = DAO.TicketDAO.GetBoughtTicketsByUser(this.user.UserID);
+                tickets = TicketDAO.GetBoughtTicketsByUserID(this.user.UserID);
             }
             else
             {
-                tickets = DAO.TicketDAO.GetReservationTicketsByUser(this.user.UserID);
+                tickets = TicketDAO.GetReservationTicketsByUserID(this.user.UserID);
             }
 
             foreach (Ticket ticket in tickets)

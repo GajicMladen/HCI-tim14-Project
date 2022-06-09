@@ -29,13 +29,23 @@ namespace Tim14HCI.Model
 
         }
         
-        public Ticket(bool forReservation, Departure departure, Station endStation, double price, User user)
+        public Ticket(bool forReservation, int departureId, int startStationId, int endStationId, double price, int userId)
+        {
+            this.ForReservation = forReservation;
+            this.DepartureID = departureId;
+            this.StartStationID = startStationId;
+            this.EndStationID = endStationId;
+            this.Price = price;
+            this.UserID = userId;
+        }
+
+        public Ticket(bool forReservation, Departure departure, Station startStation, Station endStation, double price, User user)
         {
             this.ForReservation = forReservation;
             this.DepartureID = departure.DepartureID;
             this.Departure = departure;
-            this.StartStationID = departure.TrainLine.StartStationID;
-            this.StartStation = departure.TrainLine.StartStation;
+            this.StartStationID = startStation.StationID;
+            this.StartStation = startStation;
             this.EndStationID = endStation.StationID;
             this.EndStation = endStation;
             this.Price = price;

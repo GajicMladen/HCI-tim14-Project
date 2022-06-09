@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tim14HCI.DAO;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Contorls
@@ -29,16 +30,21 @@ namespace Tim14HCI.Contorls
         {
             InitializeComponent();
             lbl_StartStation.Content = trainLine.StartStation.Name;
-            lbl_EndStation.Content = trainLine.EndStation.Station.Name;
+            //lbl_EndStation.Content = trainLine.EndStation.Station.Name;
+            lbl_EndStation.Content = OnWayStationDAO.GetEndStationByTrainLineID(trainLine.TrainLineID).Station.Name;
 
+            List<OnWayStation> onWayStations = OnWayStationDAO.GetAllOnWayStationsByTrainLineID(trainLine.TrainLineID);
+            
             lbl_OnWayStations.Content = "";
-            if (trainLine.OnWayStations.Count > 0)
+            if (onWayStations.Count > 1)
             {
 
-                foreach (OnWayStation onWayStation in trainLine.OnWayStations)
+                foreach (OnWayStation onWayStation in onWayStations)
                 {
-                    lbl_OnWayStations.Content += onWayStation.Station.Name + " , ";
-
+                    if (onWayStation.OnWayStationID != OnWayStationDAO.GetEndStationByTrainLineID(trainLine.TrainLineID).OnWayStationID)
+                    {                        
+                        lbl_OnWayStations.Content += onWayStation.Station.Name + " , ";
+                    }                   
                 }
             }
             else

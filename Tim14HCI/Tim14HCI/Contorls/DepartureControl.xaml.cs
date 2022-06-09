@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tim14HCI.DAO;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Contorls
@@ -87,7 +88,8 @@ namespace Tim14HCI.Contorls
 
             lbl_start_date_time.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
             lbl_end_date_time.Content = CountTimeDuration(isEndStation);
-            lbl_start_location.Content = departure.TrainLine.StartStation.Name;
+            //lbl_start_location.Content = departure.TrainLine.StartStation.Name;
+            lbl_start_location.Content = TrainLinesDAO.GetStartStationByTrainLineID(departure.TrainLineID).Name;
             lbl_end_location.Content = endLocation.Station.Name;
             lbl_price.Content = CountPrice(isEndStation);
         }
@@ -96,7 +98,8 @@ namespace Tim14HCI.Contorls
         {
             double price = 0;
 
-            foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+            //foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+            foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
             {
                 if (ows.OnWayStationID == endLocation.OnWayStationID)
                 {
@@ -110,7 +113,8 @@ namespace Tim14HCI.Contorls
             }
             if (isEndStation)
             {
-                price += departure.TrainLine.EndStation.Price;
+                //price += departure.TrainLine.EndStation.Price;
+                price += OnWayStationDAO.GetEndStationByTrainLineID(departure.TrainLineID).Price;
             }
             return price.ToString();
         }
@@ -119,7 +123,8 @@ namespace Tim14HCI.Contorls
         {
             double minutesPassed = 0;
 
-            foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+            //foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
+            foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
             {
                 if (ows.OnWayStationID == endLocation.OnWayStationID)
                 {
@@ -133,7 +138,8 @@ namespace Tim14HCI.Contorls
             }
             if (isEndStation)
             {
-                minutesPassed += departure.TrainLine.EndStation.Time;
+                //minutesPassed += departure.TrainLine.EndStation.Time;
+                minutesPassed += OnWayStationDAO.GetEndStationByTrainLineID(departure.TrainLineID).Time;
             }
             return departure.StartTime.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
         }

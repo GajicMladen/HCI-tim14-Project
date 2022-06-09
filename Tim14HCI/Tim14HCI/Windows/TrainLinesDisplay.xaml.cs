@@ -39,7 +39,7 @@ namespace Tim14HCI.Windows
         {
             stack_Data.Children.Clear();
 
-            List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines();
+            List<TrainLine> trainLines = TrainLinesDAO.GetAllTrainLines();
 
             foreach (TrainLine trainLine in trainLines)
             {

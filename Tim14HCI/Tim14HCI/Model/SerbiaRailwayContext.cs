@@ -28,6 +28,7 @@ namespace Tim14HCI.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             //User
             modelBuilder.Entity<User>().HasKey(u => u.UserID);
 
@@ -84,6 +85,7 @@ namespace Tim14HCI.Model
                 .HasOne<TrainLine>(ow => ow.TrainLine)
                 .WithMany(tl => tl.OnWayStations)
                 .HasForeignKey(ow => ow.TrainLineID)
+                //.OnDelete(DeleteBehavior.Cascade);
                 .OnDelete(DeleteBehavior.NoAction);
 
             /*
@@ -118,6 +120,18 @@ namespace Tim14HCI.Model
                 .HasOne<Departure>(t => t.Departure)
                 .WithMany(dep => dep.Tickets)
                 .HasForeignKey(t => t.DepartureID);
+
+            modelBuilder.Entity<Ticket>()
+                .HasOne<Station>(t => t.StartStation)
+                .WithMany(st => st.TicketsStartStation)
+                .HasForeignKey(t => t.StartStationID)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Ticket>()
+                .HasOne<Station>(t => t.EndStation)
+                .WithMany(st => st.TicketsEndStation)
+                .HasForeignKey(t => t.EndStationID)
+                .OnDelete(DeleteBehavior.NoAction);
 
 
             //SEED
@@ -155,23 +169,45 @@ namespace Tim14HCI.Model
 
 
             modelBuilder.Entity<TrainLine>().HasData(
-                new TrainLine() { TrainLineID = 1, StartStationID = 1, EndStationID = 1, TrainID = 1 }
+                new TrainLine() { TrainLineID = 1, StartStationID = 1, EndStationID = 1, TrainID = 1 },
+                new TrainLine() { TrainLineID = 2, StartStationID = 3, EndStationID = 6, TrainID = 4 }
                 );
 
 
             modelBuilder.Entity<OnWayStation>().HasData(
-                new OnWayStation() { OnWayStationID = 1, Price = 10, Time = 10, StationID = 1, StationOrder = 1, isEndStation = false, TrainLineID = 1 },
-                new OnWayStation() { OnWayStationID = 2, Price = 10, Time = 10, StationID = 2, StationOrder = 2, isEndStation = true, TrainLineID = 1 }
+                new OnWayStation() { OnWayStationID = 1, Price = 800, Time = 30, StationID = 2, StationOrder = 1, isEndStation = true, TrainLineID = 1 },
+                //new OnWayStation() { OnWayStationID = 2, Price = 10, Time = 10, StationID = 2, StationOrder = 2, isEndStation = true, TrainLineID = 1 },
+                new OnWayStation() { OnWayStationID = 2, Price = 400, Time = 35, StationID = 2, StationOrder = 1, isEndStation = false, TrainLineID = 2 },
+                new OnWayStation() { OnWayStationID = 3, Price = 550, Time = 35, StationID = 1, StationOrder = 2, isEndStation = false, TrainLineID = 2 },
+                new OnWayStation() { OnWayStationID = 4, Price = 700, Time = 50, StationID = 5, StationOrder = 3, isEndStation = false, TrainLineID = 2 },
+                new OnWayStation() { OnWayStationID = 5, Price = 400, Time = 30, StationID = 6, StationOrder = 4, isEndStation = true, TrainLineID = 2 }
                 );
 
             modelBuilder.Entity<Departure>().HasData(
-                new Departure() { DepartureID = 1, StartTime = new DateTime(2022,6,8,12,30,0), TrainLineID = 1 },
+                new Departure() { DepartureID = 1, StartTime = new DateTime(2022, 6, 8, 12, 30, 0), TrainLineID = 1 },
                 new Departure() { DepartureID = 2, StartTime = new DateTime(2022, 6, 8, 15, 40, 0), TrainLineID = 1 },
-                new Departure() { DepartureID = 3, StartTime = new DateTime(2022, 6, 8, 20, 15, 0), TrainLineID = 1 }
+                new Departure() { DepartureID = 3, StartTime = new DateTime(2022, 6, 8, 20, 15, 0), TrainLineID = 1 },
+                new Departure() { DepartureID = 4, StartTime = new DateTime(2022, 6, 14, 12, 30, 0), TrainLineID = 2 },
+                new Departure() { DepartureID = 5, StartTime = new DateTime(2022, 6, 14, 15, 00, 0), TrainLineID = 2 },
+                new Departure() { DepartureID = 6, StartTime = new DateTime(2022, 6, 14, 18, 40, 0), TrainLineID = 2 },
+                new Departure() { DepartureID = 7, StartTime = new DateTime(2022, 6, 14, 21, 15, 0), TrainLineID = 2 },
+                new Departure() { DepartureID = 8, StartTime = new DateTime(2022, 6, 15, 15, 40, 0), TrainLineID = 2 },
+                new Departure() { DepartureID = 9, StartTime = new DateTime(2022, 6, 15, 18, 30, 0), TrainLineID = 2 }
                 );
 
             modelBuilder.Entity<Ticket>().HasData(
-                new Ticket() { TicketID = 1 , DepartureID =1 , ForReservation =false , UserID = 1 }
+                new Ticket() { TicketID = 1, DepartureID = 1, StartStationID = 1, EndStationID = 2, Price = 800, Seat = 2, ForReservation = false , UserID = 4 },
+                new Ticket() { TicketID = 2, DepartureID = 4, StartStationID = 3, EndStationID = 2, Price = 400, Seat = 1, ForReservation = true, UserID = 3 },
+                new Ticket() { TicketID = 3, DepartureID = 5, StartStationID = 3, EndStationID = 1, Price = 950, Seat = 2, ForReservation = false, UserID = 4 },
+                new Ticket() { TicketID = 4, DepartureID = 6, StartStationID = 3, EndStationID = 5, Price = 1650, Seat = 3, ForReservation = true, UserID = 3 },
+                new Ticket() { TicketID = 5, DepartureID = 7, StartStationID = 3, EndStationID = 6, Price = 2050, Seat = 4, ForReservation = false, UserID = 4 },
+                new Ticket() { TicketID = 6, DepartureID = 8, StartStationID = 3, EndStationID = 2, Price = 400, Seat = 5, ForReservation = false, UserID = 3 },
+                new Ticket() { TicketID = 7, DepartureID = 9, StartStationID = 3, EndStationID = 5, Price = 1650, Seat = 6, ForReservation = true, UserID = 4 },
+                new Ticket() { TicketID = 8, DepartureID = 4, StartStationID = 3, EndStationID = 1, Price = 950, Seat = 7, ForReservation = false, UserID = 3 },
+                new Ticket() { TicketID = 9, DepartureID = 5, StartStationID = 3, EndStationID = 6, Price = 2050, Seat = 8, ForReservation = false, UserID = 4 },
+                new Ticket() { TicketID = 10, DepartureID = 6, StartStationID = 3, EndStationID = 2, Price = 400, Seat = 9, ForReservation = true, UserID = 3 },
+                new Ticket() { TicketID = 11, DepartureID = 7, StartStationID = 3, EndStationID = 5, Price = 1650, Seat = 10, ForReservation = true, UserID = 4 },
+                new Ticket() { TicketID = 12, DepartureID = 8, StartStationID = 3, EndStationID = 1, Price = 950, Seat = 12, ForReservation = false, UserID = 3 }
                 );
         }
     }

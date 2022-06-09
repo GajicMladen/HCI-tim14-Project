@@ -20,6 +20,7 @@ namespace Tim14HCI.Model
         public int EndStationID { get; set; }
         public Station EndStation { get; set; }
         public double Price { get; set; }
+        public int Seat { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
 

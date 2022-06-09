@@ -16,6 +16,9 @@ namespace Tim14HCI.Model
 
         public int position_y { get; set; }
 
+        public virtual List<Ticket> TicketsStartStation { get; set; }
+
+        public virtual List<Ticket> TicketsEndStation { get; set; }
 
         //for Linked Stations
         public virtual ICollection<LinkedStation> stations1 { get; set; }

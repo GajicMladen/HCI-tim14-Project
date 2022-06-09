@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.DAO
@@ -114,6 +115,26 @@ namespace Tim14HCI.DAO
                 }
                 return stations;
             }
+        }
+
+        public static List<OnWayStation> GetOnWayStations(int trainLineId)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                List <OnWayStation> owStations = context.onWayStations.Where(t => t.TrainLineID == trainLineId).ToList();
+                return owStations;
+            }
+        }
+
+        public static float GetTrainLineDuration(int trainLineId)
+        {
+            float time = 0;
+            List<OnWayStation> owStations = GetOnWayStations(trainLineId);
+            foreach(OnWayStation station in owStations)
+            {
+                time += station.Time;
+            }
+            return time;
         }
     }
 }

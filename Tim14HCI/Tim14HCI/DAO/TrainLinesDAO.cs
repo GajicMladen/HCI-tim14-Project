@@ -11,18 +11,18 @@ namespace Tim14HCI.DAO
     public static class TrainLinesDAO
     {
 
-
         public static List<TrainLine> getAllTrainLines() {
             using (var context = new SerbiaRailwayContext()) {
-                List<TrainLine> trainLines =  context.trainLines.Include(tl => tl.OnWayStations).Include(tl => tl.EndStation).ThenInclude(es => es.Station).Include(tl => tl.StartStation).ToList();
-                
+                List<TrainLine> trainLines = context.trainLines.Include(tl => tl.OnWayStations).Include(tl => tl.EndStation).ThenInclude(es => es.Station).Include(tl => tl.StartStation).ToList();
+
                 for (int i = 0; i < trainLines.Count; i++) {
                     trainLines[i].EndStation = context.onWayStations.Include(es => es.Station).Where(ow => ow.TrainLineID == trainLines[i].TrainLineID && ow.isEndStation).FirstOrDefault();
-                    trainLines[i].OnWayStations = context.onWayStations.Include(es => es.Station).Where(ow => ow.TrainLineID == trainLines[i].TrainLineID && ! ow.isEndStation).ToList();
+                    trainLines[i].OnWayStations = context.onWayStations.Include(es => es.Station).Where(ow => ow.TrainLineID == trainLines[i].TrainLineID && !ow.isEndStation).ToList();
+
 
                 }
                 return trainLines;
-            }
+            } 
         }
 
         public static TrainLine getTrainLineByID(int id)
@@ -41,21 +41,9 @@ namespace Tim14HCI.DAO
                 return trainLine;
             }
         }
-        /*
-        private static int getNewTrainLineID() {
-            int maxId = 1;
-            foreach(TrainLine trainLine in TrainLines)
-            {
-                if (maxId < trainLine.TrainLineID)
-                    maxId = trainLine.TrainLineID;
-
-            }
-            return maxId + 1;
-            
-        }
-        */
         public static void addNewTrainLine(List<Station> route,
             Train train,List<int> prices,List<int> times) {
+
 
             TrainLine newTrainLine = new TrainLine();
             List<OnWayStation> onWayStations = new List<OnWayStation>();
@@ -83,6 +71,7 @@ namespace Tim14HCI.DAO
                     onWayStation.Time = times[i];
 
                     onWayStation.StationID = route[i + 1].StationID;
+
 
                     onWayStation.TrainLineID = newTrainLine.TrainLineID;
 

@@ -79,7 +79,6 @@ namespace Tim14HCI.Contorls
 
         public DepartureControl(Departure d, OnWayStation ows, bool isEndStationParam)
         {
-            departure = x;
             InitializeComponent();
 
             departure = d;

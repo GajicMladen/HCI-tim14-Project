@@ -261,6 +261,12 @@
     <Compile Include="DAO\TrainDAO.cs" />
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
+    <Compile Include="DAO\OnWayStationDAO.cs" />
+    <Compile Include="Migrations\20220609114050_TicketChanged.cs" />
+    <Compile Include="Migrations\20220609114050_TicketChanged.designer.cs">
+      <DependentUpon>20220609114050_TicketChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
     <Compile Include="DAO\LinkedStationDAO.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>

@@ -10,6 +10,22 @@ namespace Tim14HCI.DAO
 {
     public static class TrainLinesDAO
     {
+        public static Station GetStartStationByTrainLineID(int id)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                TrainLine tr = context.trainLines.Where(t => t.TrainLineID == id).FirstOrDefault();
+                return context.stations.Where(s => s.StationID == tr.StartStationID).FirstOrDefault();
+            }
+        }
+
+        public static List<TrainLine> GetAllTrainLines()
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.trainLines.Include(tr => tr.StartStation).Include(tr => tr.EndStation).ToList();
+            }
+        }
 
         public static List<TrainLine> getAllTrainLines() {
             using (var context = new SerbiaRailwayContext()) {

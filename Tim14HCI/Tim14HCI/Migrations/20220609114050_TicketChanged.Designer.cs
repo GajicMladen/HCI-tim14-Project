@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    partial class SerbiaRailwayContextModelSnapshot : ModelSnapshot
+    [Migration("20220609114050_TicketChanged")]
+    partial class TicketChanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -676,19 +678,7 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.Departure", "Departure")
                         .WithMany("Tickets")
                         .HasForeignKey("DepartureID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Tim14HCI.Model.Station", "EndStation")
-                        .WithMany("TicketsEndStation")
-                        .HasForeignKey("EndStationID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Tim14HCI.Model.Station", "StartStation")
-                        .WithMany("TicketsStartStation")
-                        .HasForeignKey("StartStationID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Tim14HCI.Model.Station", "EndStation")
@@ -706,7 +696,7 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

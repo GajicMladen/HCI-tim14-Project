@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tim14HCI.DAO;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Contorls
@@ -34,15 +35,15 @@ namespace Tim14HCI.Contorls
             this.t = ticket;
             lbl_start_date_time.Content = this.t.Departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
             lbl_end_date_time.Content = CountTimeDuration();
-            lbl_start_location.Content = this.t.Departure.TrainLine.StartStation.Name;
+            lbl_start_location.Content = this.t.StartStation.Name;
             lbl_end_location.Content = this.t.EndStation.Name;
             lbl_price.Content = this.t.Price.ToString();
         }
 
         private String CountTimeDuration()
         {
-            double minutesPassed = 0;
-            foreach (OnWayStation ows in this.t.Departure.TrainLine.OnWayStations)
+            double minutesPassed = 0;            
+            foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(this.t.Departure.TrainLineID))
             {
                 if (ows.Station.Name == this.t.EndStation.Name)
                 {
@@ -53,11 +54,7 @@ namespace Tim14HCI.Contorls
                 {
                     minutesPassed += ows.Time;
                 }
-            }
-            if (this.t.Departure.TrainLine.StartStation.StationID == this.t.EndStationID)
-            {
-                minutesPassed += this.t.Departure.TrainLine.EndStation.Time;
-            }
+            }           
 
             return this.t.Departure.StartTime.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
         }

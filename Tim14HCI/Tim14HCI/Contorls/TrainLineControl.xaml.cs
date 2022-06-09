@@ -20,7 +20,8 @@ namespace Tim14HCI.Contorls
     /// Interaction logic for TrainLineControl.xaml
     /// </summary>
     public partial class TrainLineControl : UserControl
-    {
+    { 
+
         public TrainLineControl(TrainLine trainLine)
         {
             InitializeComponent();

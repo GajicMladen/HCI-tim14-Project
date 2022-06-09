@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tim14HCI.DAO;
 
 namespace Tim14HCI.Model
 {
@@ -150,6 +151,7 @@ namespace Tim14HCI.Model
                 new LinkedStation { Station1ID = 1, Station2ID = 3 },
                 new LinkedStation { Station1ID = 1, Station2ID = 5 },
                 new LinkedStation { Station1ID = 2, Station2ID = 3 },
+                new LinkedStation { Station1ID = 4, Station2ID = 2 },
                 new LinkedStation { Station1ID = 5, Station2ID = 6 }
                 );
 

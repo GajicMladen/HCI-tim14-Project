@@ -33,6 +33,8 @@ namespace Tim14HCI.Windows
         String endLocationSearch = "";
         String startDatetimeSearch;
         String endDatetimeSearch;
+        String seatNumber;
+        int capacity;
 
         String[] acceptableDateTimeFormats = { "dd.MM.yyyy.", "dd.MM.yyyy. HH:mm" };
 
@@ -66,6 +68,8 @@ namespace Tim14HCI.Windows
             OnWayStation onWayStation = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
             price = args.Price;
             lbl_departure.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
+            lbl_range.Content = "(1-" + TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity.ToString() + ")";
+            capacity = TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity;
 
         }
         /*
@@ -120,17 +124,27 @@ namespace Tim14HCI.Windows
             Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
             //OnWayStation ows = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
             OnWayStation ows = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
+            int sn = GetSeatNumber();
+            if (sn == 0)
+            {
+                return;
+            }
             Ticket ticket = new Ticket(true, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID);
             //Ticket ticket = new Ticket(true, departure, departure.TrainLine.StartStation, ows.Station, Double.Parse(price), user);
             TicketDAO.AddTicket(ticket);
             MessageBox.Show("Karta uspešno rezervisana!");
-        }
+        }     
 
         private void BuyClick(object sender, RoutedEventArgs e)
         {
             Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
             //OnWayStation ows = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
             OnWayStation ows = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
+            int sn = GetSeatNumber();
+            if (sn == 0)
+            {
+                return;
+            }
             Ticket ticket = new Ticket(false, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID);
             //Ticket ticket = new Ticket(false, departure, departure.TrainLine.StartStation, ows.Station, Double.Parse(price), user);
             TicketDAO.AddTicket(ticket);
@@ -307,6 +321,34 @@ namespace Tim14HCI.Windows
                 filtered = departures;
             }
             return filtered;
+        }
+        private int GetSeatNumber()
+        {
+            int sn;
+            if (Int32.TryParse(txbx_seat.Text.ToString(), out sn)) {
+                if (sn < 1 || sn > capacity)
+                {
+                    MessageBox.Show("Uneti broj sedišta se ne nalazi u odgovarajućem opsegu!");
+                    return 0;
+                }
+                else
+                {
+                    if (TicketDAO.IsSeatTaken(chosenDeparture, sn) == null)
+                    {
+                        return sn; 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Odabrano sedište je zauzeto!");
+                        return 0;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Broj sedišta mora biti numeričke vrednosti!");
+                return 0;
+            }
         }
 
         private bool CheckDatetimeInput()

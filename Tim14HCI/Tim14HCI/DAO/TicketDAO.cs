@@ -35,6 +35,22 @@ namespace Tim14HCI.DAO
             }
         }
 
+        public static List<Ticket> GetAllTicketsByDepartureID(int id)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.tickets.Where(t => t.DepartureID == id).ToList();
+            }
+        }
+
+        public static Ticket IsSeatTaken(int id, int seat)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.tickets.Where(t => t.DepartureID == id && t.Seat == seat).FirstOrDefault();
+            }
+        }
+
         public static List<Ticket> tickets = new List<Ticket>(); 
 
         public static void AddNewTicket(Ticket t)

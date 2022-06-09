@@ -14,7 +14,7 @@ namespace Tim14HCI.DAO
         private static List<TrainLine> TrainLines = new List<TrainLine>() {
             new TrainLine(){
                             TrainLineID = 1,
-                            TrainID =1,
+                            TrainID = 1,
                             Train = TrainDAO.GetTrainByID(1),
                             StartStationID =1,
                             StartStation = StationDAO.GetStationByID(1),

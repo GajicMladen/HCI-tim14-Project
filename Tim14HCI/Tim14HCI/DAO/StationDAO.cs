@@ -30,6 +30,14 @@ namespace Tim14HCI.DAO
 
         }
 
+        public static OnWayStation GetOnWayStationByID(int id)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                return context.onWayStations.Where(s => s.StationID == id).FirstOrDefault();
+            }
+        }
+
         public static Station GetStationByName(string name)
         {
             using (var context = new SerbiaRailwayContext())

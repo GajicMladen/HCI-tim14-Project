@@ -38,6 +38,25 @@ namespace Tim14HCI.Contorls
             InitializeComponent();
 
             lbl_Name.Content = station.Name;
+            string linkContent = "";
+
+            List<Station> links = StationDAO.getLinkedStations(station);
+
+            if (links.Count > 0)
+            {
+                foreach (var link in links)
+                {
+                    linkContent += link.Name + ", ";
+                }
+
+                linkContent = linkContent.Substring(0, linkContent.Length - 2);
+            }
+            else
+            {
+                linkContent = "Nema povezanih stanica!";
+            }
+
+            lbl_Links.Content = linkContent;
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)

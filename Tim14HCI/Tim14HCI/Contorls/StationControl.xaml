@@ -25,11 +25,15 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="1" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Naziv stanice:</Label>
             <Label Grid.Row="1" Grid.Column="2" x:Name="lbl_Name"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">test_naziv</Label>
+
+            <Label Grid.Row="2" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Susedne stanice:</Label>
+            <Label Grid.Row="2" Grid.Column="2" x:Name="lbl_Links"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">link1, link2, link3</Label>
         </Grid>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="569,21,0,18">

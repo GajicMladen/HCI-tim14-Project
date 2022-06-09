@@ -139,5 +139,29 @@ namespace Tim14HCI.Windows
                 newStation.Show();
             }
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                context.trainLines.Add(new TrainLine
+                {
+                    TrainID = 1,
+                    StartStationID = 3,
+                    EndStationID = 1,
+                    Departures = null
+                });
+                context.onWayStations.Add(new OnWayStation { StationOrder = 1, StationID = 2, Price = 200, Time = 60, TrainLineID = 1 });
+                context.departures.Add(new Departure
+                {
+                    TrainLineID = 1,
+                    startDate = new DateTime(2022, 6, 8, 12, 30, 0),
+                    endDate = new DateTime(2022, 6, 8, 14, 0, 0),
+                    Tickets = null
+                });
+
+                context.SaveChanges();
+            }
+        }
     }
 }

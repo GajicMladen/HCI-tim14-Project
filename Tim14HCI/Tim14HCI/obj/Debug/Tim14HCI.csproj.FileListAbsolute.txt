@@ -627,3 +627,5 @@ C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.
 C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.csproj.CopyComplete
 C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.exe
 C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Tim14HCI.pdb
+C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\DepartureControl.g.cs
+C:\Fakultet\HCI\Projekat\HCI-tim14-Project\Tim14HCI\Tim14HCI\obj\Debug\Contorls\DepartureControl.baml

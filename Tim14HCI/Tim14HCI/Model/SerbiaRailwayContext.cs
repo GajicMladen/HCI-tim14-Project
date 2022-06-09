@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tim14HCI.DAO;
 
 namespace Tim14HCI.Model
 {
@@ -114,12 +115,20 @@ namespace Tim14HCI.Model
             modelBuilder.Entity<Ticket>()
                 .HasOne<User>(t => t.User)
                 .WithMany(u => u.Tickets)
-                .HasForeignKey(t => t.UserID);
+                .HasForeignKey(t => t.UserID)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Ticket>()
                 .HasOne<Departure>(t => t.Departure)
                 .WithMany(dep => dep.Tickets)
-                .HasForeignKey(t => t.DepartureID);
+                .HasForeignKey(t => t.DepartureID)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Ticket>()
+                .HasOne<Station>(t => t.StartStation)
+                .WithMany(st => st.TicketsStartStation)
+                .HasForeignKey(t => t.StartStationID)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Ticket>()
                 .HasOne<Station>(t => t.StartStation)
@@ -164,6 +173,7 @@ namespace Tim14HCI.Model
                 new LinkedStation { Station1ID = 1, Station2ID = 3 },
                 new LinkedStation { Station1ID = 1, Station2ID = 5 },
                 new LinkedStation { Station1ID = 2, Station2ID = 3 },
+                new LinkedStation { Station1ID = 4, Station2ID = 2 },
                 new LinkedStation { Station1ID = 5, Station2ID = 6 }
                 );
 
@@ -208,6 +218,7 @@ namespace Tim14HCI.Model
                 new Ticket() { TicketID = 10, DepartureID = 6, StartStationID = 3, EndStationID = 2, Price = 400, Seat = 9, ForReservation = true, UserID = 3 },
                 new Ticket() { TicketID = 11, DepartureID = 7, StartStationID = 3, EndStationID = 5, Price = 1650, Seat = 10, ForReservation = true, UserID = 4 },
                 new Ticket() { TicketID = 12, DepartureID = 8, StartStationID = 3, EndStationID = 1, Price = 950, Seat = 12, ForReservation = false, UserID = 3 }
+
                 );
         }
     }

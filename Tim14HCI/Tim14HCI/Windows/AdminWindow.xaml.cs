@@ -29,7 +29,8 @@ namespace Tim14HCI.Windows
 
         Window parent;
         User user;
-        public AdminWindow(Window x,User user)
+
+        public AdminWindow(Window x, User user)
         {
             parent = x;
             this.user = user;
@@ -53,10 +54,10 @@ namespace Tim14HCI.Windows
 
         private void Grid_GotFocus(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
-        private void fillStackDataWithTrains() {
+        public void fillStackDataWithTrains() {
 
             stack_Data.Children.Clear();
 
@@ -68,9 +69,8 @@ namespace Tim14HCI.Windows
                 TrainControl trainControl = new TrainControl(train);
                 stack_Data.Children.Add(trainControl);
             }
-
         }
-        private void fillStackDataWithStations()
+        public void fillStackDataWithStations()
         {
             stack_Data.Children.Clear();
 
@@ -82,7 +82,6 @@ namespace Tim14HCI.Windows
                 StationControl stationControl = new StationControl(station);
                 stack_Data.Children.Add(stationControl);
             }
-
         }
         private void fillStackDataWithTrainLines()
         {
@@ -96,7 +95,18 @@ namespace Tim14HCI.Windows
                 TrainLineControl stationControl = new TrainLineControl(trainLine);
                 stack_Data.Children.Add(stationControl);
             }
+        }
 
+        public void fillStackDataWithDepartures()
+        {
+            stack_Data.Children.Clear();
+            List<Departure> departures = DepartureDAO.GetAllDepartures();
+
+            foreach(Departure d in departures)
+            {
+                DepartureManagerControl departureControl = new DepartureManagerControl(d);
+                stack_Data.Children.Add(departureControl);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -122,9 +132,37 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NewTrainLine newTrainLine = new NewTrainLine(this);
-            Visibility = Visibility.Hidden;
-            newTrainLine.Show();
+            if ((string)lbl_ShownData.Content == "Vozne linije")
+            {
+                NewTrainLine newTrainLine = new NewTrainLine(this);
+                Visibility = Visibility.Hidden;
+                newTrainLine.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Vozovi")
+            {
+                NewTrain newTrain = new NewTrain(this);
+                Visibility = Visibility.Hidden;
+                newTrain.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Stanice")
+            {
+                NewStation newStation = new NewStation(this);
+                Visibility = Visibility.Hidden;
+                newStation.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Red vožnje")
+            {
+                NewDeparture newDeparture = new NewDeparture(this);
+                Visibility = Visibility.Hidden;
+                newDeparture.Show();
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            lbl_ShownData.Content = "Red vožnje";
+            stack_Data.Children.Clear();
+            fillStackDataWithDepartures();
         }
     }
 }

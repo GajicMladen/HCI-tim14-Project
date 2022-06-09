@@ -676,7 +676,19 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.Departure", "Departure")
                         .WithMany("Tickets")
                         .HasForeignKey("DepartureID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Tim14HCI.Model.Station", "EndStation")
+                        .WithMany("TicketsEndStation")
+                        .HasForeignKey("EndStationID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Tim14HCI.Model.Station", "StartStation")
+                        .WithMany("TicketsStartStation")
+                        .HasForeignKey("StartStationID")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Tim14HCI.Model.Station", "EndStation")
@@ -694,7 +706,7 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 

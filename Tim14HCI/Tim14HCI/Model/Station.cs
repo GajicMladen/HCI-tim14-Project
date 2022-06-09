@@ -20,6 +20,8 @@ namespace Tim14HCI.Model
 
         public virtual List<Ticket> TicketsEndStation { get; set; }
 
+
+        public virtual List<Ticket> TicketsEndStation { get; set; }
         //for Linked Stations
         public virtual ICollection<LinkedStation> stations1 { get; set; }
         public virtual ICollection<LinkedStation> stations2 { get; set; }

@@ -30,7 +30,7 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-        <StackPanel Margin="0,60,0,0" x:Name="satck_AllStations" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" >
+        <StackPanel Margin="0,60,0,0" x:Name="succesStaionsDropPanel" MinHeight="100" AllowDrop="True" Drop="satck_AllStations_Drop" DragOver="satck_AllStations_DragOver" >
             <StackPanel.Background>
                 <SolidColorBrush Color="#FF26299C" Opacity="0"/>
             </StackPanel.Background>
@@ -41,15 +41,17 @@
                 <RowDefinition Height="368*"/>
                 <RowDefinition Height="63*"/>
             </Grid.RowDefinitions>
-            <StackPanel Background="#FF8E3A3A" Orientation="Horizontal" AllowDrop="True" Drop="StackPanel_Drop_1" >
-                <Label Foreground="White" FontWeight="Bold">Pocetna stanica:</Label>
+
+            <StackPanel x:Name="startStationDropPanel" Background="#FF8E3A3A" Orientation="Horizontal" AllowDrop="True" Drop="startStation_Drop" >
+                <Label Foreground="White" FontWeight="Bold">Početna stanica:</Label>
+
             </StackPanel>
             <Grid Grid.Row="1" Background="#FFA69595" Margin="0,2.942,0,63.058" Grid.RowSpan="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="373*"/>
                     <ColumnDefinition Width="235*"/>
                 </Grid.ColumnDefinitions>
-                <WrapPanel Margin="0 30 0 0"  Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="StackPanel_Drop" >
+                <WrapPanel x:Name="onWayStationsDropPanel" Margin="0 30 0 0"  Orientation="Horizontal" AllowDrop="True" DragOver="StackPanel_DragOver" Drop="onWayStations_Drop" >
                     <WrapPanel.Background>
                         <SolidColorBrush Color="#FFA69595"/>
                     </WrapPanel.Background>
@@ -62,7 +64,7 @@
                     </Canvas.Background>
                 </Canvas>
             </Grid>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#FF8E3A3A" AllowDrop="True" Drop="StackPanel_Drop_2">
+            <StackPanel x:Name="endStationDropPanel" Grid.Row="2" Orientation="Horizontal" Background="#FF8E3A3A" AllowDrop="True" Drop="endStation_drop">
                 <Label Foreground="White" FontWeight="Bold">Krajnja stanica:</Label>
             </StackPanel>
         </Grid>

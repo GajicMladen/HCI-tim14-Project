@@ -21,6 +21,11 @@ namespace Tim14HCI.Contorls
     /// </summary>
     public partial class MapControl : UserControl
     {
+        public MapControl()
+        {
+            InitializeComponent();
+        }
+
         public MapControl(List<Station> route)
         {
             InitializeComponent();

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Tim14HCI.Contorls.DepartureHeaderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tim14HCI.Contorls"
+             mc:Ignorable="d" 
+              Height="75" Width="852">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="35*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <SolidColorBrush Color="#FF9B1C12" Opacity="0.85"/>
+        </Grid.Background>
+        <Label Grid.Column="0" Foreground="White" Content="Vreme polaska" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Height="75" Width="156"/>
+        <Label Grid.Column="1" Foreground="White" Content="Vreme dolaska" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Height="75" Width="156"/>
+        <Label Grid.Column="2" Foreground="White" Content="Mesto polaska" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Height="75" Width="156"/>
+        <Label Grid.Column="3" Foreground="White" Content="Mesto dolaska" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Height="75" Width="156"/>
+        <Label Grid.Column="4" Foreground="White" Content="Cena" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Height="75" Width="156"/>
+    </Grid>
+</UserControl>

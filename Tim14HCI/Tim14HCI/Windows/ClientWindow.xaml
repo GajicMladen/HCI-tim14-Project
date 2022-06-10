@@ -88,15 +88,26 @@
 
             <Label Grid.Column="3" Content="Vreme dolaska:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
             <TextBox Grid.Column="3" x:Name="txbx_end_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+            <Grid Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Margin="0 20 10 10" Background="#FF3B3EA9" Click="Search">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/search.png" Margin="3" Height="25"/>
+                        <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Pretraži</Label>
 
-            <Button Grid.Column="4" Margin="15 20 15 10" Background="#FF3B3EA9" Click="Search">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Images/search.png" Margin="3" Height="25"/>
-                    <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Pretraži</Label>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" Margin="0 20 10 10" Background="#FFBF1616" Click="CancelSearch">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/Button-Close-icon.png" Margin="3" Height="25"/>
+                        <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Poništi</Label>
 
-                </StackPanel>
-            </Button>
-
+                    </StackPanel>
+                </Button>
+            </Grid>
         </Grid>
 
         <!--Content-->
@@ -114,11 +125,13 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.ColumnSpan="4"  Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*"></RowDefinition>
+                </Grid.RowDefinitions>
                 <Grid.Background>
                     <SolidColorBrush Color="#FFFFF9F9" Opacity="0.5"/>
                 </Grid.Background>
-
-                <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" >
                     <ListBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.2"/>
                     </ListBox.Background>
@@ -155,7 +168,7 @@
                 <Label Grid.Column="0" x:Name="lbl_chosen" Content="Izabrano: "  HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="146" FontSize="16" Margin="0 0 0 0"  />
                 <Label Grid.Column="1" x:Name="lbl_departure" Content=""  HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="698" FontSize="16" Margin="10,0,23,0"  />
                 <Label Grid.Column="2" Content="Broj sedišta:"  HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" FontSize="16" Margin="0 0 0 0"  />
-                <TextBox Grid.Column="3" x:Name="txbx_seat" HorizontalAlignment="Left" Height="19" Margin="0,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
+                <TextBox Grid.Column="3" x:Name="txbx_seat" HorizontalAlignment="Left" Height="19" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="70"/>
                 <Label x:Name="lbl_range" Content="" Grid.Column="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="White" Height="48" Width="49"/>
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="4">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tim14HCI.DAO;
 
 namespace Tim14HCI.Model
 {
@@ -27,11 +28,11 @@ namespace Tim14HCI.Model
         public float getTotalPrice() {
             float ret = 0;
 
-            foreach (OnWayStation onWayStation in OnWayStations) {
+            foreach (OnWayStation onWayStation in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(this.TrainLineID)) {
                 ret += onWayStation.Price;
             }
 
-            ret += EndStation.Price;
+            
 
             return ret;
         }
@@ -39,12 +40,12 @@ namespace Tim14HCI.Model
         {
             float ret = 0;
 
-            foreach (OnWayStation onWayStation in OnWayStations)
+            foreach (OnWayStation onWayStation in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(this.TrainLineID))
             {
                 ret += onWayStation.Time;
             }
 
-            ret += EndStation.Time;
+            
 
             return ret;
         }

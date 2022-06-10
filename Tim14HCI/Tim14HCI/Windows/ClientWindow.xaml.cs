@@ -21,20 +21,29 @@ namespace Tim14HCI.Windows
     /// <summary>
     /// Interaction logic for ClientWindow.xaml
     /// </summary>
+    /// 
+
+    public enum DepartureEnum
+    {
+        Departure,
+        OnWayDeparture
+    }
+
     public partial class ClientWindow : Window
     {
         Window parent;
         User user;
         int chosenDeparture;
+        int chosenStartLocation;
         int chosenEndLocation;
         String price;
 
         String startLocationSearch;
         String endLocationSearch = "";
         String startDatetimeSearch;
-        String endDatetimeSearch;
-        String seatNumber;
+        String endDatetimeSearch;        
         int capacity;
+        List<SearchableDeparture> searchableDepartures = new List<SearchableDeparture>();
 
         String[] acceptableDateTimeFormats = { "dd.MM.yyyy.", "dd.MM.yyyy. HH:mm" };
 
@@ -51,8 +60,7 @@ namespace Tim14HCI.Windows
             InitializeComponent();
             lbl_logedUser.Content = user.FirstName + " " + user.LastName;
             lbl_userRole.Content = "Korisnik";
-            fillStackDataWithDepartures();
-            //grid_test.Visibility = Visibility.Collapsed;
+            fillStackDataWithDepartures();            
             AddHandler(DepartureControl.DepartureChosenEvent,
                 new RoutedEventHandler(DepartureChosenEventHandler));
 
@@ -66,7 +74,7 @@ namespace Tim14HCI.Windows
                 chosenDeparture = args.DepartureID;
                 chosenEndLocation = args.EndStationID;
                 Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
-                //OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+                chosenStartLocation = departure.TrainLine.StartStationID;
                 OnWayStation onWayStation = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
                 price = args.Price;
                 lbl_departure.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm") + "    " + args.ArrivalTime + "    " + departure.TrainLine.StartStation.Name + "    " + onWayStation.Station.Name + "    " + price;
@@ -77,11 +85,11 @@ namespace Tim14HCI.Windows
             {
                 chosenDeparture = args.DepartureID;
                 chosenEndLocation = args.EndStationID;
-                int chosenStartLocation = args.StartStationID;
-                Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
-                //OnWayStation onWayStation = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+                chosenStartLocation = args.StartStationID;
+                Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);                
                 OnWayStation onWayStation = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
                 OnWayStation startStation = OnWayStationDAO.GetOnWayStationByID(chosenStartLocation);
+                chosenStartLocation = startStation.StationID;
                 price = args.Price;
                 lbl_departure.Content = args.StartTime + "    " + args.EndTime + "    " + startStation.Station.Name + "    " + onWayStation.Station.Name + "    " + price;
                 lbl_range.Content = "(1-" + TrainDAO.GetTrainByID(departure.TrainLine.TrainID).Capacity.ToString() + ")";
@@ -89,40 +97,25 @@ namespace Tim14HCI.Windows
             }
 
         }
-        /*
-        private OnWayStation GetOnWayStationByID(TrainLine trainLine, int chosenEndLocation)
-        {
-            foreach(OnWayStation ows in trainLine.OnWayStations)
-            {
-                if (ows.OnWayStationID == chosenEndLocation)
-                {
-                    return ows;
-                }
-            }
-            if (trainLine.EndStation.OnWayStationID == chosenEndLocation)
-            {
-                return trainLine.EndStation;
-            }
-            return null;
-        }*/
 
         private void fillStackDataWithDepartures()
         {
             stack_Data.Children.Clear();
+            searchableDepartures.Clear();
+            DepartureHeaderControl dhc = new DepartureHeaderControl();
+            stack_Data.Children.Add(dhc);
             List<Departure> departures = DepartureDAO.GetAllDepartures();
 
             foreach (Departure departure in departures)
             {
-                //foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
                 foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
                 {
                     DepartureControl departureControl = new DepartureControl(departure, ows);
+                    SearchableDeparture sd = new SearchableDeparture(departure, ows, DepartureEnum.Departure);
+                    searchableDepartures.Add(sd);
                     stack_Data.Children.Add(departureControl);                    
                 }
                 fillStacDataWithOnWayDepartures(departure);
-                /*
-                DepartureControl endDepartureControl = new DepartureControl(departure, departure.TrainLine.EndStation, true);
-                stack_Data.Children.Add(endDepartureControl);*/
             }           
         }
 
@@ -141,6 +134,8 @@ namespace Tim14HCI.Windows
                     if (endStation.StationOrder > ows.StationOrder)
                     {
                         DepartureControl departureControl = new DepartureControl(departure, ows, endStation);
+                        SearchableDeparture sd = new SearchableDeparture(departure, ows, endStation, DepartureEnum.OnWayDeparture);
+                        searchableDepartures.Add(sd);
                         stack_Data.Children.Add(departureControl);
                     }
                     ii++;
@@ -162,34 +157,36 @@ namespace Tim14HCI.Windows
 
         private void ReservationClick(object sender, RoutedEventArgs e)
         {
-            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
-            //OnWayStation ows = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);           
             OnWayStation ows = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
             int sn = GetSeatNumber();
             if (sn == 0)
             {
                 return;
             }
-            Ticket ticket = new Ticket(true, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID, sn);
-            //Ticket ticket = new Ticket(true, departure, departure.TrainLine.StartStation, ows.Station, Double.Parse(price), user);
+            Ticket ticket = new Ticket(true, departure.DepartureID, chosenStartLocation, ows.StationID, Double.Parse(price), user.UserID, sn);            
             TicketDAO.AddTicket(ticket);
             MessageBox.Show("Karta uspešno rezervisana!");
+            lbl_range.Content = "";
+            txbx_seat.Text = "";
+            lbl_departure.Content = "";
         }     
 
         private void BuyClick(object sender, RoutedEventArgs e)
         {
-            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
-            //OnWayStation ows = GetOnWayStationByID(departure.TrainLine, chosenEndLocation);
+            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);            
             OnWayStation ows = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
             int sn = GetSeatNumber();
             if (sn == 0)
             {
                 return;
             }
-            Ticket ticket = new Ticket(false, departure.DepartureID, departure.TrainLine.StartStationID, ows.StationID, Double.Parse(price), user.UserID, sn);
-            //Ticket ticket = new Ticket(false, departure, departure.TrainLine.StartStation, ows.Station, Double.Parse(price), user);
+            Ticket ticket = new Ticket(false, departure.DepartureID, chosenStartLocation, ows.StationID, Double.Parse(price), user.UserID, sn);            
             TicketDAO.AddTicket(ticket);
             MessageBox.Show("Karta uspešno kupljena!");
+            lbl_range.Content = "";
+            txbx_seat.Text = "";
+            lbl_departure.Content = "";
         }
 
         private void ShowBoughtTickets(object sender, RoutedEventArgs e)
@@ -213,9 +210,17 @@ namespace Tim14HCI.Windows
             trainLinesWindow.Show();
         }
 
+        private void CancelSearch(object sender, RoutedEventArgs e)
+        {
+            txbx_start_time.Text = "";
+            txbx_end_time.Text = "";
+            txbx_start_location.Text = "";
+            txbx_end_location.Text = "";
+            fillStackDataWithDepartures();
+        }
+
         private void Search(object sender, RoutedEventArgs e)
         {
-            List<Departure> departures = DepartureDAO.GetAllDepartures();
 
             this.startLocationSearch = txbx_start_location.Text;
             this.endLocationSearch = txbx_end_location.Text;
@@ -228,56 +233,36 @@ namespace Tim14HCI.Windows
                 return;
             }
 
-            List<Departure> startingStationFiltered = FilterByStartingStation(departures);
-            List<Departure> destinationFiltered = FilterByDestination(startingStationFiltered);
-            List<Departure> startDateFiltered = FilterByStartDatetime(destinationFiltered);
-            List<Departure> endDateFiltered = FilterByEndDatetime(startDateFiltered);
+            List<SearchableDeparture> startingStationFiltered = FilterByStartingStation(searchableDepartures);
+            List<SearchableDeparture> destinationFiltered = FilterByDestination(startingStationFiltered);
+            List<SearchableDeparture> startDateFiltered = FilterByStartDatetime(destinationFiltered);
+            List<SearchableDeparture> endDateFiltered = FilterByEndDatetime(startDateFiltered);
 
             stack_Data.Children.Clear();
-            foreach (Departure departure in endDateFiltered)
+            DepartureHeaderControl dhc = new DepartureHeaderControl();
+            stack_Data.Children.Add(dhc);
+            foreach (SearchableDeparture departure in endDateFiltered)
             {
-                foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
+                if (departure.DepartureKind == DepartureEnum.Departure)
                 {
-                    if (this.endLocationSearch == "")
-                    {
-                        DepartureControl departureControl = new DepartureControl(departure, ows);
-                        stack_Data.Children.Add(departureControl);
-                    }
-                    else
-                    {
-                        if (ows.Station.Name.ToLower() == this.endLocationSearch.ToLower())
-                        {
-                            DepartureControl departureControl = new DepartureControl(departure, ows);
-                            stack_Data.Children.Add(departureControl);
-                        }
-                    }                    
+                    DepartureControl departureControl = new DepartureControl(departure.Departure, departure.EndLocation);
+                    stack_Data.Children.Add(departureControl);
                 }
-                /*
-                OnWayStation endStation = OnWayStationDAO.GetEndStationByTrainLineID(departure.TrainLineID);
-                if (this.endLocationSearch != "")
-                {
-                    //if (this.endLocationSearch.ToLower() == departure.TrainLine.EndStation.Station.Name.ToLower())   
-                    if (this.endLocationSearch.ToLower() == endStation.Station.Name.ToLower())
-                    {
-                        DepartureControl endDepartureControl = new DepartureControl(departure, endStation, true);
-                        stack_Data.Children.Add(endDepartureControl);
-                    }
-                } 
                 else
                 {
-                    DepartureControl endDepartureControl = new DepartureControl(departure, endStation, true);
-                    stack_Data.Children.Add(endDepartureControl);
-                }*/
+                    DepartureControl departureControl = new DepartureControl(departure.Departure, departure.StartLocation, departure.EndLocation);
+                    stack_Data.Children.Add(departureControl);
+                }
             }
         }
         
-        private List<Departure> FilterByEndDatetime(List<Departure> departures)
+        private List<SearchableDeparture> FilterByEndDatetime(List<SearchableDeparture> departures)
         {
-            List<Departure> filtered = new List<Departure>();
+            List<SearchableDeparture> filtered = new List<SearchableDeparture>();
             if (this.endDatetimeSearch != "")
             {
                 DateTime dt = DateTime.ParseExact(this.endDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-                foreach (Departure departure in departures)
+                foreach (SearchableDeparture departure in departures)
                 {                  
                     if (DateTime.Compare(departure.GetEndTime(), dt) <= 0)
                     {
@@ -292,15 +277,15 @@ namespace Tim14HCI.Windows
             return filtered;
         }
 
-        private List<Departure> FilterByStartDatetime(List<Departure> departures)
+        private List<SearchableDeparture> FilterByStartDatetime(List<SearchableDeparture> departures)
         {
-            List<Departure> filtered = new List<Departure>();
+            List<SearchableDeparture> filtered = new List<SearchableDeparture>();
             if (this.startDatetimeSearch != "")
             {
                 DateTime dt = DateTime.ParseExact(this.startDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-                foreach (Departure departure in departures)
+                foreach (SearchableDeparture departure in departures)
                 {
-                    if (DateTime.Compare(departure.StartTime, dt) >= 0)
+                    if (DateTime.Compare(departure.GetStartTime(), dt) >= 0)
                     {
                         filtered.Add(departure);
                     }
@@ -313,27 +298,17 @@ namespace Tim14HCI.Windows
             return filtered;
         }
 
-        private List<Departure> FilterByDestination(List<Departure> departures)
+        private List<SearchableDeparture> FilterByDestination(List<SearchableDeparture> departures)
         {
-            List<Departure> filtered = new List<Departure>();
+            List<SearchableDeparture> filtered = new List<SearchableDeparture>();
             if (this.endLocationSearch != "")
             {                
-                foreach (Departure departure in departures)
+                foreach (SearchableDeparture departure in departures)
                 {
-                    //foreach (OnWayStation ows in departure.TrainLine.OnWayStations)
-                    foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
-                    {
-
-                        if (ows.Station.Name.ToLower() == this.endLocationSearch.ToLower())
-                        {
-                            filtered.Add(departure);
-                        }
-                    }
-                    //if (departure.TrainLine.EndStation.Station.Name.ToLower() == this.endLocationSearch.ToLower())
-                    if (OnWayStationDAO.GetEndStationByTrainLineID(departure.TrainLineID).Station.Name.ToLower() == this.endLocationSearch.ToLower())
+                    if (departure.GetEndStationName().ToLower() == this.endLocationSearch.ToLower())
                     {
                         filtered.Add(departure);
-                    }
+                    }                                               
                 }
             }
             else
@@ -343,15 +318,14 @@ namespace Tim14HCI.Windows
             return filtered;
         }
 
-        private List<Departure> FilterByStartingStation(List<Departure> departures)
+        private List<SearchableDeparture> FilterByStartingStation(List<SearchableDeparture> departures)
         {
-            List<Departure> filtered = new List<Departure>();
+            List<SearchableDeparture> filtered = new List<SearchableDeparture>();
             if (this.startLocationSearch != "")
             {
-                foreach(Departure departure in departures)
-                {
-                    //if (departure.TrainLine.StartStation.Name.ToLower() == this.startLocationSearch.ToLower())
-                    if (TrainLinesDAO.GetStartStationByTrainLineID(departure.TrainLineID).Name.ToLower() == this.startLocationSearch.ToLower())
+                foreach(SearchableDeparture departure in departures)
+                {                    
+                    if (departure.GetStartStationName().ToLower() == this.startLocationSearch.ToLower())
                     {
                         filtered.Add(departure);
                     }
@@ -415,4 +389,112 @@ namespace Tim14HCI.Windows
             return true;
         }
     }
+
+    public class SearchableDeparture
+    {
+        public Departure Departure { get; set; }
+        public OnWayStation StartLocation { get; set; }
+        public OnWayStation EndLocation { get; set; }
+        public DepartureEnum DepartureKind { get; set; }
+
+        public SearchableDeparture()
+        {
+
+        }
+
+        public SearchableDeparture(Departure departure, OnWayStation endStation, DepartureEnum kind)
+        {
+            this.Departure = departure;
+            this.EndLocation = endStation;
+            this.DepartureKind = kind;
+        }
+
+        public SearchableDeparture(Departure departure, OnWayStation startStation, OnWayStation endStation, DepartureEnum kind)
+        {
+            this.Departure = departure;
+            this.StartLocation = startStation;
+            this.EndLocation = endStation;
+            this.DepartureKind = kind;
+        }
+
+        public String GetStartStationName()
+        {
+            if (this.DepartureKind == DepartureEnum.Departure)
+            {                
+                return TrainLinesDAO.getTrainLineByID(this.Departure.TrainLineID).StartStation.Name;
+            }
+            else
+            {
+                return this.StartLocation.Station.Name;
+            }
+        }
+
+        public String GetEndStationName()
+        {
+            return this.EndLocation.Station.Name;
+        }
+
+        public DateTime GetStartTime()
+        {
+            if (this.DepartureKind == DepartureEnum.Departure)
+            {
+                return this.Departure.StartTime;
+            }
+            else
+            {
+                return CountStartTimeOnWay();
+            }
+        }
+
+        public DateTime GetEndTime()
+        {
+            int ii = 1;
+            DateTime endTime = this.Departure.StartTime;
+            while (true)
+            {
+                OnWayStation ows = OnWayStationDAO.GetOnWayStationByOrderNumber(this.Departure.TrainLineID, ii);
+
+                if (ows == null)
+                {
+                    break;
+                }
+                if (ows.StationOrder <= this.EndLocation.StationOrder)
+                {
+                    endTime = endTime.AddMinutes(ows.Time);
+                }
+                else
+                {
+                    break;
+                }
+
+                ii++;
+            }
+            return endTime;
+        }
+        private DateTime CountStartTimeOnWay()
+        {
+            int ii = 1;
+            DateTime startTime = this.Departure.StartTime;
+            while (true)
+            {
+                OnWayStation ows = OnWayStationDAO.GetOnWayStationByOrderNumber(this.Departure.TrainLineID, ii);
+
+                if (ows == null)
+                {
+                    break;
+                }
+
+                if (ows.StationOrder <= this.StartLocation.StationOrder)
+                {
+                    startTime = startTime.AddMinutes(ows.Time);                    
+                }
+                else
+                {
+                    break;
+                }
+                ii++;
+            }
+            return startTime;
+        }
+    }      
 }

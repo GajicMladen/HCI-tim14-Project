@@ -24,11 +24,11 @@
             <RowDefinition Height="123*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        <Syncfusion:SfStepProgressBar x:Name="progresBar" SelectedIndex="0" Grid.Row="0" HorizontalContentAlignment="Center" SelectedItemStatus="Indeterminate" HorizontalAlignment="Center" VerticalAlignment="Center" Height="74"   Width="500" Grid.Column="1" Margin="152.6,2,93,2.4"  >
-            <Syncfusion:StepViewItem Content="Stanice" />
-            <Syncfusion:StepViewItem Content="Voz" />
-            <Syncfusion:StepViewItem Content="Cene" />
-            <Syncfusion:StepViewItem Content="Potvrda" />
+        <Syncfusion:SfStepProgressBar x:Name="progresBar" SelectedIndex="0" Grid.Row="0" HorizontalContentAlignment="Center" SelectedItemStatus="Indeterminate" HorizontalAlignment="Center" VerticalAlignment="Center" Height="74"   Width="500" Grid.Column="1" Margin="152.6,2,93,2.4" IsTabStop="False" >
+            <Syncfusion:StepViewItem Content="Stanice" IsTabStop="False"/>
+            <Syncfusion:StepViewItem Content="Voz" IsTabStop="False" />
+            <Syncfusion:StepViewItem Content="Cene" IsTabStop="False" />
+            <Syncfusion:StepViewItem Content="Potvrda" IsTabStop="False" />
         </Syncfusion:SfStepProgressBar>
         <Grid x:Name="grid_display" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,78,2,0.2" Grid.RowSpan="3" >
 

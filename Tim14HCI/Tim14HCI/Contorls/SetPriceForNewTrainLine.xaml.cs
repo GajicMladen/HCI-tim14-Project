@@ -35,11 +35,11 @@ namespace Tim14HCI.Contorls
             int i = 0;
             route.ForEach(station =>
             {
-                addSetPriceItem(station,i ==0);
+                addSetPriceItem(station,i);
                 i++;
             });
         }
-        private void addSetPriceItem(Station station,bool startStation) {
+        private void addSetPriceItem(Station station,int stationIndex) {
 
             StackPanel stackPanel = new StackPanel();
             stackPanel.Orientation = Orientation.Vertical;
@@ -48,22 +48,24 @@ namespace Tim14HCI.Contorls
 
             stackPanel.Children.Add(stationForDragAndDrop);
 
-            if (!startStation) {
+            if (stationIndex != 0) {
                 StackPanel stackPanelPrice = new StackPanel();
-                Label labelPrice = new Label() { Content= "Cena ( din ) : "};
+                Label labelPrice = new Label() { Content= "Cena ( din ) : "+(2 * stationIndex - 1).ToString() };
                 TextBox textBoxPrice = new TextBox();
                 textBoxPrice.Width = 75;
                 textBoxPrice.PreviewTextInput += NumberValidationTextBox;
+                textBoxPrice.TabIndex = 2 * stationIndex - 1;
                 stackPanelPrice.Orientation = Orientation.Horizontal;
                 stackPanelPrice.HorizontalAlignment = HorizontalAlignment.Right;
                 stackPanelPrice.Children.Add(labelPrice);
                 stackPanelPrice.Children.Add(textBoxPrice);
 
                 StackPanel stackPanelTime = new StackPanel();
-                Label labelTime = new Label() { Content = "Vreme ( min ) : " };
+                Label labelTime = new Label() { Content = "Vreme ( min ) : "+(2 * stationIndex ).ToString() };
                 TextBox textBoxTime = new TextBox();
                 textBoxTime.Width = 75;
                 textBoxTime.PreviewTextInput += NumberValidationTextBox;
+                textBoxTime.TabIndex = 2 * stationIndex;
                 stackPanelTime.Orientation = Orientation.Horizontal;
                 stackPanelTime.HorizontalAlignment = HorizontalAlignment.Right;
                 stackPanelTime.Children.Add(labelTime);
@@ -71,7 +73,7 @@ namespace Tim14HCI.Contorls
 
                 stackPanel.Children.Add(stackPanelPrice);
                 stackPanel.Children.Add(stackPanelTime);
-
+                
                 prices.Add(textBoxPrice);
                 times.Add(textBoxTime);
             }

@@ -22,6 +22,8 @@
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="IsTabStop" Value="False" />
+                    <Setter Property="Focusable" Value="False" />
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>

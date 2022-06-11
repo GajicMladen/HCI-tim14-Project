@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Tim14HCI.Contorls;
 using Tim14HCI.DAO;
 using Tim14HCI.Model;
+using Tim14HCI.Help.Providers;
 
 namespace Tim14HCI.Windows
 {
@@ -149,6 +150,21 @@ namespace Tim14HCI.Windows
             parent.Show();
         }
 
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = ClientHelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                ClientHelpProvider.ShowHelp("Client", this);
+            }
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
         private void btn_logOut_Click(object sender, RoutedEventArgs e)
         {
             parent.Show();
@@ -157,7 +173,12 @@ namespace Tim14HCI.Windows
 
         private void ReservationClick(object sender, RoutedEventArgs e)
         {
-            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);           
+            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+            if (departure == null)
+            {
+                MessageBox.Show("Ruta nije izabrana!");
+                return;
+            }
             OnWayStation ows = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
             int sn = GetSeatNumber();
             if (sn == 0)
@@ -174,7 +195,12 @@ namespace Tim14HCI.Windows
 
         private void BuyClick(object sender, RoutedEventArgs e)
         {
-            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);            
+            Departure departure = DepartureDAO.GetDepartureByID(chosenDeparture);
+            if (departure == null)
+            {
+                MessageBox.Show("Ruta nije izabrana!");
+                return;
+            }
             OnWayStation ows = OnWayStationDAO.GetOnWayStationByID(chosenEndLocation);
             int sn = GetSeatNumber();
             if (sn == 0)

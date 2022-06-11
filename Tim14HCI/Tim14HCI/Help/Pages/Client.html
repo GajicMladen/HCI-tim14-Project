@@ -1,0 +1,153 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Železnice Srbije - Pomoć klijentu</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        img {
+            margin: 10px;
+        }
+
+        .mainPanel {
+            background-color: gainsboro;
+            margin: 5px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .contens {
+            margin-left: 20px;
+        }
+
+        .contens li {
+            margin-top: 4px;
+        }
+
+        .item {
+            margin-left:20px
+        }
+
+        .text {
+            margin-left: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mainPanel">      
+        <img src="../Images/serbian-railways.png" />
+        
+        <div>
+            <h1 style="margin: 5px;">Sistem pomoći za klijente</h1>
+        </div>
+        <div class="contens">
+            <h4>
+                Na stranici namenjenoj klijentima, klijenti su u mogućnosti da:
+            </h4>
+            <ul>
+                <li>Pregledaju red vožnje</li>
+                <li>Izaberu željenu rutu</li>
+                <li>Izaberu željeno sedište</li>
+                <li>Kupe kartu</li>
+                <li>Rezervišu kartu</li>
+                <li>Pregledaju kupljene karte</li>
+                <li>Pregledaju rezervisane karte</li>
+                <li>Pregledaju vozne linije</li>
+                <li>Vrše pretragu i filtriranje nad redom vožnje</li>
+                <li>Izvrše odjavu sa aplikacije</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h3>Pregled reda vožnje</h3>
+            <div class="text">
+                <p>
+                    Klijent je u mogućnosti da pregleda dostupan red vožnje. Dostupni su osnovni podaci o svakoj mogućoj ruti. U osnovne podatke o
+                    ruti spadaju mesto polaska i mesto dolaska, početno vreme, vreme stizanja na krajnju stanicu, kao i cena karte na toj ruti.
+                </p>
+                <img src="../Images/schedule-overview.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Izbor željene rute</h3>
+            <div class="text">
+                <p>
+                    Unutar samog pregleda reda vožnje postoji dugme "Izaberi", ovo dugme klijentu pruža mogućnost izbora rute na kojoj želi da putuje.
+                    Pritiskom na ovo dugme klijentu će ispod pregleda reda vožnje biti prikazani osnovni podaci o izabranoj ruti.
+                </p>
+                <img src="../Images/route-chosen.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Izbor željenog sedišta</h3>
+            <div class="text">
+                <p>
+                    Nakon što klijent izabere željenu rutu mora uneti i broj željenog sedišta. Sa desne strane polja za unos broja sedišta nalazi se raspon koji
+                    predstavlja brojeve svih sedišta u vozu. Broj sedišta u vozu zavisi od modela voza koji će biti korišćen na toj ruti. Ispravan unos predstavlja
+                    numerička vrednost i broj koji se nalazi u rasponu koji je unapred zadat. Ukoliko je izabrano sedište već zauzeto korisnik će o tome biti obavešten
+                    i moraće izabrati novo sedište.
+                </p>
+                <img src="../Images/seat-chosen.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Kupovina i rezervacija karte</h3>
+            <div class="text">
+                <p>
+                    Posle uspešnog odabira željene rute i željenog sedišta koje je dostupno, klijent je u mogućnosti da rezerviše ili kupiti kartu.
+                    Nakon pritiska na dugme "Rezerviši" karta će biti rezervisana. Nakon pritiska na dugme "Kupi" karta će biti kupljena.
+                </p>
+                <img src="../Images/buy-reserve-ticket.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Pregled kupljenih i rezervisanih karti</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Kupljene karte" ili "Rezervisane karte" klijent će dobiti prikaz svih kupljenih ili svih rezervisanih karti.
+                    Svaka karta sadrži osnovne podatke koji su od interesa za korisnika. Mesto i vreme polaska, mesto i vreme dolaska, kao i cenu i broj sedišta.
+                </p>
+                <img src="../Images/ticket-overview.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Pregled voznih linija</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Vozne linije" klijent će dobiti prikaz svih voznih linija koje su trenutno operativne.
+                    Svaka vozna linija sadrži osnovne podatke koji su od interesa za korisnika. Osnovni podaci o voznoj liniji su: polazna stanica, usputne stanice,
+                    krajnja stanica, vreme putovanja od početne do krajnje stanice, kao i ukupnu cenu za kompletno putovanje.
+                </p>
+                <img src="../Images/train-line-overview.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Pretraga i filtriranje po redu vožnje</h3>
+            <div class="text">
+                <p>
+                    Klijentu su dostupna četiri polja za unos parametara po kojima će se vršiti pretraga i filtriranje. Ta četiri polja su: "Polazište", "Odredište",
+                    "Vreme polaska", "Vreme dolaska". Prva dva polja služe za pretragu po imenu stanice koje predstavljaju polazište ili odredište za rutu. Da bi
+                    ruta zadovoljila kriterijum pretrage ime njene stanice mora se u potpunosti poklapati sa unetim imenom u polje za pretagu. Naredna dva polje služe
+                    za filtriranje po vremenu polaska odnosno po vremenu dolaska. Unosom ispravnog datuma u polje za vreme polaska i polje za vreme dolaska, klijentu
+                    će biti prikazane rute čiji se datumi nalaze u zadatom opsegu. Sa desne strane postoje dva dugmeta "Pretraži" i "Poništi". Klikom na dugme "Pretraži"
+                    pokreće se pretraga po zadatim kriterijumima. Klikom na dugme "Poništi" u pregled reda vožnje biće vraćene sve rute.
+                </p>
+                <img src="../Images/search.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Odjava sa aplikacije</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Izloguj se" klijent će biti odjavljen sa aplikacije. 
+                </p>
+                <img src="../Images/logout.png" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

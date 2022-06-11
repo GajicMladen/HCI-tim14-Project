@@ -1,0 +1,13 @@
+﻿<Window x:Class="Tim14HCI.Help.Viewer.HelpViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tim14HCI.Help.Viewer"
+        mc:Ignorable="d"
+        Icon="../Images/zeleznicesrbije.ico"
+        Title="HelpViewer" Height="700" Width="1150">
+    <Grid>
+        <WebBrowser Name="wbHelp" Navigating="wbHelp_Navigating" ></WebBrowser>
+    </Grid>
+</Window>

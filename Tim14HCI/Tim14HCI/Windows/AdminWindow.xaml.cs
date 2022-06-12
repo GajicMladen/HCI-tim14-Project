@@ -38,7 +38,7 @@ namespace Tim14HCI.Windows
             InitializeComponent();
             lbl_logedUser.Content = user.FirstName + " " + user.LastName;
             lbl_userRole.Content = user.UserRole.ToString().ToLower();
-
+   
             grid_test.Visibility = Visibility.Collapsed;
 
             AdminCommands.BindCommandsToWindow(this);
@@ -154,6 +154,13 @@ namespace Tim14HCI.Windows
             showDepartures();
         }
 
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            ReportsWindow rw = new ReportsWindow(this);
+            Visibility = Visibility.Hidden;
+            rw.Show();
+        }
+
         public void showDepartures() {
             lbl_ShownData.Content = "Red vožnje";
             stack_Data.Children.Clear();
@@ -187,6 +194,5 @@ namespace Tim14HCI.Windows
                 newDeparture.Show();
             }
         }
-
     }
 }

@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetProjects.DataVisualization.Toolkit, Version=6.1.94.0, Culture=neutral, PublicKeyToken=79778c5f2eed289b, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetProjects.WpfToolkit.DataVisualization.6.1.94\lib\net40\DotNetProjects.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -217,6 +220,9 @@
     <Compile Include="Contorls\DepartureManagerControl.xaml.cs">
       <DependentUpon>DepartureManagerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contorls\DepartureReportItem.xaml.cs">
+      <DependentUpon>DepartureReportItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contorls\MapControl.xaml.cs">
       <DependentUpon>MapControl.xaml</DependentUpon>
     </Compile>
@@ -228,6 +234,12 @@
     </Compile>
     <Compile Include="Contorls\PriceListItem.xaml.cs">
       <DependentUpon>PriceListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Contorls\ReportPerLine.xaml.cs">
+      <DependentUpon>ReportPerLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Contorls\RoutePicker.xaml.cs">
       <DependentUpon>RoutePicker.xaml</DependentUpon>
@@ -276,6 +288,8 @@
     </Compile>
     <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
     <Compile Include="DAO\LinkedStationDAO.cs" />
+    <Compile Include="Model\DepartureTicketInfo.cs" />
+    <Compile Include="Model\ReportItem.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -297,6 +311,9 @@
     </Compile>
     <Compile Include="Windows\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ReportsWindow.xaml.cs">
+      <DependentUpon>ReportsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\TicketDisplayWindow.xaml.cs">
       <DependentUpon>TicketDisplayWindow.xaml</DependentUpon>
@@ -322,6 +339,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Contorls\DepartureReportItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Contorls\MapControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -335,6 +356,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contorls\PriceListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\ReportPerLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -403,6 +432,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ReportsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -521,6 +554,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\reports.png" />
     <Resource Include="Help\Images\schedule-overview.png" />
     <Resource Include="Help\Images\zeleznicesrbije.ico" />
     <Content Include="Help\Pages\Client.html" />

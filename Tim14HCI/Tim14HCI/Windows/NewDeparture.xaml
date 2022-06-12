@@ -45,14 +45,11 @@
             <Label x:Name="lineLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">Odaberite liniju:</Label>
             <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="linesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="489" Height="118" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonDown" Margin="10,10,0,0"/>
 
-            <Label x:Name="startTimeLabel" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">Vreme polaska:</Label>
+            <Label x:Name="startTimeLabel" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Vreme polaska:</Label>
+            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="startDateTextBox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" Margin="10,19,0,20"/>
 
-            <xtnd1:DateTimePicker x:Name="startDTPicker" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="175" Margin="0,4,0,0" Format="Custom" FormatString="dd.MM.yyy HH:mm" CultureInfo="sr-Latn-RS" TimeFormatString="HH:mm" TimeFormat="Custom" />
+            <Label x:Name="endTimeLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">Vreme polaska unesite u formatu dd.mm.yyyy. hh:mm</Label>
 
-            <Label x:Name="endTimeLabel" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"></Label>
-
-
-            <Label x:Name="errorLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>

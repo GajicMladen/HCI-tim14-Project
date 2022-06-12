@@ -130,5 +130,19 @@ namespace Tim14HCI.DAO
             }
         
         }
+
+        public static float GetTrainLineDuration(int trainLineId)
+        {
+            float retVal = 0;
+            using (var context = new SerbiaRailwayContext())
+            {
+                TrainLine tl = context.trainLines.Where(l => l.TrainLineID == trainLineId).Include(t => t.OnWayStations).FirstOrDefault();
+                foreach(OnWayStation ows in tl.OnWayStations)
+                {
+                    retVal += ows.Time;
+                }
+            }
+            return retVal;
+        }
     }
 }

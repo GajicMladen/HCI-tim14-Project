@@ -34,5 +34,41 @@ namespace Tim14HCI.DAO
                 return context.departures.Include(d => d.TrainLine).ToList();
             }
         }*/
+
+        public static void AddDeparture(Departure d)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                context.departures.Add(d);
+                context.SaveChanges();
+            }
+        }
+
+        public static void ModifyDeparture(Departure d)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                var oldDep = context.departures.SingleOrDefault(x => x.DepartureID == d.DepartureID);
+                if (oldDep != null)
+                {
+                    oldDep.StartTime = d.StartTime;
+                    oldDep.TrainLineID = d.TrainLineID;
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public static void RemoveDeparture(Departure departure)
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                var depToRemove = context.departures.SingleOrDefault(t => t.DepartureID== departure.DepartureID);
+                if (depToRemove != null)
+                {
+                    context.departures.Remove(depToRemove);
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

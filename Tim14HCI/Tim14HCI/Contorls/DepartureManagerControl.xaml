@@ -43,8 +43,8 @@
         </Grid>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="569,21,0,18">
-            <Button Margin="10" Background="#FF3B3EA9" Foreground="White" FontSize="14" Height="34">Izmeni</Button>
-            <Button Margin="10" Background="#FF3B3EA9" Foreground="White" FontSize="14" Height="34">Obriši</Button>
+            <Button Margin="10" Background="#FF3B3EA9" Foreground="White" FontSize="14" Height="34" Click="Button_Click">Izmeni</Button>
+            <Button Margin="10" Background="#FF3B3EA9" Foreground="White" FontSize="14" Height="34" Click="Delete_Button_Click">Obriši</Button>
         </StackPanel>
     </Grid>
 </UserControl>

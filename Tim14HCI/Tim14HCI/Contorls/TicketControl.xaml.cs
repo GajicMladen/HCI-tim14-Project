@@ -33,14 +33,35 @@ namespace Tim14HCI.Contorls
         {
             InitializeComponent();
             this.t = ticket;
-            lbl_start_date_time.Content = this.t.Departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
-            lbl_end_date_time.Content = CountTimeDuration();
+            //lbl_start_date_time.Content = this.t.Departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
+            lbl_start_date_time.Content = CountStartTimeDuration();
+            lbl_end_date_time.Content = CountEndTimeDuration();
             lbl_start_location.Content = this.t.StartStation.Name;
             lbl_end_location.Content = this.t.EndStation.Name;
             lbl_price.Content = this.t.Price.ToString();
+            lbl_seat.Content = this.t.Seat.ToString();
         }
 
-        private String CountTimeDuration()
+        private object CountStartTimeDuration()
+        {
+            double minutesPassed = 0;
+            foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(this.t.Departure.TrainLineID))
+            {
+                if (ows.Station.Name == this.t.StartStation.Name)
+                {
+                    minutesPassed += ows.Time;
+                    break;
+                }
+                else
+                {
+                    minutesPassed += ows.Time;
+                }
+            }
+
+            return this.t.Departure.StartTime.AddMinutes(minutesPassed).ToString("dd.MM.yyyy. HH:mm");
+        }
+
+        private String CountEndTimeDuration()
         {
             double minutesPassed = 0;            
             foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(this.t.Departure.TrainLineID))

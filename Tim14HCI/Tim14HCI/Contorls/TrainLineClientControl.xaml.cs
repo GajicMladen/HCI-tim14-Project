@@ -29,8 +29,7 @@ namespace Tim14HCI.Contorls
         public TrainLineClientControl(TrainLine trainLine)
         {
             InitializeComponent();
-            lbl_StartStation.Content = trainLine.StartStation.Name;
-            //lbl_EndStation.Content = trainLine.EndStation.Station.Name;
+            lbl_StartStation.Content = trainLine.StartStation.Name;            
             lbl_EndStation.Content = OnWayStationDAO.GetEndStationByTrainLineID(trainLine.TrainLineID).Station.Name;
 
             List<OnWayStation> onWayStations = OnWayStationDAO.GetAllOnWayStationsByTrainLineID(trainLine.TrainLineID);
@@ -57,8 +56,8 @@ namespace Tim14HCI.Contorls
                 String content = lbl_OnWayStations.Content.ToString();
                 lbl_OnWayStations.Content = content.Remove(content.Length - 2);
             }
-            //lbl_price.Content = trainLine.getTotalPrice().ToString();
-            //lbl_time.Content = trainLine.getTotalTime().ToString();
+            lbl_price.Content = trainLine.getTotalPrice().ToString();
+            lbl_time.Content = trainLine.getTotalTime().ToString();
 
         }
     }

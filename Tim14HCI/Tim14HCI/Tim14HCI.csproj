@@ -211,6 +211,9 @@
     <Compile Include="Contorls\DepartureControl.xaml.cs">
       <DependentUpon>DepartureControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Contorls\DepartureHeaderControl.xaml.cs">
+      <DependentUpon>DepartureHeaderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Contorls\DepartureManagerControl.xaml.cs">
       <DependentUpon>DepartureManagerControl.xaml</DependentUpon>
     </Compile>
@@ -263,6 +266,10 @@
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
     <Compile Include="DAO\OnWayStationDAO.cs" />
+    <Compile Include="Help\Providers\ClientHelpProvider.cs" />
+    <Compile Include="Help\Viewer\HelpViewer.xaml.cs">
+      <DependentUpon>HelpViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20220609114050_TicketChanged.cs" />
     <Compile Include="Migrations\20220609114050_TicketChanged.designer.cs">
       <DependentUpon>20220609114050_TicketChanged.cs</DependentUpon>
@@ -304,6 +311,10 @@
       <DependentUpon>NewStation.xaml</DependentUpon>
     </Compile>
     <Page Include="Contorls\DepartureControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Contorls\DepartureHeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -364,6 +375,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contorls\TrainPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Help\Viewer\HelpViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -498,7 +513,18 @@
   <ItemGroup>
     <Resource Include="Images\zeleznicesrbije.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ticket-icon-bigger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button-Close-icon.png" />
+  </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Help\Images\schedule-overview.png" />
+    <Resource Include="Help\Images\zeleznicesrbije.ico" />
+    <Content Include="Help\Pages\Client.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

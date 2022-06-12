@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
+        xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Vozne linije" Height="450" Width="855">
+        Title="Vozne linije" Height="450" Width="855" l:HelpProvider.HelpKey="Client">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.84"/>
@@ -42,7 +47,7 @@
                     <SolidColorBrush Color="#FFFFF9F9" Opacity="0.5"/>
                 </Grid.Background>
 
-                <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" l:HelpProvider.HelpKey="Client">
                     <ListBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.2"/>
                     </ListBox.Background>
@@ -56,14 +61,14 @@
                             <UniformGrid />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    <StackPanel x:Name="stack_Data" >
+                    <StackPanel x:Name="stack_Data" l:HelpProvider.HelpKey="Client">
 
 
                     </StackPanel>
                 </ListBox>
             </Grid>
         </Grid>
-        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Width="100" Margin="50 5 0 5" Background="#FF575761" Click="BackClick">
+        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Width="100" Margin="50 5 0 5" Background="#FF575761" Click="BackClick"  l:HelpProvider.HelpKey="Client">
             <StackPanel>
                 <Image Source="/Images/back.png" Width="30"/>
                 <TextBlock Foreground="#FFFCFCFF" FontSize="16">Nazad</TextBlock>

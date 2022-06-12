@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
+using Tim14HCI.Help.Providers;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -191,6 +192,21 @@ namespace Tim14HCI.Windows
             {
                 return false;
             }
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(System.Windows.Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = Help.Providers.HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Help.Providers.HelpProvider.ShowHelp("Admin", this);
+            }
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

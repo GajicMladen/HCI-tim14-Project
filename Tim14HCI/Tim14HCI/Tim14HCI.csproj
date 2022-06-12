@@ -278,7 +278,7 @@
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
     <Compile Include="DAO\OnWayStationDAO.cs" />
-    <Compile Include="Help\Providers\ClientHelpProvider.cs" />
+    <Compile Include="Help\Providers\HelpProvider.cs" />
     <Compile Include="Help\Viewer\HelpViewer.xaml.cs">
       <DependentUpon>HelpViewer.xaml</DependentUpon>
     </Compile>
@@ -554,9 +554,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Help\Pages\Login_Signup.html" />
     <Resource Include="Images\reports.png" />
     <Resource Include="Help\Images\schedule-overview.png" />
     <Resource Include="Help\Images\zeleznicesrbije.ico" />
+    <Content Include="Help\Pages\Admin.html" />
     <Content Include="Help\Pages\Client.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

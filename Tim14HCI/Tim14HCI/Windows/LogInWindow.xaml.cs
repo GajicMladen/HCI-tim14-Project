@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Tim14HCI.DAO;
+using Tim14HCI.Help.Providers;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Windows
@@ -82,6 +83,21 @@ namespace Tim14HCI.Windows
             NewTrainLine newTrainLine = new NewTrainLine(this);
             newTrainLine.Show();
             Visibility = Visibility.Hidden;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("Login_Signup", this);
+            }
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

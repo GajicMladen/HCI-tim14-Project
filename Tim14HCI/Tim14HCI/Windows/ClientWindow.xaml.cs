@@ -155,8 +155,8 @@ namespace Tim14HCI.Windows
             IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
             if (focusedControl is DependencyObject)
             {
-                string str = ClientHelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                ClientHelpProvider.ShowHelp("Client", this);
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("Client", this);
             }
         }
 

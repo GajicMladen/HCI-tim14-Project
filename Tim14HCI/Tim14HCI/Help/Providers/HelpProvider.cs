@@ -8,10 +8,10 @@ using Tim14HCI.Help.Viewer;
 
 namespace Tim14HCI.Help.Providers
 {
-    class ClientHelpProvider
+    class HelpProvider
     {
         public static readonly DependencyProperty HelpKeyProperty =
-            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(ClientHelpProvider), new PropertyMetadata("index", HelpKey));
+            DependencyProperty.RegisterAttached("HelpKey", typeof(string), typeof(HelpProvider), new PropertyMetadata("index", HelpKey));
 
         public static string GetHelpKey(DependencyObject obj)
         {
@@ -25,7 +25,7 @@ namespace Tim14HCI.Help.Providers
 
         private static void HelpKey(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-           
+
         }
 
         public static void ShowHelp(string key, Window originator)

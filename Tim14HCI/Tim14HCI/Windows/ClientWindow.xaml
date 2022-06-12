@@ -7,7 +7,7 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Železnice Srbije" Height="690" Width="1000" Closing="Window_Closing" l:ClientHelpProvider.HelpKey="Client" >
+        Title="Železnice Srbije" Height="690" Width="1000" Closing="Window_Closing" l:HelpProvider.HelpKey="Client">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->        
@@ -37,7 +37,7 @@
 
             <Label x:Name="lbl_userRole" Content="uloga"  HorizontalAlignment="Center" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalAlignment="Top" Foreground="#FFBDB7B7" FontWeight="Bold" Height="33" Width="138" FontSize="16"   FontStyle="Italic" />
         </StackPanel>
-        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click" l:ClientHelpProvider.HelpKey="Client">
+        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click" l:HelpProvider.HelpKey="Client">
             <StackPanel VerticalAlignment="Center" Height="42" Width="67">
                 <Image  Source="/Images/logout-icon.png" Height="23"/>
                 <TextBlock HorizontalAlignment="Center">Izloguj se</TextBlock>
@@ -51,7 +51,7 @@
                 <ColumnDefinition></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 10" Click="ShowBoughtTickets" l:ClientHelpProvider.HelpKey="Client">
+            <Button Grid.Column="0" Margin="3 10" Click="ShowBoughtTickets" l:HelpProvider.HelpKey="Client" >
                 <Button.Background>
                     <SolidColorBrush Color="#FFBF1616"/>
                 </Button.Background>
@@ -60,13 +60,13 @@
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Kupljene karte</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="ShowReservationTickets" l:ClientHelpProvider.HelpKey="Client">
+            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="ShowReservationTickets" l:HelpProvider.HelpKey="Client">
                 <StackPanel>
                     <Image Source="/Images/Ticket-reservation-icon.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Rezervisane karte</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="2" Margin="3 10" Background="#FFBF1616" Click="ShowTrainLines" l:ClientHelpProvider.HelpKey="Client">
+            <Button Grid.Column="2" Margin="3 10" Background="#FFBF1616" Click="ShowTrainLines" l:HelpProvider.HelpKey="Client">
                 <StackPanel>
                     <Image Source="/Images/lines.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozne linije</TextBlock>
@@ -83,22 +83,22 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="Polazište:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
-            <TextBox Grid.Column="0" x:Name="txbx_start_location" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:ClientHelpProvider.HelpKey="Client" />
+            <TextBox Grid.Column="0" x:Name="txbx_start_location" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:HelpProvider.HelpKey="Client" />
 
             <Label Grid.Column="1" Content="Odredište:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
-            <TextBox Grid.Column="1" x:Name="txbx_end_location" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:ClientHelpProvider.HelpKey="Client" />
+            <TextBox Grid.Column="1" x:Name="txbx_end_location" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:HelpProvider.HelpKey="Client" />
 
             <Label Grid.Column="2" Content="Vreme polaska:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
-            <TextBox Grid.Column="2" x:Name="txbx_start_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:ClientHelpProvider.HelpKey="Client" />
+            <TextBox Grid.Column="2" x:Name="txbx_start_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:HelpProvider.HelpKey="Client" />
 
             <Label Grid.Column="3" Content="Vreme dolaska:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="113" Height="26" FontSize="14" FontWeight="Bold"/>
-            <TextBox Grid.Column="3" x:Name="txbx_end_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:ClientHelpProvider.HelpKey="Client" />
+            <TextBox Grid.Column="3" x:Name="txbx_end_time" HorizontalAlignment="Left" Height="24" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" l:HelpProvider.HelpKey="Client" />
             <Grid Grid.Column="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"></ColumnDefinition>
                     <ColumnDefinition Width="50*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Margin="0 20 10 10" Background="#FF3B3EA9" Click="Search" l:ClientHelpProvider.HelpKey="Client" >
+                <Button Grid.Column="0" Margin="0 20 10 10" Background="#FF3B3EA9" Click="Search" l:HelpProvider.HelpKey="Client" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/search.png" Margin="3" Height="25"/>
                         <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Pretraži</Label>
@@ -109,7 +109,7 @@
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>
-                <Button Grid.Column="1" Margin="0 20 10 10" Background="#FFBF1616" Click="CancelSearch" l:ClientHelpProvider.HelpKey="Client" >
+                <Button Grid.Column="1" Margin="0 20 10 10" Background="#FFBF1616" Click="CancelSearch" l:HelpProvider.HelpKey="Client" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Images/Button-Close-icon.png" Margin="3" Height="25"/>
                         <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Poništi</Label>
@@ -144,7 +144,7 @@
                 <Grid.Background>
                     <SolidColorBrush Color="#FFFFF9F9" Opacity="0.5"/>
                 </Grid.Background>
-                <ListBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" l:ClientHelpProvider.HelpKey="Client" >
+                <ListBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" l:HelpProvider.HelpKey="Client" >
                     <ListBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.2"/>
                     </ListBox.Background>
@@ -158,7 +158,7 @@
                             <UniformGrid />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    <StackPanel x:Name="stack_Data" l:ClientHelpProvider.HelpKey="Client" >
+                    <StackPanel x:Name="stack_Data" l:HelpProvider.HelpKey="Client" >
 
 
                     </StackPanel>
@@ -181,7 +181,7 @@
                 <Label Grid.Column="0" x:Name="lbl_chosen" Content="Izabrano: "  HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="146" FontSize="16" Margin="0 0 0 0"  />
                 <Label Grid.Column="1" x:Name="lbl_departure" Content=""  HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" Width="698" FontSize="16" Margin="10,0,23,0"  />
                 <Label Grid.Column="2" Content="Broj sedišta:"  HorizontalAlignment="Right" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontWeight="Bold" Height="50" FontSize="16" Margin="0 0 0 0"  />
-                <TextBox Grid.Column="3" x:Name="txbx_seat" HorizontalAlignment="Left" Height="19" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="70" l:ClientHelpProvider.HelpKey="Client" />
+                <TextBox Grid.Column="3" x:Name="txbx_seat" HorizontalAlignment="Left" Height="19" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="70" l:HelpProvider.HelpKey="Client" />
                 <Label x:Name="lbl_range" Content="" Grid.Column="4" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="White" Height="48" Width="49"/>
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="4">
@@ -192,13 +192,13 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Column="0" Margin="10 5 10 5" Background="#FFBF1616" Click="ReservationClick" l:ClientHelpProvider.HelpKey="Client" >
+                <Button Grid.Column="0" Margin="10 5 10 5" Background="#FFBF1616" Click="ReservationClick" l:HelpProvider.HelpKey="Client" >
                     <StackPanel>
                         <Image Source="/Images/Add-ticket-icon.png" Width="30"/>
                         <TextBlock Foreground="#FFFCFCFF" FontSize="16">Rezerviši</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="1" Margin="10 5 10 5" Background="#FFBF1616" Click="BuyClick" l:ClientHelpProvider.HelpKey="Client" >
+                <Button Grid.Column="1" Margin="10 5 10 5" Background="#FFBF1616" Click="BuyClick" l:HelpProvider.HelpKey="Client" >
                     <StackPanel>
                         <Image Source="/Images/Ticket-add-icon.png" Width="30"/>
                         <TextBlock Foreground="#FFFCFCFF" FontSize="16">Kupi</TextBlock>

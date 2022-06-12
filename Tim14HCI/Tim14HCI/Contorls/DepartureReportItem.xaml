@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Tim14HCI.Contorls.DepartureReportItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tim14HCI.Contorls"
+             mc:Ignorable="d" 
+             Height="146.92" Width="867.454">
+    <Grid Margin="10"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="627*"/>
+            <ColumnDefinition Width="130*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
+        </Grid.Background>
+
+        <Image Source="/Images/timeSchedule.png" Margin="22,25,596,19" Grid.ColumnSpan="2"  />
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Linija:</Label>
+            <Label Grid.Row="1" Grid.Column="2" x:Name="lbl_Line"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">teststanica - teststanica</Label>
+
+            <Label Grid.Row="2" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Vreme polaska:</Label>
+            <Label Grid.Row="2" Grid.Column="2" x:Name="lbl_StartTime"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">01.01.1970. 00:00</Label>
+
+            <Label Grid.Row="3" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Prodatih karata:</Label>
+            <Label Grid.Row="3" Grid.Column="2" x:Name="lbl_TotalTickets"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">65</Label>
+
+            <Label Grid.Row="4" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Ukupan promet:</Label>
+            <Label Grid.Row="4" Grid.Column="2" x:Name="lbl_TotalMoney"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">10000</Label>
+        </Grid>
+    </Grid>
+</UserControl>

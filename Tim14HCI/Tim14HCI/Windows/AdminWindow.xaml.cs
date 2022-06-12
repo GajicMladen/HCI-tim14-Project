@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tim14HCI.Commands;
 using Tim14HCI.Contorls;
 using Tim14HCI.DAO;
 using Tim14HCI.Model;
@@ -39,6 +40,8 @@ namespace Tim14HCI.Windows
             lbl_userRole.Content = user.UserRole.ToString().ToLower();
 
             grid_test.Visibility = Visibility.Collapsed;
+
+            AdminCommands.BindCommandsToWindow(this);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -111,27 +114,54 @@ namespace Tim14HCI.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            showTrains();
+        }
+
+        public void showTrains() {
             fillStackDataWithTrains();
             lbl_ShownData.Content = "Vozovi";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            showStations();
+        }
+
+        public void showStations() {
             fillStackDataWithStations();
             lbl_ShownData.Content = "Stanice";
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            lbl_ShownData.Content ="Vozne linije";
+            showTrainLines();
+        }
+
+        public void showTrainLines() {
+            lbl_ShownData.Content = "Vozne linije";
             stack_Data.Children.Clear();
             fillStackDataWithTrainLines();
-
 
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            showAddNew();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            showDepartures();
+        }
+
+        public void showDepartures() {
+            lbl_ShownData.Content = "Red vožnje";
+            stack_Data.Children.Clear();
+            fillStackDataWithDepartures();
+        }
+
+        public void showAddNew() {
+
             if ((string)lbl_ShownData.Content == "Vozne linije")
             {
                 NewTrainLine newTrainLine = new NewTrainLine(this);
@@ -158,11 +188,5 @@ namespace Tim14HCI.Windows
             }
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            lbl_ShownData.Content = "Red vožnje";
-            stack_Data.Children.Clear();
-            fillStackDataWithDepartures();
-        }
     }
 }

@@ -207,6 +207,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AdminCommands.cs" />
     <Compile Include="Contorls\DepartureControl.xaml.cs">
       <DependentUpon>DepartureControl.xaml</DependentUpon>
     </Compile>

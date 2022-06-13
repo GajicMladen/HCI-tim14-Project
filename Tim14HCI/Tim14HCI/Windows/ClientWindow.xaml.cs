@@ -303,7 +303,7 @@ namespace Tim14HCI.Windows
             if (this.endDatetimeSearch != "")
             {
                 DateTime dt; // = DateTime.ParseExact(this.endDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-                bool success = DateTime.TryParseExact(this.startDatetimeSearch, this.acceptableDateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
+                bool success = DateTime.TryParseExact(this.endDatetimeSearch, this.acceptableDateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
                 foreach (SearchableDeparture departure in departures)
                 {                  
                     if (DateTime.Compare(departure.GetEndTime(), dt) <= 0)

@@ -4,19 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
-             mc:Ignorable="d" Height="141.207" Width="837.046">
-    <Grid Margin="10"  >
+             mc:Ignorable="d" Height="320" Width="837.046">
+    <Grid x:Name="mainGrid" Margin="10"  >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="156*"/>
-            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="126*"/>
+            <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
         </Grid.Background>
 
+        <!--
+
+        <local:MapControl Width="100"></local:MapControl>
         <Image Source="/Images/lines.png" Width="100"  />
+        -->
         <StackPanel Grid.Column="1" VerticalAlignment="Center" >
             <StackPanel Orientation="Horizontal">
                 <Label Foreground="White" >Polazna stanica:</Label>
@@ -47,9 +51,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="buttons_panel" Grid.Column="3" Width="130" VerticalAlignment="Center" >
-            <Button x:Name="delete_button" Margin="10">Oriši</Button>
-            <Button x:Name="change_button" Margin="10">Izmeni</Button>
-            <Button x:Name="details_button" Margin="10">Detalji</Button>
+            <Button Margin="10"  Background="#FF3B3EA9" Foreground="White" FontSize="14" Height="34" Click="Button_Click">Obriši</Button>
         </StackPanel>
     </Grid>
 

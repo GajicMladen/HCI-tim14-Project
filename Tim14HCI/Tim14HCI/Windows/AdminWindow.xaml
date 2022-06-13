@@ -158,7 +158,9 @@
             <Button Grid.Column="3" Grid.Row="1" Height="50" VerticalAlignment="Bottom" Foreground="White" Background="#FF3438B3" Margin="10" Click="Button_Click_3">
                 <StackPanel>
                     <Image Source="/Images/add.png" Width="20"></Image>
-                    <Label x:Name="lbl_AddNew" Foreground="White" >Dodaj</Label>
+                    <TextBlock x:Name="lbl_AddNew" Foreground="White" >Dodaj 
+                        <TextBlock Foreground="#FF6A9C6A"> (N)</TextBlock>
+                    </TextBlock>
                 </StackPanel>
             </Button>
         </Grid>

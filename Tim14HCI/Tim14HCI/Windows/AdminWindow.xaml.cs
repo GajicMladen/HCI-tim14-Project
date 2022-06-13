@@ -65,8 +65,7 @@ namespace Tim14HCI.Windows
             stack_Data.Children.Clear();
 
             List<Train> trains = TrainDAO.getAllTrains();
-            //List<Train> trains = new List<Train>();
-
+            
             foreach (Train train in trains) {
 
                 TrainControl trainControl = new TrainControl(train);
@@ -78,8 +77,7 @@ namespace Tim14HCI.Windows
             stack_Data.Children.Clear();
 
             List<Station> stations = StationDAO.getAllStations();
-            //List<Station> stations = new List<Station>();
-
+            
             foreach (Station station in stations)
             {
                 StationControl stationControl = new StationControl(station);
@@ -90,12 +88,11 @@ namespace Tim14HCI.Windows
         {
             stack_Data.Children.Clear();
 
-            List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines();
-            //List<Station> stations = new List<Station>();
-
+            List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLinesNotDeleted();
+            
             foreach (TrainLine trainLine in trainLines)
             {
-                TrainLineControl stationControl = new TrainLineControl(trainLine);
+                TrainLineControl stationControl = new TrainLineControl(trainLine,this);
                 stack_Data.Children.Add(stationControl);
             }
         }
@@ -156,11 +153,15 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
+            showReports();
+        }
+
+        public void showReports() {
+
             ReportsWindow rw = new ReportsWindow(this);
             Visibility = Visibility.Hidden;
             rw.Show();
         }
-
         public void showDepartures() {
             lbl_ShownData.Content = "Red vožnje";
             stack_Data.Children.Clear();

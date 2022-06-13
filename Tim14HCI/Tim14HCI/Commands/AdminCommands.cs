@@ -18,6 +18,7 @@ namespace Tim14HCI.Commands
         public static RoutedCommand openTrainLines = new RoutedCommand();
         public static RoutedCommand openSchedule = new RoutedCommand();
         public static RoutedCommand openAddNew = new RoutedCommand();
+        public static RoutedCommand openReports = new RoutedCommand();
 
         static AdminCommands() {
 
@@ -26,6 +27,7 @@ namespace Tim14HCI.Commands
             openTrainLines.InputGestures.Add(new KeyGesture(Key.E, ModifierKeys.Control));
             openSchedule.InputGestures.Add(new KeyGesture(Key.R, ModifierKeys.Control));
             openAddNew.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
+            openReports.InputGestures.Add(new KeyGesture(Key.T, ModifierKeys.Control));
         }
 
         public static RoutedCommand OpenTrain
@@ -52,7 +54,17 @@ namespace Tim14HCI.Commands
             get { return openAddNew; }
         }
 
+        public static RoutedCommand OpenReport
+        {
+            get { return openReports; }
+        }
 
+
+        public static void OpenReport_Executed(object sender,
+                   ExecutedRoutedEventArgs e)
+        {
+            adminWindow.showReports();
+        }
         public static void OpenTrains_Executed(object sender,
                    ExecutedRoutedEventArgs e)
         {
@@ -94,6 +106,7 @@ namespace Tim14HCI.Commands
             window.CommandBindings.Add(new CommandBinding(OpenTrainLines, OpenTrainLines_Executed, OpenTabs_CanExecute));
             window.CommandBindings.Add(new CommandBinding(OpenSchedule, OpenSchedule_Executed, OpenTabs_CanExecute));
             window.CommandBindings.Add(new CommandBinding(OpenAddNew, OpenAddNew_Executed, OpenTabs_CanExecute));
+            window.CommandBindings.Add(new CommandBinding(OpenReport, OpenReport_Executed, OpenTabs_CanExecute));
         }
     }
 }

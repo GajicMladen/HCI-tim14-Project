@@ -116,7 +116,7 @@ namespace Tim14HCI.Windows
             }
         }
 
-        private void fillStackDataWithTrainLines()
+        public void fillStackDataWithTrainLines()
         {
             stack_Data.Children.Clear();
 
@@ -225,32 +225,30 @@ namespace Tim14HCI.Windows
 
         public void showAddNew() {
 
-            //if ((string)lbl_ShownData.Content == "Vozne linije")
-            //{
-            //    NewTrainLine newTrainLine = new NewTrainLine(this);
-            //    Visibility = Visibility.Hidden;
-            //    newTrainLine.Show();
-            //}
-            //else if ((string)lbl_ShownData.Content == "Vozovi")
-            //{
-            //    NewTrain newTrain = new NewTrain(this);
-            //    Visibility = Visibility.Hidden;
-            //    newTrain.Show();
-            //}
-            //else if ((string)lbl_ShownData.Content == "Stanice")
-            //{
-            //    NewStation newStation = new NewStation(this);
-            //    Visibility = Visibility.Hidden;
-            //    newStation.Show();
-            //}
-            //else if ((string)lbl_ShownData.Content == "Red vožnje")
-            //{
-            //    NewDeparture newDeparture = new NewDeparture(this);
-            //    Visibility = Visibility.Hidden;
-            //    newDeparture.Show();
-            //}
-            DemoWindow dw = new DemoWindow();
-            dw.Show();
+            if ((string)lbl_ShownData.Content == "Vozne linije")
+            {
+                NewTrainLine newTrainLine = new NewTrainLine(this);
+                Visibility = Visibility.Hidden;
+                newTrainLine.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Vozovi")
+            {
+                NewTrain newTrain = new NewTrain(this);
+                Visibility = Visibility.Hidden;
+                newTrain.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Stanice")
+            {
+                NewStation newStation = new NewStation(this);
+                Visibility = Visibility.Hidden;
+                newStation.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Red vožnje")
+            {
+                NewDeparture newDeparture = new NewDeparture(this);
+                Visibility = Visibility.Hidden;
+                newDeparture.Show();
+            }
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
@@ -282,21 +280,27 @@ namespace Tim14HCI.Windows
         {
             if ((string)lbl_ShownData.Content == "Vozovi")
             {
-                DemoWindow dw = new DemoWindow("trains");
+                DemoWindow dw = new DemoWindow(this, "trains");
                 Visibility = Visibility.Hidden;
                 dw.Show();
             }
             else if ((string)lbl_ShownData.Content == "Vozne linije")
             {
-
+                DemoWindow dw = new DemoWindow(this, "trainlines");
+                Visibility = Visibility.Hidden;
+                dw.Show();
             }
             else if ((string)lbl_ShownData.Content == "Stanice")
             {
-
+                DemoWindow dw = new DemoWindow(this, "stations");
+                Visibility = Visibility.Hidden;
+                dw.Show();
             }
             else if ((string)lbl_ShownData.Content == "Red vožnje")
             {
-
+                DemoWindow dw = new DemoWindow(this, "departures");
+                Visibility = Visibility.Hidden;
+                dw.Show();
             }
         }
 

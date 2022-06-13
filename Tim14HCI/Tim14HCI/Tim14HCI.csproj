@@ -565,6 +565,9 @@
     <Resource Include="Images\reports.png" />
     <Resource Include="Help\Images\schedule-overview.png" />
     <Resource Include="Help\Images\zeleznicesrbije.ico" />
+    <Content Include="Demo\departures.mp4" />
+    <Content Include="Demo\stations.mp4" />
+    <Content Include="Demo\trainlines.mp4" />
     <Content Include="Demo\trains.mp4" />
     <Content Include="Help\Pages\Client.html" />
   </ItemGroup>

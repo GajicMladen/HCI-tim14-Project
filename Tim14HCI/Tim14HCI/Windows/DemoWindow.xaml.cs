@@ -19,28 +19,46 @@ namespace Tim14HCI.Windows
     /// </summary>
     public partial class DemoWindow : Window
     {
+        Window parent;
         public DemoWindow()
         {
             InitializeComponent();
         }
 
-        public DemoWindow(string mode)
+        public DemoWindow(Window x, string mode)
         {
+            parent = x;
             InitializeComponent();
             if (mode == "trains")
             {
                 
                 mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/trains.mp4", UriKind.Absolute);
             }
+            else if (mode == "stations")
+            {
+
+                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/stations.mp4", UriKind.Absolute);
+            }
+            else if (mode == "trainlines")
+            {
+
+                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/trainlines.mp4", UriKind.Absolute);
+            }
+            else if (mode == "departures")
+            {
+
+                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/departures.mp4", UriKind.Absolute);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-           
+            parent.Show();
         }
 
         void DemoWindow_KeyDown(object sender, KeyEventArgs e)
         {
+            parent.Show();
             Close();
         }
 

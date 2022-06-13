@@ -31,7 +31,7 @@
 
             <Label x:Name="lbl_userRole" Content="uloga"  HorizontalAlignment="Center" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalAlignment="Top" Foreground="#FFBDB7B7" FontWeight="Bold" Height="33" Width="138" FontSize="16"   FontStyle="Italic" />
         </StackPanel>
-        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click">
+        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" Cursor="Hand" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click">
             <StackPanel VerticalAlignment="Center" Height="42" Width="67">
                 <Image  Source="/Images/logout-icon.png" Height="23"/>
                 <TextBlock HorizontalAlignment="Center">Izloguj se</TextBlock>
@@ -46,40 +46,133 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 10" Click="Button_Click">
-                <Button.Background>
-                    <SolidColorBrush Color="#FFBF1616"/>
-                </Button.Background>
+            <Button Grid.Column="0" Margin="3 10" Click="Button_Click" Cursor="Hand">
                 <StackPanel>
                     <Image Source="/Images/train.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozovi <TextBlock Foreground="#FF586358">(Q)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="Button_Click_1">
+            <Button Grid.Column="1" Margin="3 10" Cursor="Hand" Click="Button_Click_1">
                 <StackPanel>
                     <Image Source="/Images/station.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Stanice <TextBlock Foreground="#FF586358">(W)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            <Button Grid.Column="2" Margin="3 10" Background="#FFBF1616" Click="Button_Click_2">
+            <Button Grid.Column="2" Margin="3 10" Cursor="Hand" Click="Button_Click_2">
                 <StackPanel>
                     <Image Source="/Images/lines.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozne linije <TextBlock Foreground="#FF586358">(E)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            <Button Grid.Column="3" Margin="3 10" Background="#FFBF1616" Click="Button_Click_4">
+            <Button Grid.Column="3" Margin="3 10" Cursor="Hand" Click="Button_Click_4">
                 <StackPanel>
                     <Image Source="/Images/timeSchedule.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Red vožnje <TextBlock Foreground="#FF586358">(R)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
             
-            <Button Grid.Column="4" Margin="3 10" Background="#FFBF1616" Click="Button_Click_5">
+            <Button Grid.Column="4" Margin="3 10" Cursor="Hand" Click="Button_Click_5">
                 <StackPanel>
                     <Image Source="/Images/reports.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Izveštaji <TextBlock Foreground="#FF586358">(T)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
+            
         </Grid>
 
         <!--Content-->

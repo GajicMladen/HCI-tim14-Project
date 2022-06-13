@@ -38,10 +38,11 @@ namespace Tim14HCI.Windows
             InitializeComponent();
             lbl_logedUser.Content = user.FirstName + " " + user.LastName;
             lbl_userRole.Content = user.UserRole.ToString().ToLower();
-   
+
             grid_test.Visibility = Visibility.Collapsed;
 
             AdminCommands.BindCommandsToWindow(this);
+            showTrains();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -73,6 +74,21 @@ namespace Tim14HCI.Windows
                 stack_Data.Children.Add(trainControl);
             }
         }
+
+        public void fillStackDataWithTrainsSearch(string query)
+        {
+            stack_Data.Children.Clear();
+
+            List<Train> trains = TrainDAO.getAllTrainsSearch(query);
+
+            foreach (Train train in trains)
+            {
+
+                TrainControl trainControl = new TrainControl(train);
+                stack_Data.Children.Add(trainControl);
+            }
+        }
+
         public void fillStackDataWithStations()
         {
             stack_Data.Children.Clear();
@@ -86,6 +102,20 @@ namespace Tim14HCI.Windows
                 stack_Data.Children.Add(stationControl);
             }
         }
+
+        public void fillStackDataWithStationsSearch(string query)
+        {
+            stack_Data.Children.Clear();
+
+            List<Station> stations = StationDAO.getAllStationsSearch(query);
+
+            foreach (Station station in stations)
+            {
+                StationControl stationControl = new StationControl(station);
+                stack_Data.Children.Add(stationControl);
+            }
+        }
+
         private void fillStackDataWithTrainLines()
         {
             stack_Data.Children.Clear();
@@ -100,12 +130,38 @@ namespace Tim14HCI.Windows
             }
         }
 
+        private void fillStackDataWithTrainLinesSearch(string query)
+        {
+            stack_Data.Children.Clear();
+
+            List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLinesSearch(query);
+
+            foreach (TrainLine trainLine in trainLines)
+            {
+
+                TrainLineControl trainControl = new TrainLineControl(trainLine);
+                stack_Data.Children.Add(trainControl);
+            }
+        }
+
         public void fillStackDataWithDepartures()
         {
             stack_Data.Children.Clear();
             List<Departure> departures = DepartureDAO.GetAllDepartures();
 
             foreach(Departure d in departures)
+            {
+                DepartureManagerControl departureControl = new DepartureManagerControl(d);
+                stack_Data.Children.Add(departureControl);
+            }
+        }
+
+        public void fillStackDataWithDeparturesSearch(string query)
+        {
+            stack_Data.Children.Clear();
+            List<Departure> departures = DepartureDAO.getAllDeparturesSearch(query);
+
+            foreach (Departure d in departures)
             {
                 DepartureManagerControl departureControl = new DepartureManagerControl(d);
                 stack_Data.Children.Add(departureControl);
@@ -169,29 +225,86 @@ namespace Tim14HCI.Windows
 
         public void showAddNew() {
 
-            if ((string)lbl_ShownData.Content == "Vozne linije")
+            //if ((string)lbl_ShownData.Content == "Vozne linije")
+            //{
+            //    NewTrainLine newTrainLine = new NewTrainLine(this);
+            //    Visibility = Visibility.Hidden;
+            //    newTrainLine.Show();
+            //}
+            //else if ((string)lbl_ShownData.Content == "Vozovi")
+            //{
+            //    NewTrain newTrain = new NewTrain(this);
+            //    Visibility = Visibility.Hidden;
+            //    newTrain.Show();
+            //}
+            //else if ((string)lbl_ShownData.Content == "Stanice")
+            //{
+            //    NewStation newStation = new NewStation(this);
+            //    Visibility = Visibility.Hidden;
+            //    newStation.Show();
+            //}
+            //else if ((string)lbl_ShownData.Content == "Red vožnje")
+            //{
+            //    NewDeparture newDeparture = new NewDeparture(this);
+            //    Visibility = Visibility.Hidden;
+            //    newDeparture.Show();
+            //}
+            DemoWindow dw = new DemoWindow();
+            dw.Show();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            string query = searchTextBox.Text;
+            if ((string)lbl_ShownData.Content == "Vozovi")
             {
-                NewTrainLine newTrainLine = new NewTrainLine(this);
-                Visibility = Visibility.Hidden;
-                newTrainLine.Show();
+                stack_Data.Children.Clear();
+                fillStackDataWithTrainsSearch(query);
             }
-            else if ((string)lbl_ShownData.Content == "Vozovi")
+            else if ((string)lbl_ShownData.Content == "Vozne linije")
             {
-                NewTrain newTrain = new NewTrain(this);
-                Visibility = Visibility.Hidden;
-                newTrain.Show();
+                stack_Data.Children.Clear();
+                fillStackDataWithTrainLinesSearch(query);
             }
             else if ((string)lbl_ShownData.Content == "Stanice")
             {
-                NewStation newStation = new NewStation(this);
-                Visibility = Visibility.Hidden;
-                newStation.Show();
+                stack_Data.Children.Clear();
+                fillStackDataWithStationsSearch(query);
             }
             else if ((string)lbl_ShownData.Content == "Red vožnje")
             {
-                NewDeparture newDeparture = new NewDeparture(this);
+                stack_Data.Children.Clear();
+                fillStackDataWithDeparturesSearch(query);
+            }
+        }
+
+        private void Demo_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if ((string)lbl_ShownData.Content == "Vozovi")
+            {
+                DemoWindow dw = new DemoWindow("trains");
                 Visibility = Visibility.Hidden;
-                newDeparture.Show();
+                dw.Show();
+            }
+            else if ((string)lbl_ShownData.Content == "Vozne linije")
+            {
+
+            }
+            else if ((string)lbl_ShownData.Content == "Stanice")
+            {
+
+            }
+            else if ((string)lbl_ShownData.Content == "Red vožnje")
+            {
+
+            }
+        }
+
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Button_Click_6(sender, e);
             }
         }
     }

@@ -18,6 +18,19 @@ namespace Tim14HCI.DAO
             }
         }
 
+        public static List<Train> getAllTrainsSearch(string query)
+        {
+            List<Train> retVal = new List<Train>();
+            using (var context = new SerbiaRailwayContext())
+            {
+                foreach(Train t in context.trains.ToList())
+                {
+                    if (t.GetSearchString().ToLower().Contains(query.ToLower())) retVal.Add(t);
+                }
+                return retVal;
+            }
+        }
+
         public static Train GetTrainByID(int id) {
 
             using (var context = new SerbiaRailwayContext()) {

@@ -24,7 +24,20 @@ namespace Tim14HCI.Model
 
         public virtual List<Departure> Departures { get; set; }
         
-        
+        public string GetSearchString(bool forDeparture = false)
+        {
+            string ows = "";
+            foreach (OnWayStation onWayStation in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(TrainLineID))
+            {
+                ows += StationDAO.GetStationByID(StationDAO.GetOnWayStationByID(onWayStation.OnWayStationID).StationID).Name + " ";
+
+            }
+            if (forDeparture)
+                return StationDAO.GetStationByID(StartStationID).Name + " " + StationDAO.GetStationByID(EndStationID).Name;
+            else
+                return TrainLineID.ToString() + " " + StationDAO.GetStationByID(StartStationID).Name + ows + " " + StationDAO.GetStationByID(EndStationID).Name + " " + TrainDAO.GetTrainByID(TrainID).Name + " " + getTotalPrice().ToString() + " " + getTotalTime().ToString();
+        }
+
         public float getTotalPrice() {
             float ret = 0;
 

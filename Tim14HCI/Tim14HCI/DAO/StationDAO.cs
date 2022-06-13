@@ -20,6 +20,18 @@ namespace Tim14HCI.DAO
         
         }
 
+        public static List<Station> getAllStationsSearch(string query)
+        {
+            List<Station> retVal = new List<Station>();
+            using (var context = new SerbiaRailwayContext())
+            {
+                foreach (Station s in context.stations.ToList())
+                {
+                    if (s.GetSearchString().ToLower().Contains(query.ToLower())) retVal.Add(s);
+                }
+                return retVal;
+            }
+        }
 
         public static Station GetStationByID(int id)
         {
@@ -35,7 +47,7 @@ namespace Tim14HCI.DAO
         {
             using (var context = new SerbiaRailwayContext())
             {
-                return context.onWayStations.Where(s => s.StationID == id).FirstOrDefault();
+                return context.onWayStations.Where(s => s.OnWayStationID == id).FirstOrDefault();
             }
         }
 

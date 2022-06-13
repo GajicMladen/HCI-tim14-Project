@@ -35,7 +35,7 @@ namespace Tim14HCI.Contorls
             Dti = dti;
             TrainLine line = TrainLinesDAO.getTrainLineByID(Dti.Departure.TrainLineID);
 
-            lbl_Line.Content = StationDAO.GetStationByID(line.StartStationID).Name + " - " + StationDAO.GetStationByID(StationDAO.GetOnWayStationByID(line.EndStationID).StationID).Name;
+            lbl_Line.Content = StationDAO.GetStationByID(line.StartStationID).Name + " - " + StationDAO.GetStationByID(line.EndStationID).Name;
             lbl_StartTime.Content = Dti.Departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
             lbl_TotalMoney.Content = Math.Round(Dti.NumOfMoney, 2).ToString();
             lbl_TotalTickets.Content = Dti.NumOfTickets.ToString();

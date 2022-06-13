@@ -577,9 +577,6 @@
     <Content Include="Demo\trainlines.mp4" />
     <Content Include="Help\Pages\Login_Signup.html" />
     <Resource Include="Images\play-icon.png" />
-    <Resource Include="Images\reports.png" />
-    <Resource Include="Help\Images\schedule-overview.png" />
-    <Resource Include="Help\Images\zeleznicesrbije.ico" />
     <Content Include="Help\Pages\Admin.html" />
     <Content Include="Help\Pages\Client.html" />
   </ItemGroup>

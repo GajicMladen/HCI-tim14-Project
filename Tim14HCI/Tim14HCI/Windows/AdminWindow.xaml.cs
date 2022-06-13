@@ -152,7 +152,7 @@ namespace Tim14HCI.Windows
             foreach (TrainLine trainLine in trainLines)
             {
 
-                TrainLineControl trainControl = new TrainLineControl(trainLine);
+                TrainLineControl trainControl = new TrainLineControl(trainLine, this);
                 stack_Data.Children.Add(trainControl);
             }
         }

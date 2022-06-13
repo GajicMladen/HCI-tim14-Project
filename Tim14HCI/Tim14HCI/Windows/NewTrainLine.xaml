@@ -83,7 +83,7 @@
                     <Image Source="/Images/back.png" Width="30"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="btn_Next"  Margin="0 10" Padding="10" HorizontalAlignment="Left" Cursor="Hand" Click="Button_Click" Grid.ColumnSpan="2" Width="67" l:HelpProvider.HelpKey="Admin">
+            <Button x:Name="btn_Next" Margin="0 10" Padding="10" HorizontalAlignment="Left" Cursor="Hand" Click="Button_Click" Grid.ColumnSpan="2" Width="67" l:HelpProvider.HelpKey="Admin">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF3438B3"/>
@@ -106,8 +106,6 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
-            <Button x:Name="btn_Next"  Margin="0 10" Padding="10" HorizontalAlignment="Left" Background="#FF3438B3" Click="Button_Click" >
-
                 <StackPanel>
                     <Label x:Name="btn_next_label" Foreground="White">Sledeće</Label>
                     <Image x:Name="btn_next_img" Source="/Images/next.png" Height="38" Width="36"></Image>

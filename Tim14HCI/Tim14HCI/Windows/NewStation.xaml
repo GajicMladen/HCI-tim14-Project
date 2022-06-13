@@ -165,8 +165,6 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="addButton_Click" l:HelpProvider.HelpKey="Admin" >Kreiraj stanicu</Button>
-            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click" l:HelpProvider.HelpKey="Admin" >Povratak</Button>
         </Grid>
         
 

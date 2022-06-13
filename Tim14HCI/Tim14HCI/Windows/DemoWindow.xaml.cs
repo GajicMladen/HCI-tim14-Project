@@ -32,22 +32,22 @@ namespace Tim14HCI.Windows
             if (mode == "trains")
             {
                 
-                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/trains.mp4", UriKind.Absolute);
+                mtl.Source = new Uri(@"C://Users/djord/Documents/Fakultet/6_semestar/HCI/Project/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/trains.mp4", UriKind.Absolute);
             }
             else if (mode == "stations")
             {
 
-                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/stations.mp4", UriKind.Absolute);
+                mtl.Source = new Uri(@"C://Users/djord/Documents/Fakultet/6_semestar/HCI/Project/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/stations.mp4", UriKind.Absolute);
             }
             else if (mode == "trainlines")
             {
 
-                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/trainlines.mp4", UriKind.Absolute);
+                mtl.Source = new Uri(@"C://Users/djord/Documents/Fakultet/6_semestar/HCI/Project/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/trainlines.mp4", UriKind.Absolute);
             }
             else if (mode == "departures")
             {
 
-                mtl.Source = new Uri(@"C://Fakultet/HCI/Projekat/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/departures.mp4", UriKind.Absolute);
+                mtl.Source = new Uri(@"C://Users/djord/Documents/Fakultet/6_semestar/HCI/Project/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/departures.mp4", UriKind.Absolute);
             }
         }
 

@@ -93,11 +93,6 @@ namespace Tim14HCI.Contorls
                 TrainLinesDAO.deleteTrainLine(trainLineId);
                 parent.showTrainLines();
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }      
     }
 }

@@ -1,12 +1,157 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 
-namespace Tim14HCI.Help.Pages
-{
-    class Admin
-    {
-    }
-}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Železnice Srbije - Pomoć menadžeru</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        img {
+            margin: 10px;
+        }
+
+        .mainPanel {
+            background-color: gainsboro;
+            margin: 5px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .contens {
+            margin-left: 20px;
+        }
+
+            .contens li {
+                margin-top: 4px;
+            }
+
+        .item {
+            margin-left: 20px
+        }
+
+        .text {
+            margin-left: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainPanel">
+        <img src="../Images/serbian-railways.png" />
+
+        <div>
+            <h1 style="margin: 5px;">Sistem pomoći za menadžere</h1>
+        </div>
+        <div class="contens">
+            <h4>
+                Na stranici namenjenoj menadžerima, menadžeri su u mogućnosti da:
+            </h4>
+            <ul>
+                <li>Upravljaju vozovima</li>
+                <li>Upravljaju stanicama</li>
+                <li>Upravljaju voznim linijama</li>
+                <li>Upravljaju redom vožnje</li>
+                <li>Pregledaju izveštaje</li>
+                <li>Vrše pretragu nad entitetima sistema</li>
+                <li>Izvrše odjavu sa aplikacije</li>
+            </ul>
+        </div>
+        <div class="item">
+            <h3>Upravljanje vozovima</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Vozovi" menadžeri pristupaju funkcionalnostima za upravljanje vozovima. Menadžeri mogu da vide osnovne informacije
+                    o dostupnim vozovima, klikom na dugme "Izmeni" mogu da izmene osnovne informacije o vozovima, klikom na dugme "Obriši" mogu da uklone
+                    voz iz upotrebe. Osnovne informacijame o vozovima su: naziv, kapacitet, brzina. Sa desne strane panela za pregled osnovnih informacija o vozovima nalazi se dugme "Dodaj" koje služi za dodavanje
+                    novog voza u sistem. Klikom na ovo dugme otvara se forma koju je potrebno popuniti da bi novi voz bio dodat u sistem.
+                </p>
+                <img src="../Images/train-overview.png" />
+                <img src="../Images/train-add.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Upravljanje stanicama</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Stanice" menadžeri pristupaju funkcionalnostima za upravljanje stanicama. Menadžeri mogu da vide osnovne informacije
+                    o dostupnim stanicama, klikom na dugme "Izmeni" mogu da izmene osnovne informacije o stanicama, klikom na dugme "Obriši" mogu da uklone
+                    stanicu iz mreže stanica. Osnovne informacijame o stanicama su: naziv stanice i susedne stanice. Sa desne strane panela za pregled
+                    osnovnih informacija o stanicama nalazi se dugme "Dodaj" koje služi za dodavanje nove stanice u sistem. Klikom na ovo dugme otvara
+                    se forma koju je potrebno popuniti da bi nova stanica bila dodata u sistem. Potrebno je uneti naziv stanice, na mapi označiti fizičku
+                    lokaciju stanice i uneti sve susedne stanice novoj stanici.
+                </p>
+                <img src="../Images/station-overview.png" />
+                <img src="../Images/station-add.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Upravljanje vozim linijama</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Vozne linije" menadžeri pristupaju funkcionalnostima za upravljanje voznim linijama. Menadžeri mogu da vide osnovne informacije
+                    o dostupnim voznim linijama, klikom na dugme "Izmeni" mogu da izmene osnovne informacije o voznim linijama, klikom na dugme "Obriši" mogu da uklone
+                    vozni liniju iz sistema. Osnovne informacijame o voznim linijama oduhvataju: polaznu stanicu, usputne stanice, krajnju stanicu, ukupno vreme
+                    putovanja, kao i ukupnu cenu putovanja od početne do krajnje stanice. Sa desne strane panela za pregled osnovnih informacija o
+                    voznim linijama nalazi se dugme "Dodaj" koje služi za dodavanje nove vozne linije u sistem. Klikom na ovo dugme otvara
+                    se forma koju je potrebno popuniti da bi nova vozna linija bila dodata u sistem. Dodavanje nove vozne linije sastoji se od četiri koraka
+                    prvi korak jeste odabir početne i krajnje stanice, kao i stanica koje će biti posećene na ovoj ruti. Stanice dodajete drag-drop tehnikom.
+                    Klikom na dugme "Sledeće" prelazite na novi korak, odabir voza. Sa desne strane panela možete videti kako izgleda mrežni prikaz rute i
+                    voz koji ste izabrali. Klikom na dugme "Sledeće" prelazi se na treći korak, podešavanje vremena i cene između svake stanice.
+                    Poslednji korak predstavlja generalni pregled svih unetih podataka. Klikom na dugme "Sačuvaj" nova vozna linija će biti dodata u sistem.
+                </p>
+                <img src="../Images/train-line-overview-admin.png" />
+                <img src="../Images/train-line-add-1.png" />
+                <img src="../Images/train-line-add-2.png" />
+                <img src="../Images/train-line-add-3.png" />
+                <img src="../Images/train-line-add-4.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Upravljanje redom vožnje</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Red vožnje" menadžeri pristupaju funkcionalnostima za upravljanje redom vožnje. Menadžeri mogu da vide osnovne informacije
+                    o svim polascima, klikom na dugme "Izmeni" mogu da izmene osnovne informacije o polasku, klikom na dugme "Obriši" mogu da uklone
+                    dolazak iz sistema. Osnovne informacijame o polasku su: vozna linija, vreme polaska i vreme dolaska. Sa desne strane panela za pregled
+                    osnovnih informacija o redu vožnje nalazi se dugme "Dodaj" koje služi za dodavanje novog polaska u sistem. Klikom na ovo dugme otvara
+                    se forma koju je potrebno popuniti da bi novi polazak bio dodat u sistem. Potrebno je izabrati voznu liniju i vreme polaska. Dok će
+                    vreme dolaska izračunati sistem.
+                </p>
+                <img src="../Images/departure-overview.png" />
+                <img src="../Images/departure-add.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Pregled izveštaja</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Izveštaji" menadžeri pristupaju pregledu izveštaja. Menadžerima su dostupna dva izveštaja broj prodatih karti po mesecima
+                    i broj prodatih karti za svaki polazak. Klikom na dugme "Detalji" menadžer može dobiti detaljniji pregled izveštaja.
+                </p>
+                <img src="../Images/report-1.png" />
+                <img src="../Images/report-2.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Pretraga i filtriranje nad entitetima</h3>
+            <div class="text">
+                <p>
+                    Menadžer je u mogućnosti da vrši pretragu i filtriranje entiteta u sistemu po njihovim atributima.
+                </p>
+                <img src="../Images/search-admin.png" />
+            </div>
+        </div>
+        <div class="item">
+            <h3>Odjava sa aplikacije</h3>
+            <div class="text">
+                <p>
+                    Klikom na dugme "Izloguj se" menadžer će biti odjavljen sa aplikacije.
+                </p>
+                <img src="../Images/logout-admin.png" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -109,14 +109,17 @@ namespace Tim14HCI.Windows
 
             foreach (Departure departure in departures)
             {
-                foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
+                if (DateTime.Compare(departure.StartTime, DateTime.Now) >= 0)
                 {
-                    DepartureControl departureControl = new DepartureControl(departure, ows);
-                    SearchableDeparture sd = new SearchableDeparture(departure, ows, DepartureEnum.Departure);
-                    searchableDepartures.Add(sd);
-                    stack_Data.Children.Add(departureControl);                    
-                }
-                fillStacDataWithOnWayDepartures(departure);
+                    foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
+                    {
+                        DepartureControl departureControl = new DepartureControl(departure, ows);
+                        SearchableDeparture sd = new SearchableDeparture(departure, ows, DepartureEnum.Departure);
+                        searchableDepartures.Add(sd);
+                        stack_Data.Children.Add(departureControl);
+                    }
+                    fillStacDataWithOnWayDepartures(departure);
+                }                
             }           
         }
 

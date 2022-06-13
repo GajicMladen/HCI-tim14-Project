@@ -27,6 +27,19 @@ namespace Tim14HCI.DAO
             }
         }
 
+        public static List<Departure> getAllDeparturesSearch(string query)
+        {
+            List<Departure> retVal = new List<Departure>();
+            using (var context = new SerbiaRailwayContext())
+            {
+                foreach (Departure d in context.departures.ToList())
+                {
+                    if (d.GetSearchString().ToLower().Contains(query.ToLower())) retVal.Add(d);
+                }
+                return retVal;
+            }
+        }
+
         /*public static Departure GetDepartureByID(int id)
         {
             using (var context = new SerbiaRailwayContext())

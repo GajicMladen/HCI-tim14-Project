@@ -31,22 +31,24 @@ namespace Tim14HCI.Contorls
         public TrainLineControl(TrainLine trainLine,AdminWindow window)
         {
             InitializeComponent();
+            lbl_StartStation.Content = StationDAO.GetStationByID(trainLine.StartStationID).Name;
+            lbl_EndStation.Content = StationDAO.GetStationByID(trainLine.EndStationID).Name;
 
             parent = window;
             trainLineId = trainLine.TrainLineID;
 
-            lbl_StartStation.Content = trainLine.StartStation.Name;
-            lbl_EndStation.Content = trainLine.EndStation.Station.Name;
-
             lbl_OnWayStations.Content = "";
-            
-            if (trainLine.OnWayStations.Count > 0)
+
+            List<OnWayStation> owsList = OnWayStationDAO.GetAllOnWayStationsByTrainLineID(trainLine.TrainLineID);
+
+            if (owsList.Count > 0)
             {
-
-                foreach (OnWayStation onWayStation in trainLine.OnWayStations)
+                int cnt = 1;
+                foreach (OnWayStation onWayStation in owsList)
                 {
-                    lbl_OnWayStations.Content += onWayStation.Station.Name + " , ";
-
+                    if (cnt < owsList.Count)
+                        lbl_OnWayStations.Content += StationDAO.GetStationByID(StationDAO.GetOnWayStationByID(onWayStation.OnWayStationID).StationID).Name + " , ";
+                    cnt++;
                 }
             }
             else
@@ -54,6 +56,10 @@ namespace Tim14HCI.Contorls
                 lbl_OnWayStations.Content = " / ";
 
             }
+            if (lbl_OnWayStations.Content.ToString().Length > 3)
+                lbl_OnWayStations.Content = lbl_OnWayStations.Content.ToString().Substring(0, lbl_OnWayStations.Content.ToString().Length - 3);
+            else
+                lbl_OnWayStations.Content = " / ";
             lbl_price.Content = trainLine.getTotalPrice().ToString();
             lbl_time.Content = trainLine.getTotalTime().ToString();
 
@@ -87,6 +93,11 @@ namespace Tim14HCI.Contorls
                 TrainLinesDAO.deleteTrainLine(trainLineId);
                 parent.showTrainLines();
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

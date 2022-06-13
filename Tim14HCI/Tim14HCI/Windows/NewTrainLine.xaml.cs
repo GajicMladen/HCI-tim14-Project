@@ -189,7 +189,11 @@ namespace Tim14HCI.Windows
             {
 
                 TrainLinesDAO.addNewTrainLine(selectedRoute, selectedTrain, prices, times);
-                Close();
+                AdminWindow parentCasted = parent as AdminWindow;
+                parentCasted.fillStackDataWithTrainLines();
+                Hide();
+                parent.Show();
+
             }
 
             return true;

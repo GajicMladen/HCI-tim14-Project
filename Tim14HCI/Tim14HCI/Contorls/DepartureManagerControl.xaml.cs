@@ -38,7 +38,7 @@ namespace Tim14HCI.Contorls
 
             TrainLine line = TrainLinesDAO.getTrainLineByID(departure.TrainLineID);
 
-            lbl_Line.Content = StationDAO.GetStationByID(line.StartStationID).Name + " - " + StationDAO.GetStationByID(StationDAO.GetOnWayStationByID(line.EndStationID).StationID).Name;
+            lbl_Line.Content = StationDAO.GetStationByID(line.StartStationID).Name + " - " + StationDAO.GetStationByID(line.EndStationID).Name;
             lbl_StartTime.Content = departure.StartTime.ToString("dd.MM.yyyy. HH:mm");
             lbl_EndTime.Content = departure.StartTime.AddMinutes(StationDAO.GetTrainLineDuration(departure.TrainLineID)).ToString("dd.MM.yyyy. HH:mm");
         }

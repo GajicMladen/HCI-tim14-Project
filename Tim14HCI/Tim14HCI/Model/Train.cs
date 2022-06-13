@@ -15,5 +15,10 @@ namespace Tim14HCI.Model
 
         public virtual List<TrainLine> TrainLines { get; set; }
 
+        public string GetSearchString()
+        {
+            return TrainID.ToString() + " " + Name.ToString() + " " + MaxSpeed.ToString() + " km/h " + Capacity.ToString() + " osoba";
+        }
+
     }
 }

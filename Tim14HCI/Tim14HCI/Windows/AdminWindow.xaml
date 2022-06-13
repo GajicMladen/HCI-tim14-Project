@@ -36,7 +36,7 @@
 
             <Label x:Name="lbl_userRole" Content="uloga"  HorizontalAlignment="Center" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalAlignment="Top" Foreground="#FFBDB7B7" FontWeight="Bold" Height="33" Width="138" FontSize="16"   FontStyle="Italic" />
         </StackPanel>
-        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click" l:HelpProvider.HelpKey="Admin">
+        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" l:HelpProvider.HelpKey="Admin" Cursor="Hand" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click">
             <StackPanel VerticalAlignment="Center" Height="42" Width="67">
                 <Image  Source="/Images/logout-icon.png" Height="23"/>
                 <TextBlock HorizontalAlignment="Center">Izloguj se</TextBlock>
@@ -51,40 +51,133 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 10" Click="Button_Click" l:HelpProvider.HelpKey="Admin">
-                <Button.Background>
-                    <SolidColorBrush Color="#FFBF1616"/>
-                </Button.Background>
+          
+            <Button Grid.Column="0" Margin="3 10" Click="Button_Click" Cursor="Hand" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/train.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozovi <TextBlock Foreground="#FF586358">(Q)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="Button_Click_1" l:HelpProvider.HelpKey="Admin">
+            <Button Grid.Column="1" Margin="3 10" Cursor="Hand" Click="Button_Click_1" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/station.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Stanice <TextBlock Foreground="#FF586358">(W)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            <Button Grid.Column="2" Margin="3 10" Background="#FFBF1616" Click="Button_Click_2" l:HelpProvider.HelpKey="Admin">
+            <Button Grid.Column="2" Margin="3 10" Cursor="Hand" Click="Button_Click_2" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/lines.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozne linije <TextBlock Foreground="#FF586358">(E)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            <Button Grid.Column="3" Margin="3 10" Background="#FFBF1616" Click="Button_Click_4" l:HelpProvider.HelpKey="Admin">
+            <Button Grid.Column="3" Margin="3 10" Cursor="Hand" Click="Button_Click_4" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/timeSchedule.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Red vožnje <TextBlock Foreground="#FF586358">(R)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-
-            <Button Grid.Column="4" Margin="3 10" Background="#FFBF1616" Click="Button_Click_5" l:HelpProvider.HelpKey="Admin">
+            <Button Grid.Column="4" Margin="3 10" Cursor="Hand" Click="Button_Click_5" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/reports.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Izveštaji <TextBlock Foreground="#FF586358">(T)</TextBlock></TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
+            
         </Grid>
 
         <!--Content-->
@@ -104,14 +197,68 @@
             </Border>
             <Label x:Name="lbl_ShownData" FontSize="16" FontWeight="Bold" Margin="0,0,3.8,0.2" VerticalAlignment="Center" HorizontalAlignment="Center">Vozovi</Label>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0.2,0,1.8,0.2">
-                <Label VerticalAlignment="Center" >Naziv:</Label>
-                <TextBox Width="127" Margin="8" l:HelpProvider.HelpKey="Admin"></TextBox>
+                <Label VerticalAlignment="Center" >Pretraga:</Label>
+                <TextBox x:Name="searchTextBox" Width="226" Height="28" Margin="8,6,8,8" KeyDown="searchTextBox_KeyDown" l:HelpProvider.HelpKey="Admin"></TextBox>
             </StackPanel>
-            <Button Grid.Column="2" Margin="5" Background="#FF3B3EA9" l:HelpProvider.HelpKey="Admin">
+            <Button Grid.Column="2" Margin="5" Cursor="Hand" Click="Button_Click_6">
                 <StackPanel Orientation="Horizontal">
                     <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Pretraži</Label>
                     <Image Source="/Images/search.png" Margin="3"/>
                 </StackPanel>
+                <Button.ToolTip>
+                    <ToolTip>
+                        Praznom pretragom mogu se dobiti svi entiteti, odnosno resetuje se pretraga.
+                    </ToolTip>
+                </Button.ToolTip>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Grid.Column="3" Margin="5" Cursor="Hand" Click="Demo_Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Demo</Label>
+                    <Image Source="/Images/demo.png" Margin="3"/>
+                </StackPanel>
+                <Button.ToolTip>
+                    <ToolTip>
+                        Praznom pretragom mogu se dobiti svi entiteti, odnosno resetuje se pretraga.
+                    </ToolTip>
+                </Button.ToolTip>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
             <Grid Grid.ColumnSpan="3"  Grid.Row="1">
                 <Grid.Background>
@@ -160,13 +307,32 @@
                 </ListBox>
             </Grid>
 
-            <Button Grid.Column="3" Grid.Row="1" Height="50" VerticalAlignment="Bottom" Foreground="White" Background="#FF3438B3" Margin="10" Click="Button_Click_3" l:HelpProvider.HelpKey="Admin">
+            <Button Grid.Column="3" Grid.Row="1" Height="50" VerticalAlignment="Bottom" Foreground="White" Cursor="Hand" Margin="10" Click="Button_Click_3" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/add.png" Width="20"></Image>
                     <TextBlock x:Name="lbl_AddNew" Foreground="White" >Dodaj 
                         <TextBlock Foreground="#FF6A9C6A"> (N)</TextBlock>
                     </TextBlock>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </Grid>
 

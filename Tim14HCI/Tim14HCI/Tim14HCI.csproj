@@ -299,6 +299,9 @@
     <Compile Include="Windows\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DemoWindow.xaml.cs">
+      <DependentUpon>DemoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
@@ -423,6 +426,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DemoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -561,6 +568,13 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\demo.png" />
+    <Resource Include="Images\reports.png" />
+    <Resource Include="Help\Images\schedule-overview.png" />
+    <Resource Include="Help\Images\zeleznicesrbije.ico" />
+    <Content Include="Demo\departures.mp4" />
+    <Content Include="Demo\stations.mp4" />
+    <Content Include="Demo\trainlines.mp4" />
     <Content Include="Help\Pages\Login_Signup.html" />
     <Resource Include="Images\play-icon.png" />
     <Resource Include="Images\reports.png" />

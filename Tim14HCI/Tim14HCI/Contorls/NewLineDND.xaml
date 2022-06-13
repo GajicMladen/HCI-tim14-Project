@@ -24,7 +24,26 @@
                 <SolidColorBrush Color="#FF26299C" Opacity="0"/>
             </StackPanel.Background>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="10 0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="130"/>
-            <Button Margin="5" Background="#FF26299C"   Width="39" Height="20">
+            <Button Margin="5" Cursor="Hand"   Width="39" Height="20">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Image Source="/images/search.png"></Image>
                 </StackPanel>

@@ -50,6 +50,10 @@ namespace Tim14HCI.Model
             return ret;
         }
         
+        public string GetSearchString()
+        {
+            return DepartureID.ToString() + " " + TrainLinesDAO.getTrainLineByID(TrainLineID).GetSearchString(true) + " " + StartTime.ToString("dd.MM.yyyy. HH:mm") + " " + GetEndTime().ToString("dd.MM.yyyy. HH:mm");
+        }
 
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tim14HCI.DAO;
 
 namespace Tim14HCI.Model
 {
@@ -31,6 +32,11 @@ namespace Tim14HCI.Model
             this.StationID = x.StationID;
             this.position_x = x.position_x;
             this.position_y = x.position_y;
+        }
+
+        public string GetSearchString()
+        {
+            return Name;
         }
     }
 }

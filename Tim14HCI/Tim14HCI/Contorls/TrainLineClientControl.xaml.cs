@@ -29,9 +29,12 @@ namespace Tim14HCI.Contorls
         public TrainLineClientControl(TrainLine trainLine)
         {
             InitializeComponent();
+            Map.Children.Clear();
             lbl_StartStation.Content = trainLine.StartStation.Name;            
             lbl_EndStation.Content = OnWayStationDAO.GetEndStationByTrainLineID(trainLine.TrainLineID).Station.Name;
 
+            List<Station> stations = new List<Station>();
+            stations.Add(trainLine.StartStation);
             List<OnWayStation> onWayStations = OnWayStationDAO.GetAllOnWayStationsByTrainLineID(trainLine.TrainLineID);
             
             lbl_OnWayStations.Content = "";
@@ -43,11 +46,13 @@ namespace Tim14HCI.Contorls
                     if (onWayStation.OnWayStationID != OnWayStationDAO.GetEndStationByTrainLineID(trainLine.TrainLineID).OnWayStationID)
                     {                        
                         lbl_OnWayStations.Content += onWayStation.Station.Name + " , ";
-                    }                   
+                    }
+                    stations.Add(onWayStation.Station);
                 }
             }
             else
             {
+                stations.Add(OnWayStationDAO.GetEndStationByTrainLineID(trainLine.TrainLineID).Station);
                 lbl_OnWayStations.Content = " / ";
 
             }
@@ -59,6 +64,12 @@ namespace Tim14HCI.Contorls
             lbl_price.Content = trainLine.getTotalPrice().ToString();
             lbl_time.Content = trainLine.getTotalTime().ToString();
 
+            MapControl mapControl = new MapControl(stations);
+            mapControl.RenderTransform = new ScaleTransform(0.5, 0.5);            
+            Map.Children.Add(mapControl);
+            Map.Height = 150;
+            Map.Width = 250;
         }
+       
     }
 }

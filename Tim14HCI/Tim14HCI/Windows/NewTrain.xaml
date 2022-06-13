@@ -1,12 +1,17 @@
-﻿<Window x:Class="Tim14HCI.Windows.NewTrain"
+<Window x:Class="Tim14HCI.Windows.NewTrain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
+        xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        Title="Dodavanje novog voza" Height="588.425" Width="1108.153" Closing="Window_Closing">
+        Title="Dodavanje novog voza" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Tim14HCI;component/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.4"/>
@@ -45,9 +50,9 @@
             <Label x:Name="trainCapacityLabel" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Kapacitet voza:</Label>
             <Label x:Name="trainMaxSpeedLabel" Grid.Row="3" Grid.ColumnSpan="2" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="153,19,0,19">Maksimalna brzina:</Label>
 
-            <TextBox Grid.Row="1" Grid.Column="2" x:Name="trainNameTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1"/>
-            <TextBox Grid.Row="2" Grid.Column="2" x:Name="trainCapacityTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1"/>
-            <TextBox Grid.Row="3" Grid.Column="2" x:Name="trainMaxSpeedTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1"/>
+            <TextBox Grid.Row="1" Grid.Column="2" x:Name="trainNameTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" />
+            <TextBox Grid.Row="2" Grid.Column="2" x:Name="trainCapacityTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" />
+            <TextBox Grid.Row="3" Grid.Column="2" x:Name="trainMaxSpeedTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" />
 
             <Label x:Name="errorLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
         </Grid>
@@ -61,7 +66,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="Button_Click" Content="Kreiraj voz">
+            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="Button_Click" Content="Kreiraj voz" l:HelpProvider.HelpKey="Admin">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF3438B3"/>
@@ -82,7 +87,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="backButton_Click" Content="Povratak">
+            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="backButton_Click" Content="Povratak" l:HelpProvider.HelpKey="Admin">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF9B1C1C"/>
@@ -103,6 +108,8 @@
                     </Style>
                 </Button.Style>
             </Button>
+            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="Button_Click" l:HelpProvider.HelpKey="Admin">Kreiraj voz</Button>
+            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click" l:HelpProvider.HelpKey="Admin">Povratak</Button>
         </Grid>
 
     </Grid>

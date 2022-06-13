@@ -109,14 +109,17 @@ namespace Tim14HCI.Windows
 
             foreach (Departure departure in departures)
             {
-                foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
+                if (DateTime.Compare(departure.StartTime, DateTime.Now) >= 0)
                 {
-                    DepartureControl departureControl = new DepartureControl(departure, ows);
-                    SearchableDeparture sd = new SearchableDeparture(departure, ows, DepartureEnum.Departure);
-                    searchableDepartures.Add(sd);
-                    stack_Data.Children.Add(departureControl);                    
-                }
-                fillStacDataWithOnWayDepartures(departure);
+                    foreach (OnWayStation ows in OnWayStationDAO.GetAllOnWayStationsByTrainLineID(departure.TrainLineID))
+                    {
+                        DepartureControl departureControl = new DepartureControl(departure, ows);
+                        SearchableDeparture sd = new SearchableDeparture(departure, ows, DepartureEnum.Departure);
+                        searchableDepartures.Add(sd);
+                        stack_Data.Children.Add(departureControl);
+                    }
+                    fillStacDataWithOnWayDepartures(departure);
+                }                
             }           
         }
 
@@ -155,8 +158,8 @@ namespace Tim14HCI.Windows
             IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
             if (focusedControl is DependencyObject)
             {
-                string str = ClientHelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                ClientHelpProvider.ShowHelp("Client", this);
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("Client", this);
             }
         }
 
@@ -213,6 +216,13 @@ namespace Tim14HCI.Windows
             lbl_range.Content = "";
             txbx_seat.Text = "";
             lbl_departure.Content = "";
+        }
+
+        private void DemoMode(object sender, RoutedEventArgs e)
+        {
+            ClientDemo clientDemo = new ClientDemo(this);
+            Visibility = Visibility.Hidden;
+            clientDemo.Show();
         }
 
         private void ShowBoughtTickets(object sender, RoutedEventArgs e)

@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
+        xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Zeleznice srbije" Height="450" Width="800" MinWidth="800" MinHeight="450">
+        Title="Zeleznice srbije" Height="450" Width="800" MinWidth="800" MinHeight="450" l:HelpProvider.HelpKey="Login_Signup">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*">
@@ -48,12 +53,12 @@
             <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8"/>
 
             <Label x:Name="lbl_message" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Foreground="#FFFF0B0B" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
-            
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txbx_username" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" KeyDown="txbx_username_KeyDown"/>
+
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txbx_username" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" KeyDown="txbx_username_KeyDown" l:HelpProvider.HelpKey="Login_Signup"/>
             <Label Grid.Row="1" Grid.Column="0" Content="ID/e-mail:" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="30" Width="85" FontWeight="Bold" FontSize="16"   />
             <Label Grid.Row="2" Grid.Column="0" Content="Lozinka:" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="27" Width="71" FontWeight="Bold" FontSize="16"  />
-            <PasswordBox x:Name="psbx_password" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="226" Height="27" TabIndex="2" KeyDown="txbx_username_KeyDown"/>
-            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Uloguj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Background="#FF3B3EA9" Foreground="White" Click="Button_Click" TabIndex="3"/>
+            <PasswordBox x:Name="psbx_password" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="226" Height="27" TabIndex="2" KeyDown="txbx_username_KeyDown" l:HelpProvider.HelpKey="Login_Signup"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Uloguj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Background="#FF3B3EA9" Foreground="White" Click="Button_Click" TabIndex="3" l:HelpProvider.HelpKey="Login_Signup"/>
 
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
@@ -69,7 +74,7 @@
                 <ColumnDefinition Width="0.1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Content="Nemate nalog?" Foreground="#FFFD242C" FontWeight="Bold"></Label>
-            <Button Grid.Row="2" Grid.Column="1" Content="Registrujte se" Foreground="White" Background="#FF3B3EA9" Click="Button_Click_1" ></Button>
+            <Button Grid.Row="2" Grid.Column="1" Content="Registrujte se" Foreground="White" Background="#FF3B3EA9" Click="Button_Click_1" l:HelpProvider.HelpKey="Login_Signup" ></Button>
         </Grid>
     </Grid>
 </Window>

@@ -278,7 +278,7 @@
     <Compile Include="DAO\TrainLinesDAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
     <Compile Include="DAO\OnWayStationDAO.cs" />
-    <Compile Include="Help\Providers\ClientHelpProvider.cs" />
+    <Compile Include="Help\Providers\HelpProvider.cs" />
     <Compile Include="Help\Viewer\HelpViewer.xaml.cs">
       <DependentUpon>HelpViewer.xaml</DependentUpon>
     </Compile>
@@ -292,6 +292,9 @@
     <Compile Include="Model\ReportItem.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ClientDemo.xaml.cs">
+      <DependentUpon>ClientDemo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
@@ -415,6 +418,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ClientDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -568,7 +575,12 @@
     <Content Include="Demo\departures.mp4" />
     <Content Include="Demo\stations.mp4" />
     <Content Include="Demo\trainlines.mp4" />
-    <Content Include="Demo\trains.mp4" />
+    <Content Include="Help\Pages\Login_Signup.html" />
+    <Resource Include="Images\play-icon.png" />
+    <Resource Include="Images\reports.png" />
+    <Resource Include="Help\Images\schedule-overview.png" />
+    <Resource Include="Help\Images\zeleznicesrbije.ico" />
+    <Content Include="Help\Pages\Admin.html" />
     <Content Include="Help\Pages\Client.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

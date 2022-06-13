@@ -10,6 +10,13 @@ namespace Tim14HCI.DAO
 {
     public static class TrainLinesDAO
     {
+
+        public static List<int> deletedTrainLines = new List<int>();
+
+        public static void deleteTrainLine(int id) {
+            deletedTrainLines.Add(id);
+        }
+
         public static Station GetStartStationByTrainLineID(int id)
         {
             using (var context = new SerbiaRailwayContext())
@@ -42,7 +49,11 @@ namespace Tim14HCI.DAO
 
         public static List<TrainLine> getAllTrainLines() {
             using (var context = new SerbiaRailwayContext()) {
-                List<TrainLine> trainLines = context.trainLines.Include(tl => tl.OnWayStations).Include(tl => tl.EndStation).ThenInclude(es => es.Station).Include(tl => tl.StartStation).ToList();
+                List<TrainLine> trainLines = context.trainLines
+                    .Include(tl => tl.OnWayStations)
+                    .Include(tl => tl.EndStation)
+                    .ThenInclude(es => es.Station)
+                    .Include(tl => tl.StartStation).ToList();
 
                 for (int i = 0; i < trainLines.Count; i++) {
                     trainLines[i].EndStation = context.onWayStations.Include(es => es.Station).Where(ow => ow.TrainLineID == trainLines[i].TrainLineID && ow.isEndStation).FirstOrDefault();
@@ -54,6 +65,28 @@ namespace Tim14HCI.DAO
             } 
         }
 
+        public static List<TrainLine> getAllTrainLinesNotDeleted()
+        {
+            using (var context = new SerbiaRailwayContext())
+            {
+                List<TrainLine> trainLines = context.trainLines
+                    .Include(tl => tl.OnWayStations)
+                    .Include(tl => tl.EndStation)
+                    .ThenInclude(es => es.Station)
+                    .Include(tl => tl.StartStation)
+                    .Where(tl => !deletedTrainLines.Contains(tl.TrainLineID))
+                    .ToList();
+
+                for (int i = 0; i < trainLines.Count; i++)
+                {
+                    trainLines[i].EndStation = context.onWayStations.Include(es => es.Station).Where(ow => ow.TrainLineID == trainLines[i].TrainLineID && ow.isEndStation).FirstOrDefault();
+                    trainLines[i].OnWayStations = context.onWayStations.Include(es => es.Station).Where(ow => ow.TrainLineID == trainLines[i].TrainLineID && !ow.isEndStation).ToList();
+
+
+                }
+                return trainLines;
+            }
+        }
         public static TrainLine getTrainLineByID(int id)
         {
             using (var context = new SerbiaRailwayContext()) {
@@ -157,5 +190,6 @@ namespace Tim14HCI.DAO
             }
             return retVal;
         }
+
     }
 }

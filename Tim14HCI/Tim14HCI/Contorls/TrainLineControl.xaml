@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Tim14HCI.Contorls.TrainLineControl"
+<UserControl x:Class="Tim14HCI.Contorls.TrainLineControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
-             mc:Ignorable="d" Height="141.207" Width="837.046">
-    <Grid Margin="10"  >
+             mc:Ignorable="d" Height="320" Width="837.046">
+    <Grid x:Name="mainGrid" Margin="10"  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="104*"/>
             <ColumnDefinition Width="627*"/>
@@ -14,7 +14,6 @@
         <Grid.Background>
             <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
         </Grid.Background>
-
         <Image Source="/Images/lines.png" Margin="10,10,558,10" Grid.ColumnSpan="2"  />
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>

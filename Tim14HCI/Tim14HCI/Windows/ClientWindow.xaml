@@ -7,7 +7,7 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Železnice Srbije" Height="690" Width="1000" Closing="Window_Closing" l:HelpProvider.HelpKey="Client">
+        Title="Železnice Srbije" MinHeight="690" MinWidth="1000" Closing="Window_Closing" l:HelpProvider.HelpKey="Client">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
         <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->        
@@ -49,7 +49,7 @@
                 <ColumnDefinition ></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Margin="3 10" Click="ShowBoughtTickets" l:HelpProvider.HelpKey="Client" >
                 <Button.Background>
@@ -71,6 +71,17 @@
                     <Image Source="/Images/lines.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozne linije</TextBlock>
                 </StackPanel>
+            </Button>
+            <Button Grid.Column="3" Margin="3 10" Background="#FFBF1616" Click="DemoMode" l:HelpProvider.HelpKey="Client">
+                <StackPanel>
+                    <Image Source="/Images/play-icon.png" Width="30"/>
+                    <TextBlock Foreground="#FFFCFCFF" FontSize="16">Demo mod</TextBlock>
+                </StackPanel>
+                <Button.ToolTip>
+                    <ToolTip>
+                        Pokretanje demonstracionog moda
+                    </ToolTip>
+                </Button.ToolTip>
             </Button>
         </Grid>
 

@@ -293,6 +293,9 @@
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ClientDemo.xaml.cs">
+      <DependentUpon>ClientDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
@@ -412,6 +415,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ClientDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -555,6 +562,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Help\Pages\Login_Signup.html" />
+    <Resource Include="Images\play-icon.png" />
     <Resource Include="Images\reports.png" />
     <Resource Include="Help\Images\schedule-overview.png" />
     <Resource Include="Help\Images\zeleznicesrbije.ico" />

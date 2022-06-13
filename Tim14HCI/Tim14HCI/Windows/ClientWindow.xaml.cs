@@ -218,6 +218,13 @@ namespace Tim14HCI.Windows
             lbl_departure.Content = "";
         }
 
+        private void DemoMode(object sender, RoutedEventArgs e)
+        {
+            ClientDemo clientDemo = new ClientDemo(this);
+            Visibility = Visibility.Hidden;
+            clientDemo.Show();
+        }
+
         private void ShowBoughtTickets(object sender, RoutedEventArgs e)
         {
             TicketDisplayWindow ticketDisplayWindow = new TicketDisplayWindow(this, "Bought", user);

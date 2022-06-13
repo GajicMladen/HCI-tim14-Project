@@ -35,8 +35,7 @@ namespace Tim14HCI.Help.Viewer
             {                
                 key = "error";
             }            
-            Uri u = new Uri(String.Format("file:///{0}/Help/Pages/{1}.html", curDir, key));
-            Console.WriteLine(u);
+            Uri u = new Uri(String.Format("file:///{0}/Help/Pages/{1}.html", curDir, key));            
             wbHelp.Navigate(u);
         }
 

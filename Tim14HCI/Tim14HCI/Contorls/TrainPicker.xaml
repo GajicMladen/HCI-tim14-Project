@@ -16,12 +16,31 @@
         </Grid.RowDefinitions>
         <Label Foreground="Black" FontWeight="Bold" FontSize="16"  >Odaberite voz:</Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBox HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
-            <Button Margin="5" Background="#FF3B3EA9" >
+            <TextBox x:Name="searchTrains" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" MaxLength="30" MaxLines="1"  KeyDown="searchTrains_KeyDown"/>
+            <Button Margin="5" Cursor="Hand" Click="Button_Click" >
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Label VerticalAlignment="Center" Foreground="White">Pretarži</Label>
+                    <Label VerticalAlignment="Center" Foreground="White">Pretraži</Label>
                     <Image Source="/images/search.png"></Image>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
         <ListBox x:Name="lsbx_items" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" >

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tim14HCI.Contorls"
              mc:Ignorable="d" 
-             Height="146.92" Width="867.454">
+             Height="146.92" Width="767.454">
     <Grid Margin="10"  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="104*"/>
@@ -16,7 +16,7 @@
             <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
         </Grid.Background>
 
-        <Image Source="/Images/timeSchedule.png" Margin="22,25,596,19" Grid.ColumnSpan="2"  />
+        <Image Source="/Images/timeSchedule.png" Margin="22,28,529.4,19.2" Grid.ColumnSpan="2"  />
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

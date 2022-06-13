@@ -7,18 +7,18 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="RegistrationWindow" Height="715" Width="762.8" MinWidth="730" MinHeight="723" Closing="Window_Closing" l:HelpProvider.HelpKey="Login_Signup">
+        Title="Registracija" Height="715" Width="762.8" MinWidth="730" MinHeight="723" Closing="Window_Closing" l:HelpProvider.HelpKey="Login_Signup">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*">
+            <RowDefinition Height="127*">
             </RowDefinition>
-            <RowDefinition Height="2*">
+            <RowDefinition Height="436*">
             </RowDefinition>
-            <RowDefinition Height="0.5*">
+            <RowDefinition Height="130*">
             </RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -32,10 +32,9 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.84"/>
         </Grid.Background>
-        <Label Grid.Row="0" Grid.Column="0" Content="Registrujte se" VerticalAlignment="Center" Height="44" Width="154" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />
-        <Image Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top"  Source="/Images/Serbian_Railways.svg.png" />
+        <Image Margin="15,15,0,0" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Source="/Images/Serbian_Railways.svg.png" Height="78" Width="158" />
 
-        <Grid Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" >
+        <Grid Grid.Row="1" Grid.Column="1" MinWidth="200" MinHeight="150" Margin="0.4,0.8,0,127.6" Grid.RowSpan="2" >
 
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -51,11 +50,8 @@
                 <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid.Background>
-                <SolidColorBrush Color="White" Opacity="0.5"/>
-            </Grid.Background>
 
-            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8"/>
+            <Border Grid.Row="0" Grid.Column="0" Background="White" Opacity="0.5" Grid.ColumnSpan="2" Grid.RowSpan="8" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8"/>
 
             <Label x:Name="lbl_message" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Foreground="#FFFF0B0B" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
 
@@ -75,10 +71,30 @@
 
             <Label Grid.Row="6" Grid.Column="0" HorizontalContentAlignment="Right" Content="Potvrda lozinke:" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="27" Width="122" FontWeight="Bold" FontSize="14" Margin="0,1,0,1.6"  />
             <PasswordBox x:Name="txbx_passwordCheck" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="226" Height="27" TabIndex="2" l:HelpProvider.HelpKey="Login_Signup"/>
-            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" Content="Registruj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Background="#FF3B3EA9" Foreground="White"  TabIndex="3" Click="Button_Click_1" l:HelpProvider.HelpKey="Login_Signup" />
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" Content="Registruj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Cursor="Hand" Foreground="White"  TabIndex="3" Click="Button_Click_1" l:HelpProvider.HelpKey="Login_Signup" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="0">
+        <Grid Grid.Row="1" Grid.Column="2" Margin="0,406.8,-0.2,-0.4" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -91,7 +107,27 @@
                 <ColumnDefinition Width="0.1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Content="Imate nalog?" Foreground="#FFFD242C" FontWeight="Bold"></Label>
-            <Button Grid.Row="2" Grid.Column="1" Content="Ulogujte se" Foreground="White" Background="#FF3B3EA9" Click="Button_Click" l:HelpProvider.HelpKey="Login_Signup" ></Button>
+            <Button Grid.Row="2" Grid.Column="1" Content="Ulogujte se" Foreground="White" Cursor="Hand" Click="Button_Click" l:HelpProvider.HelpKey="Login_Signup" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Window>

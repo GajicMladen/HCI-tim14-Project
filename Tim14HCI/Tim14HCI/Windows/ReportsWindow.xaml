@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:Tim14HCI.Windows" xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
-        Title="Izveštaji" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+        Icon="/Images/zeleznicesrbije.ico"
+        Title="Izveštaji" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin" MinWidth="1108.153" MinHeight="588.425">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.Background>
@@ -56,9 +57,72 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="detailsButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="detailsButton_Click" l:HelpProvider.HelpKey="Admin" >Detalji</Button>
-            <Button x:Name="lineReportButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="departureReportButton_Click" l:HelpProvider.HelpKey="Admin">Izveštaj po polascima</Button>
-            <Button x:Name="backButton" Grid.Column="2" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click" l:HelpProvider.HelpKey="Admin">Povratak</Button>
+            <Button x:Name="detailsButton" Grid.Column="0" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="detailsButton_Click" l:HelpProvider.HelpKey="Admin" Content="Detalji">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="DarkGray"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="lineReportButton" Grid.Column="1" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="departureReportButton_Click" l:HelpProvider.HelpKey="Admin" Content="Izveštaj po polascima">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="backButton" Grid.Column="2" Grid.Row="0" Margin="15" Cursor="Hand" Foreground="White" FontSize="16" Click="backButton_Click" l:HelpProvider.HelpKey="Admin" Content="Povratak">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF9B1C1C"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Window>

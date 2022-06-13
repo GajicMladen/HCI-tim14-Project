@@ -11,10 +11,12 @@ namespace Tim14HCI.DAO
     public static class TrainDAO
     {
 
+        public static List<int> deleted = new List<int>();
+
         public static List<Train> getAllTrains() {
 
             using (var context = new SerbiaRailwayContext()) {
-                return context.trains.ToList();
+                return context.trains.Where(t => ! deleted.Contains(t.TrainID)).ToList();
             }
         }
 
@@ -25,7 +27,8 @@ namespace Tim14HCI.DAO
             {
                 foreach(Train t in context.trains.ToList())
                 {
-                    if (t.GetSearchString().ToLower().Contains(query.ToLower())) retVal.Add(t);
+                    if (t.GetSearchString().ToLower().Contains(query.ToLower()) && ! deleted.Contains(t.TrainID))
+                        retVal.Add(t);
                 }
                 return retVal;
             }
@@ -51,15 +54,7 @@ namespace Tim14HCI.DAO
 
         public static void RemoveTrain(Train train)
         {
-            using (var context = new SerbiaRailwayContext())
-            {
-                var trainToRemove = context.trains.SingleOrDefault(t => t.Name == train.Name);
-                if (trainToRemove != null)
-                {
-                    context.trains.Remove(trainToRemove);
-                    context.SaveChanges();
-                }
-            }
+            deleted.Add(train.TrainID);
         }
 
         public static void AddTrain(Train train)

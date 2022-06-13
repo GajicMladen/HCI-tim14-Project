@@ -7,10 +7,10 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Železnice Srbije - ADMIN" Height="689.312" Width="1158.063" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+        Title="Železnice Srbije" Height="689.312" Width="1158.063" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin" MinWidth="1158.063" MinHeight="674">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -181,7 +181,7 @@
         </Grid>
 
         <!--Content-->
-        <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3" >
+        <Grid Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3" MinWidth="4" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="121*"/>
                 <ColumnDefinition Width="488*"/>
@@ -198,7 +198,7 @@
             <Label x:Name="lbl_ShownData" FontSize="16" FontWeight="Bold" Margin="0,0,3.8,0.2" VerticalAlignment="Center" HorizontalAlignment="Center">Vozovi</Label>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0.2,0,1.8,0.2">
                 <Label VerticalAlignment="Center" >Pretraga:</Label>
-                <TextBox x:Name="searchTextBox" Width="226" Height="28" Margin="8,6,8,8" KeyDown="searchTextBox_KeyDown" l:HelpProvider.HelpKey="Admin"></TextBox>
+                <TextBox x:Name="searchTextBox" Width="226" Height="28" Margin="8,6,8,8" KeyDown="searchTextBox_KeyDown" l:HelpProvider.HelpKey="Admin" MaxLength="40" MaxLines="1"></TextBox>
             </StackPanel>
             <Button Grid.Column="2" Margin="5" Cursor="Hand" Click="Button_Click_6">
                 <StackPanel Orientation="Horizontal">

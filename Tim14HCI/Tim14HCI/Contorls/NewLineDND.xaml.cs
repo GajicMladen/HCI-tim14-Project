@@ -197,6 +197,13 @@ namespace Tim14HCI.Contorls
                 succesStaionsDropPanel.Children.Add(stationForDragAndDrop);
             }
 
+            if (succesStaionsDropPanel.Children.Count == 0)
+            {
+                succesStaionsDropPanel.Children.Add(new Label() { Content = "Trenutno ne postoji\n nijedna stanica! ", FontSize = 15, HorizontalAlignment = HorizontalAlignment.Center });
+            }
+
+            btn_Search.IsEnabled = true;
+
         }
 
         private void showOnlyLinkedStations(Station station) {
@@ -217,7 +224,12 @@ namespace Tim14HCI.Contorls
                 succesStaionsDropPanel.Children.Add(stationForDragAndDrop);
             }
 
+            if (succesStaionsDropPanel.Children.Count == 0)
+            {
+                succesStaionsDropPanel.Children.Add(new Label() { Content = "Ne postoji nijedna povezana\n stanica sa stanicom '"+station.Name+"'! \nVoz se ne može vraćati\n istim putem!", FontSize = 15, HorizontalAlignment = HorizontalAlignment.Center });
+            }
 
+            btn_Search.IsEnabled = false;
         }
 
         private void startStation_Drop(object sender, DragEventArgs e)
@@ -238,9 +250,9 @@ namespace Tim14HCI.Contorls
                         if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
                         {
 
-                            if (_parent.Name == "onWayStationsDropPanel" || _parent.Name == "endStationDropPanel")
+                            if (_parent.Name == "onWayStationsDropPanel" || _parent.Name == "endStationDropPanel" || _parent.Name == "startStationDropPanel")
                             {
-                                MessageBox.Show("dozvoljeno je dodavanje samo iz dostupnih stanica!");
+                                MessageBox.Show("Dozvoljeno je dodavanje samo iz dostupnih stanica!", "Greška!");
                                 return;
                             }
                             
@@ -265,6 +277,8 @@ namespace Tim14HCI.Contorls
                             
                             StartStation = station;
                             lastAdded.Add(station);
+
+                            btn_Search.IsEnabled = false;
 
                             drawStationsOnMap();
 
@@ -292,9 +306,9 @@ namespace Tim14HCI.Contorls
                     {
                         if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
                         {
-                            if (_parent.Name == "onWayStationsDropPanel" || _parent.Name == "startStationDropPanel")
+                            if (_parent.Name == "endStationDropPanel" || _parent.Name == "onWayStationsDropPanel" || _parent.Name == "startStationDropPanel")
                             {
-                                MessageBox.Show("dozvoljeno je dodavanje samo iz dostupnih stanica!");
+                                MessageBox.Show("Dozvoljeno je dodavanje samo iz dostupnih stanica!","Greška!");
                                 return;
                             }
                             _parent.Children.Remove(_element);
@@ -313,6 +327,8 @@ namespace Tim14HCI.Contorls
 
                             succesStaionsDropPanel.Children.Clear();
                             lastAdded.Add(station);
+
+                            btn_Search.IsEnabled = false;
 
                             e.Effects = DragDropEffects.Move;
                         }
@@ -338,9 +354,9 @@ namespace Tim14HCI.Contorls
                         if (e.AllowedEffects.HasFlag(DragDropEffects.Move))
                         {
 
-                            if (_parent.Name == "startStationDropPanel" || _parent.Name == "endStationDropPanel")
+                            if (_parent.Name == "startStationDropPanel" || _parent.Name == "onWayStationsDropPanel" || _parent.Name == "endStationDropPanel" )
                             {
-                                MessageBox.Show("dozvoljeno je dodavanje samo iz dostupnih stanica!");
+                                MessageBox.Show("Dozvoljeno je dodavanje samo iz dostupnih stanica!", "Greška!");
                                 return;
                             }
                             _parent.Children.Remove(_element);
@@ -352,12 +368,46 @@ namespace Tim14HCI.Contorls
                             lastAdded.Add(station);
                             showOnlyLinkedStations(station);
 
+                            btn_Search.IsEnabled = false;
+
                             e.Effects = DragDropEffects.Move;
                         }
                     }
                 }
             }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string query = searchStation.Text;
+
+
+            succesStaionsDropPanel.Children.Clear();
+            foreach (Station station in StationDAO.getAllStationsSearch(query))
+            {
+                StationForDragAndDrop stationForDragAndDrop = new StationForDragAndDrop(station);
+                succesStaionsDropPanel.Children.Add(stationForDragAndDrop);
+            }
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            clearRoute();
+
+            if (startStationDropPanel.Children.Count == 2) {
+                startStationDropPanel.Children.RemoveAt(1);
+            }
+            if (endStationDropPanel.Children.Count == 2)
+            {
+                endStationDropPanel.Children.RemoveAt(1);
+            }
+            onWayStationsDropPanel.Children.Clear();
+
+            showAllStations();
+            drawStationsOnMap();
+            
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tim14HCI.Migrations
 {
-    public partial class TicketChanged : Migration
+    public partial class addedTickets : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -108,8 +108,7 @@ namespace Tim14HCI.Migrations
                         name: "FK_tickets_users_UserID",
                         column: x => x.UserID,
                         principalTable: "users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateTable(
@@ -232,6 +231,7 @@ namespace Tim14HCI.Migrations
                     { 1, 2 },
                     { 1, 3 },
                     { 2, 3 },
+                    { 4, 2 },
                     { 1, 5 },
                     { 5, 6 }
                 });
@@ -250,15 +250,15 @@ namespace Tim14HCI.Migrations
                 columns: new[] { "DepartureID", "StartTime", "TrainLineID" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 6, 8, 12, 30, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 2, new DateTime(2022, 6, 8, 15, 40, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 3, new DateTime(2022, 6, 8, 20, 15, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 4, new DateTime(2022, 6, 14, 12, 30, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 5, new DateTime(2022, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 1, new DateTime(2022, 1, 8, 12, 30, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 2, new DateTime(2022, 2, 8, 15, 40, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 3, new DateTime(2022, 3, 8, 20, 15, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 4, new DateTime(2022, 4, 14, 12, 30, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 5, new DateTime(2022, 5, 14, 15, 0, 0, 0, DateTimeKind.Unspecified), 2 },
                     { 6, new DateTime(2022, 6, 14, 18, 40, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 7, new DateTime(2022, 6, 14, 21, 15, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 8, new DateTime(2022, 6, 15, 15, 40, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 9, new DateTime(2022, 6, 15, 18, 30, 0, 0, DateTimeKind.Unspecified), 2 }
+                    { 7, new DateTime(2022, 7, 14, 21, 15, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 8, new DateTime(2022, 8, 15, 15, 40, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 9, new DateTime(2022, 9, 15, 18, 30, 0, 0, DateTimeKind.Unspecified), 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -279,17 +279,20 @@ namespace Tim14HCI.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 2, false, 800.0, 2, 1, 4 },
-                    { 2, 4, 2, true, 400.0, 1, 3, 3 },
-                    { 8, 4, 1, false, 950.0, 7, 3, 3 },
-                    { 3, 5, 1, false, 950.0, 2, 3, 4 },
-                    { 9, 5, 6, false, 2050.0, 8, 3, 4 },
-                    { 4, 6, 5, true, 1650.0, 3, 3, 3 },
-                    { 10, 6, 2, true, 400.0, 9, 3, 3 },
-                    { 5, 7, 6, false, 2050.0, 4, 3, 4 },
-                    { 11, 7, 5, true, 1650.0, 10, 3, 4 },
-                    { 6, 8, 2, false, 400.0, 5, 3, 3 },
-                    { 12, 8, 1, false, 950.0, 12, 3, 3 },
-                    { 7, 9, 5, true, 1650.0, 6, 3, 4 }
+                    { 13, 1, 2, true, 400.0, 9, 3, 3 },
+                    { 15, 1, 5, true, 1650.0, 10, 3, 4 },
+                    { 2, 2, 2, true, 400.0, 1, 3, 3 },
+                    { 3, 2, 2, true, 400.0, 2, 3, 3 },
+                    { 4, 2, 2, true, 400.0, 3, 3, 3 },
+                    { 12, 2, 1, false, 950.0, 12, 3, 3 },
+                    { 5, 3, 1, false, 950.0, 2, 3, 4 },
+                    { 14, 3, 1, false, 950.0, 4, 3, 4 },
+                    { 6, 4, 5, true, 1650.0, 3, 3, 3 },
+                    { 7, 5, 6, false, 2050.0, 4, 3, 4 },
+                    { 8, 6, 2, false, 400.0, 5, 3, 3 },
+                    { 9, 7, 5, true, 1650.0, 6, 3, 4 },
+                    { 10, 8, 1, false, 950.0, 7, 3, 3 },
+                    { 11, 9, 6, false, 2050.0, 8, 3, 4 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -352,8 +355,7 @@ namespace Tim14HCI.Migrations
                 table: "tickets",
                 column: "DepartureID",
                 principalTable: "departures",
-                principalColumn: "DepartureID",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "DepartureID");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_trainLines_onWayStations_EndStationOnWayStationID",

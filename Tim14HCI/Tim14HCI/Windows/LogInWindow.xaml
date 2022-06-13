@@ -7,10 +7,10 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Zeleznice srbije" Height="450" Width="800" MinWidth="800" MinHeight="450" l:HelpProvider.HelpKey="Login_Signup">
+        Title="Železnice Srbije" Height="450" Width="800" MinWidth="800" MinHeight="450" l:HelpProvider.HelpKey="Login_Signup">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
@@ -46,19 +46,37 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid.Background>
-                <SolidColorBrush Color="White" Opacity="0.5"/>
-            </Grid.Background>
 
-            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8"/>
+
+            <Border Grid.Row="0" Background="White" Opacity="0.5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8"/>
 
             <Label x:Name="lbl_message" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Foreground="#FFFF0B0B" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
 
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txbx_username" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" KeyDown="txbx_username_KeyDown" l:HelpProvider.HelpKey="Login_Signup"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txbx_username" HorizontalAlignment="Center" Height="27"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" KeyDown="txbx_username_KeyDown" l:HelpProvider.HelpKey="Login_Signup" MaxLength="30" MaxLines="1"/>
             <Label Grid.Row="1" Grid.Column="0" Content="ID/e-mail:" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="30" Width="85" FontWeight="Bold" FontSize="16"   />
             <Label Grid.Row="2" Grid.Column="0" Content="Lozinka:" HorizontalAlignment="Right" VerticalAlignment="Center"  Height="27" Width="71" FontWeight="Bold" FontSize="16"  />
-            <PasswordBox x:Name="psbx_password" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="226" Height="27" TabIndex="2" KeyDown="txbx_username_KeyDown" l:HelpProvider.HelpKey="Login_Signup"/>
-            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Uloguj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Background="#FF3B3EA9" Foreground="White" Click="Button_Click" TabIndex="3" l:HelpProvider.HelpKey="Login_Signup"/>
+            <PasswordBox x:Name="psbx_password" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="226" Height="27" TabIndex="2" KeyDown="txbx_username_KeyDown" l:HelpProvider.HelpKey="Login_Signup" MaxLength="30"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Uloguj se" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="327" Height="32" FontWeight="Bold" Cursor="Hand" Foreground="White" Click="Button_Click" TabIndex="3" l:HelpProvider.HelpKey="Login_Signup">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
@@ -74,7 +92,27 @@
                 <ColumnDefinition Width="0.1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" Content="Nemate nalog?" Foreground="#FFFD242C" FontWeight="Bold"></Label>
-            <Button Grid.Row="2" Grid.Column="1" Content="Registrujte se" Foreground="White" Background="#FF3B3EA9" Click="Button_Click_1" l:HelpProvider.HelpKey="Login_Signup" ></Button>
+            <Button Grid.Row="2" Grid.Column="1" Content="Registrujte se" Foreground="White" Cursor="Hand" Click="Button_Click_1" l:HelpProvider.HelpKey="Login_Signup" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF3438B3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CornflowerBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Window>

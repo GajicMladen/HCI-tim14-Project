@@ -7,10 +7,11 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        Title="Dodavanje novog voza" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+        Icon="/Images/zeleznicesrbije.ico"
+        Title="Dodavanje novog voza" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin" MinWidth="1108.153" MinHeight="588.425">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.Background>
@@ -50,9 +51,9 @@
             <Label x:Name="trainCapacityLabel" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Kapacitet voza:</Label>
             <Label x:Name="trainMaxSpeedLabel" Grid.Row="3" Grid.ColumnSpan="2" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="153,19,0,19">Maksimalna brzina:</Label>
 
-            <TextBox Grid.Row="1" Grid.Column="2" x:Name="trainNameTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" />
-            <TextBox Grid.Row="2" Grid.Column="2" x:Name="trainCapacityTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" />
-            <TextBox Grid.Row="3" Grid.Column="2" x:Name="trainMaxSpeedTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" />
+            <TextBox Grid.Row="1" Grid.Column="2" x:Name="trainNameTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" MaxLength="30" MaxLines="1" />
+            <TextBox Grid.Row="2" Grid.Column="2" x:Name="trainCapacityTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" MaxLength="5" MaxLines="1" />
+            <TextBox Grid.Row="3" Grid.Column="2" x:Name="trainMaxSpeedTextbox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" l:HelpProvider.HelpKey="Admin" MaxLength="4" MaxLines="1" />
 
             <Label x:Name="errorLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></Label>
         </Grid>

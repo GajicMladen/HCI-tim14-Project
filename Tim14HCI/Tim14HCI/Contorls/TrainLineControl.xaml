@@ -7,25 +7,24 @@
              mc:Ignorable="d" Height="320" Width="837.046">
     <Grid x:Name="mainGrid" Margin="10"  >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="104*"/>
-            <ColumnDefinition Width="627*"/>
+            <ColumnDefinition Width="280*"/>
+            <ColumnDefinition Width="550*"/>
             <ColumnDefinition Width="130*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <SolidColorBrush Color="#FF9B1C1C" Opacity="0.415"/>
         </Grid.Background>
-        <Image Source="/Images/lines.png" Margin="10,10,558,10" Grid.ColumnSpan="2"  />
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="3*"/>
@@ -40,14 +39,14 @@
             <Label Grid.Row="3" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Usputne stanice:</Label>
             <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" x:Name="lbl_OnWayStations"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">sacsacsa</Label>
 
-            <Label Grid.Row="1" Grid.Column="3" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Ukupno vreme:</Label>
-            <Label Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" x:Name="lbl_time"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">sacsacsa</Label>
+            <Label Grid.Row="4" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Ukupno vreme:</Label>
+            <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" x:Name="lbl_time"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">sacsacsa</Label>
 
-            <Label Grid.Row="2" Grid.Column="3" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Ukupna cena:</Label>
-            <Label Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" x:Name="lbl_price"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">sacsacsa</Label>
+            <Label Grid.Row="5" Grid.Column="1" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center">Ukupna cena:</Label>
+            <Label Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" x:Name="lbl_price"  Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center">sacsacsa</Label>
         </Grid>
 
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="569,21,0,18">
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="450,21,0,18">
             <Button Margin="10" Click="Button_Click" Cursor="Hand" Foreground="White" FontSize="14" Height="34" Content="Obriši">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">

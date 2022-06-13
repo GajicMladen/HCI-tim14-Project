@@ -282,12 +282,12 @@
     <Compile Include="Help\Viewer\HelpViewer.xaml.cs">
       <DependentUpon>HelpViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20220609114050_TicketChanged.cs" />
-    <Compile Include="Migrations\20220609114050_TicketChanged.designer.cs">
-      <DependentUpon>20220609114050_TicketChanged.cs</DependentUpon>
+    <Compile Include="DAO\LinkedStationDAO.cs" />
+    <Compile Include="Migrations\20220613230452_addedTickets.cs" />
+    <Compile Include="Migrations\20220613230452_addedTickets.designer.cs">
+      <DependentUpon>20220613230452_addedTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
-    <Compile Include="DAO\LinkedStationDAO.cs" />
     <Compile Include="Model\DepartureTicketInfo.cs" />
     <Compile Include="Model\ReportItem.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
@@ -568,6 +568,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\restart.png" />
     <Resource Include="Images\demo.png" />
     <Resource Include="Images\reports.png" />
     <Resource Include="Help\Images\schedule-overview.png" />

@@ -38,8 +38,14 @@ namespace Tim14HCI.Windows
             this.user = user;
             InitializeComponent();
             lbl_logedUser.Content = user.FirstName + " " + user.LastName;
-            lbl_userRole.Content = user.UserRole.ToString().ToLower();
 
+            if (user.UserRole == UserRole.MANAGER)
+            {
+                lbl_userRole.Content = "Menadžer";
+            }
+            else {
+                lbl_userRole.Content = "Klijent";
+            }
             grid_test.Visibility = Visibility.Collapsed;
 
             AdminCommands.BindCommandsToWindow(this);
@@ -88,6 +94,10 @@ namespace Tim14HCI.Windows
                 TrainControl trainControl = new TrainControl(train);
                 stack_Data.Children.Add(trainControl);
             }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Trenutno ne postoji nijedan voz! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+            }
         }
 
         public void fillStackDataWithTrainsSearch(string query)
@@ -102,6 +112,10 @@ namespace Tim14HCI.Windows
                 TrainControl trainControl = new TrainControl(train);
                 stack_Data.Children.Add(trainControl);
             }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Nijedan voz ne odgovara pretrazi! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+            }
         }
 
         public void fillStackDataWithStations()
@@ -114,6 +128,10 @@ namespace Tim14HCI.Windows
             {
                 StationControl stationControl = new StationControl(station);
                 stack_Data.Children.Add(stationControl);
+            }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Trenutno ne postoji nijedna stanica! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
             }
         }
 
@@ -128,6 +146,10 @@ namespace Tim14HCI.Windows
                 StationControl stationControl = new StationControl(station);
                 stack_Data.Children.Add(stationControl);
             }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Nijedna stanica ne odgovara pretrazi! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+            }
         }
 
         public void fillStackDataWithTrainLines()
@@ -140,6 +162,9 @@ namespace Tim14HCI.Windows
             {
                 TrainLineControl stationControl = new TrainLineControl(trainLine,this);
                 stack_Data.Children.Add(stationControl);
+            }
+            if (stack_Data.Children.Count == 0) {
+                stack_Data.Children.Add(new Label() { Content = "Trenutno ne postoji nijedna vozna linija! " ,FontSize=32 , HorizontalAlignment = HorizontalAlignment.Center});
             }
         }
 
@@ -155,6 +180,10 @@ namespace Tim14HCI.Windows
                 TrainLineControl trainControl = new TrainLineControl(trainLine, this);
                 stack_Data.Children.Add(trainControl);
             }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Nijedna vozna linija ne odgovara pretrazi! ", FontSize = 32,HorizontalAlignment = HorizontalAlignment.Center });
+            }
         }
 
         public void fillStackDataWithDepartures()
@@ -167,6 +196,10 @@ namespace Tim14HCI.Windows
                 DepartureManagerControl departureControl = new DepartureManagerControl(d);
                 stack_Data.Children.Add(departureControl);
             }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Trenutno ne postoji nijedan polazak! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+            }
         }
 
         public void fillStackDataWithDeparturesSearch(string query)
@@ -178,6 +211,10 @@ namespace Tim14HCI.Windows
             {
                 DepartureManagerControl departureControl = new DepartureManagerControl(d);
                 stack_Data.Children.Add(departureControl);
+            }
+            if (stack_Data.Children.Count == 0)
+            {
+                stack_Data.Children.Add(new Label() { Content = "Nijedna polazak ne odgovara pretrazi! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
             }
         }
 
@@ -319,6 +356,11 @@ namespace Tim14HCI.Windows
                 Visibility = Visibility.Hidden;
                 dw.Show();
             }
+        }
+
+        public void FocusSearch() {
+
+            searchTextBox.Focus();
         }
 
         private void searchTextBox_KeyDown(object sender, KeyEventArgs e)

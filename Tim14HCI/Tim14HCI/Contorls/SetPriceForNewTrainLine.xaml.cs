@@ -50,22 +50,24 @@ namespace Tim14HCI.Contorls
 
             if (stationIndex != 0) {
                 StackPanel stackPanelPrice = new StackPanel();
-                Label labelPrice = new Label() { Content= "Cena ( din ) : "+(2 * stationIndex - 1).ToString() };
+                Label labelPrice = new Label() { Content = "Cena ( din ) : " };
                 TextBox textBoxPrice = new TextBox();
                 textBoxPrice.Width = 75;
                 textBoxPrice.PreviewTextInput += NumberValidationTextBox;
                 textBoxPrice.TabIndex = 2 * stationIndex - 1;
+                textBoxPrice.MaxLength = 5;
                 stackPanelPrice.Orientation = Orientation.Horizontal;
                 stackPanelPrice.HorizontalAlignment = HorizontalAlignment.Right;
                 stackPanelPrice.Children.Add(labelPrice);
                 stackPanelPrice.Children.Add(textBoxPrice);
 
                 StackPanel stackPanelTime = new StackPanel();
-                Label labelTime = new Label() { Content = "Vreme ( min ) : "+(2 * stationIndex ).ToString() };
+                Label labelTime = new Label() { Content = "Vreme ( min ) : "};
                 TextBox textBoxTime = new TextBox();
                 textBoxTime.Width = 75;
                 textBoxTime.PreviewTextInput += NumberValidationTextBox;
                 textBoxTime.TabIndex = 2 * stationIndex;
+                textBoxTime.MaxLength = 5;
                 stackPanelTime.Orientation = Orientation.Horizontal;
                 stackPanelTime.HorizontalAlignment = HorizontalAlignment.Right;
                 stackPanelTime.Children.Add(labelTime);

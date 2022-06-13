@@ -51,6 +51,7 @@ namespace Tim14HCI.Windows
         Window parent;
         public NewTrainLine(Window x)
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjU1NjI0QDMyMzAyZTMxMmUzMEVFSk9ySlc2dVJaSThKNUl0aEFCYWtRVVNMOW1lS1dBT0FKdVRaamZHTnM9");
             parent = x;
             InitializeComponent();
             control_newLineDND = new NewLineDND();

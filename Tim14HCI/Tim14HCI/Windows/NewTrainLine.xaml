@@ -9,11 +9,11 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Dodavanje nove vozne linije" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+        Title="Dodavanje nove vozne linije" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin" MinWidth="1108.153" MinHeight="588.425">
 
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.Background>
@@ -29,7 +29,7 @@
             <RowDefinition Height="123*"/>
             <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
-        <Syncfusion:SfStepProgressBar x:Name="progresBar" SelectedIndex="0" Grid.Row="0" HorizontalContentAlignment="Center" SelectedItemStatus="Indeterminate" HorizontalAlignment="Center" VerticalAlignment="Center" Height="74"   Width="500" Grid.Column="1" Margin="152.6,2,93,2.4" IsTabStop="False" >
+        <Syncfusion:SfStepProgressBar x:Name="progresBar" SelectedIndex="0" Grid.Row="0" HorizontalContentAlignment="Center" SelectedItemStatus="Indeterminate" HorizontalAlignment="Center" VerticalAlignment="Center" Height="74"   Width="500" Grid.Column="1" Margin="152.6,2,93,2.4" IsTabStop="False"  >
             <Syncfusion:StepViewItem Content="Stanice" IsTabStop="False"/>
             <Syncfusion:StepViewItem Content="Voz" IsTabStop="False" />
             <Syncfusion:StepViewItem Content="Cene" IsTabStop="False" />

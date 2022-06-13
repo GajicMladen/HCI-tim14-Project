@@ -38,5 +38,29 @@ namespace Tim14HCI.Contorls
             });
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            string query = searchTrains.Text;
+            lsbx_items.Items.Clear();
+
+            List<Train> trains = TrainDAO.getAllTrainsSearch(query);
+
+            trains.ForEach(train =>
+            {
+                TrainForDragAndDrop trainForDragAndDrop = new TrainForDragAndDrop(this, train);
+                lsbx_items.Items.Add(trainForDragAndDrop);
+            });
+        }
+
+        private void searchTrains_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Button_Click(sender, e);
+            }
+
+        }
     }
 }

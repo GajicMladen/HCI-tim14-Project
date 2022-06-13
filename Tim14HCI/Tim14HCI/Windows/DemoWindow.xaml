@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tim14HCI.Windows"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Demo" Height="689.312" Width="1158.063" Closing="Window_Closing" KeyDown="DemoWindow_KeyDown">
+        Title="Demonstracioni mod - Menadžer" Height="689.312" Width="1158.063" Closing="Window_Closing" KeyDown="DemoWindow_KeyDown" MinWidth="1158.063" MinHeight="689.312">
     <Grid>
 
         <MediaElement Name="myMediaElement" >

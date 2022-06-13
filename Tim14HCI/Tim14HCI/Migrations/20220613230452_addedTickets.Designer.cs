@@ -10,8 +10,8 @@ using Tim14HCI.Model;
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    [Migration("20220609114050_TicketChanged")]
-    partial class TicketChanged
+    [Migration("20220613230452_addedTickets")]
+    partial class addedTickets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,31 +44,31 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             DepartureID = 1,
-                            StartTime = new DateTime(2022, 6, 8, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 1, 8, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 1
                         },
                         new
                         {
                             DepartureID = 2,
-                            StartTime = new DateTime(2022, 6, 8, 15, 40, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 2, 8, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 1
                         },
                         new
                         {
                             DepartureID = 3,
-                            StartTime = new DateTime(2022, 6, 8, 20, 15, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 3, 8, 20, 15, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 1
                         },
                         new
                         {
                             DepartureID = 4,
-                            StartTime = new DateTime(2022, 6, 14, 12, 30, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 4, 14, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 2
                         },
                         new
                         {
                             DepartureID = 5,
-                            StartTime = new DateTime(2022, 6, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 5, 14, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 2
                         },
                         new
@@ -80,19 +80,19 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             DepartureID = 7,
-                            StartTime = new DateTime(2022, 6, 14, 21, 15, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 7, 14, 21, 15, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 2
                         },
                         new
                         {
                             DepartureID = 8,
-                            StartTime = new DateTime(2022, 6, 15, 15, 40, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 8, 15, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 2
                         },
                         new
                         {
                             DepartureID = 9,
-                            StartTime = new DateTime(2022, 6, 15, 18, 30, 0, 0, DateTimeKind.Unspecified),
+                            StartTime = new DateTime(2022, 9, 15, 18, 30, 0, 0, DateTimeKind.Unspecified),
                             TrainLineID = 2
                         });
                 });
@@ -131,6 +131,11 @@ namespace Tim14HCI.Migrations
                         {
                             Station1ID = 2,
                             Station2ID = 3
+                        },
+                        new
+                        {
+                            Station1ID = 4,
+                            Station2ID = 2
                         },
                         new
                         {
@@ -345,7 +350,7 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             TicketID = 2,
-                            DepartureID = 4,
+                            DepartureID = 2,
                             EndStationID = 2,
                             ForReservation = true,
                             Price = 400.0,
@@ -356,7 +361,29 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             TicketID = 3,
-                            DepartureID = 5,
+                            DepartureID = 2,
+                            EndStationID = 2,
+                            ForReservation = true,
+                            Price = 400.0,
+                            Seat = 2,
+                            StartStationID = 3,
+                            UserID = 3
+                        },
+                        new
+                        {
+                            TicketID = 4,
+                            DepartureID = 2,
+                            EndStationID = 2,
+                            ForReservation = true,
+                            Price = 400.0,
+                            Seat = 3,
+                            StartStationID = 3,
+                            UserID = 3
+                        },
+                        new
+                        {
+                            TicketID = 5,
+                            DepartureID = 3,
                             EndStationID = 1,
                             ForReservation = false,
                             Price = 950.0,
@@ -366,8 +393,19 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 4,
-                            DepartureID = 6,
+                            TicketID = 14,
+                            DepartureID = 3,
+                            EndStationID = 1,
+                            ForReservation = false,
+                            Price = 950.0,
+                            Seat = 4,
+                            StartStationID = 3,
+                            UserID = 4
+                        },
+                        new
+                        {
+                            TicketID = 6,
+                            DepartureID = 4,
                             EndStationID = 5,
                             ForReservation = true,
                             Price = 1650.0,
@@ -377,8 +415,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 5,
-                            DepartureID = 7,
+                            TicketID = 7,
+                            DepartureID = 5,
                             EndStationID = 6,
                             ForReservation = false,
                             Price = 2050.0,
@@ -388,8 +426,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 6,
-                            DepartureID = 8,
+                            TicketID = 8,
+                            DepartureID = 6,
                             EndStationID = 2,
                             ForReservation = false,
                             Price = 400.0,
@@ -399,8 +437,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 7,
-                            DepartureID = 9,
+                            TicketID = 9,
+                            DepartureID = 7,
                             EndStationID = 5,
                             ForReservation = true,
                             Price = 1650.0,
@@ -410,8 +448,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 8,
-                            DepartureID = 4,
+                            TicketID = 10,
+                            DepartureID = 8,
                             EndStationID = 1,
                             ForReservation = false,
                             Price = 950.0,
@@ -421,8 +459,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 9,
-                            DepartureID = 5,
+                            TicketID = 11,
+                            DepartureID = 9,
                             EndStationID = 6,
                             ForReservation = false,
                             Price = 2050.0,
@@ -432,8 +470,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 10,
-                            DepartureID = 6,
+                            TicketID = 13,
+                            DepartureID = 1,
                             EndStationID = 2,
                             ForReservation = true,
                             Price = 400.0,
@@ -443,8 +481,8 @@ namespace Tim14HCI.Migrations
                         },
                         new
                         {
-                            TicketID = 11,
-                            DepartureID = 7,
+                            TicketID = 15,
+                            DepartureID = 1,
                             EndStationID = 5,
                             ForReservation = true,
                             Price = 1650.0,
@@ -455,7 +493,7 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             TicketID = 12,
-                            DepartureID = 8,
+                            DepartureID = 2,
                             EndStationID = 1,
                             ForReservation = false,
                             Price = 950.0,
@@ -678,7 +716,7 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.Departure", "Departure")
                         .WithMany("Tickets")
                         .HasForeignKey("DepartureID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Tim14HCI.Model.Station", "EndStation")
@@ -696,7 +734,7 @@ namespace Tim14HCI.Migrations
                     b.HasOne("Tim14HCI.Model.User", "User")
                         .WithMany("Tickets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 

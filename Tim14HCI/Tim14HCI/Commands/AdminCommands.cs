@@ -19,7 +19,7 @@ namespace Tim14HCI.Commands
         public static RoutedCommand openSchedule = new RoutedCommand();
         public static RoutedCommand openAddNew = new RoutedCommand();
         public static RoutedCommand openReports = new RoutedCommand();
-
+        public static RoutedCommand search = new RoutedCommand();
         static AdminCommands() {
 
             openTrains.InputGestures.Add(new KeyGesture(Key.Q, ModifierKeys.Control));
@@ -28,6 +28,7 @@ namespace Tim14HCI.Commands
             openSchedule.InputGestures.Add(new KeyGesture(Key.R, ModifierKeys.Control));
             openAddNew.InputGestures.Add(new KeyGesture(Key.N, ModifierKeys.Control));
             openReports.InputGestures.Add(new KeyGesture(Key.T, ModifierKeys.Control));
+            search.InputGestures.Add(new KeyGesture(Key.F, ModifierKeys.Control));
         }
 
         public static RoutedCommand OpenTrain
@@ -54,6 +55,9 @@ namespace Tim14HCI.Commands
             get { return openAddNew; }
         }
 
+        public static RoutedCommand Search {
+            get { return search; }
+        }
         public static RoutedCommand OpenReport
         {
             get { return openReports; }
@@ -91,6 +95,14 @@ namespace Tim14HCI.Commands
         {
             adminWindow.showAddNew();
         }
+
+        public static void Search_Executed(object sender,
+                   ExecutedRoutedEventArgs e)
+        {
+            adminWindow.FocusSearch();
+        }
+
+
         public static void OpenTabs_CanExecute(object sender,
                            CanExecuteRoutedEventArgs e)
         {
@@ -107,6 +119,8 @@ namespace Tim14HCI.Commands
             window.CommandBindings.Add(new CommandBinding(OpenSchedule, OpenSchedule_Executed, OpenTabs_CanExecute));
             window.CommandBindings.Add(new CommandBinding(OpenAddNew, OpenAddNew_Executed, OpenTabs_CanExecute));
             window.CommandBindings.Add(new CommandBinding(OpenReport, OpenReport_Executed, OpenTabs_CanExecute));
+            window.CommandBindings.Add(new CommandBinding(Search, Search_Executed, OpenTabs_CanExecute));
+
         }
     }
 }

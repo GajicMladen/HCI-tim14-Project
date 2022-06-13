@@ -8,10 +8,11 @@
         xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf" xmlns:wpfx="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:xtnd1="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Dodavanje novog polaska" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+        Icon="/Images/zeleznicesrbije.ico"
+        Title="Dodavanje novog polaska" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin" MinWidth="1108.153" MinHeight="588.425">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>
     <Grid>
         <Grid.Background>
@@ -51,7 +52,7 @@
             <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="linesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="489" Height="118" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonDown" Margin="10,10,0,0" l:HelpProvider.HelpKey="Admin"/>
 
             <Label x:Name="startTimeLabel" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Vreme polaska:</Label>
-            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="startDateTextBox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" Margin="10,19,0,20" l:HelpProvider.HelpKey="Admin"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="startDateTextBox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" Margin="10,19,0,20" l:HelpProvider.HelpKey="Admin" MaxLength="17" MaxLines="1"/>
 
             <Label x:Name="endTimeLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">Vreme polaska unesite u formatu dd.mm.yyyy. hh:mm</Label>
 

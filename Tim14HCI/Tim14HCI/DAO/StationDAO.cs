@@ -10,12 +10,13 @@ namespace Tim14HCI.DAO
 {
     public static class StationDAO
     {
+        public static List<int> deleted = new List<int>();
 
         public static List<Station> getAllStations() {
 
             using (var context = new SerbiaRailwayContext()) {
 
-                return context.stations.ToList();
+                return context.stations.Where( s => ! deleted.Contains(s.StationID)).ToList();
             }
         
         }
@@ -27,7 +28,7 @@ namespace Tim14HCI.DAO
             {
                 foreach (Station s in context.stations.ToList())
                 {
-                    if (s.GetSearchString().ToLower().Contains(query.ToLower())) retVal.Add(s);
+                    if (s.GetSearchString().ToLower().Contains(query.ToLower()) && !deleted.Contains(s.StationID)) retVal.Add(s);
                 }
                 return retVal;
             }
@@ -68,7 +69,7 @@ namespace Tim14HCI.DAO
         }
 
         public static void RemoveStation(Station station)
-        {
+        {/*
             using (var context = new SerbiaRailwayContext())
             {
                 var stationToRemove = context.stations.SingleOrDefault(t => t.Name == station.Name);
@@ -79,7 +80,9 @@ namespace Tim14HCI.DAO
                     context.stations.Remove(stationToRemove);
                     context.SaveChanges();
                 }
-            }
+            }*/
+
+            deleted.Add(station.StationID);
         }
 
         public static void ModifyStation(Station station, List<Station> links)

@@ -7,10 +7,11 @@
         xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
+        Icon="/Images/zeleznicesrbije.ico"
         Title="Dodavanje nove stanice" Height="588.425" Width="1108.153" MinHeight="588.425" MinWidth="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
-        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
     </Window.CommandBindings>    
     <Grid>
         <Grid.Background>
@@ -50,7 +51,7 @@
             <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24">Podaci o stanici</Label>
 
             <Label x:Name="stationNameLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Naziv stanice:</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="stationNameTextbox" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="140" TabIndex="1" Margin="5,24,0,24" l:HelpProvider.HelpKey="Admin" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="stationNameTextbox" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="140" TabIndex="1" Margin="5,24,0,24" l:HelpProvider.HelpKey="Admin" MaxLength="30" MaxLines="1" />
 
             <Label x:Name="instructionLabel" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Grid.RowSpan="2">Odaberite lokaciju stanice klikom na mapu</Label>
 

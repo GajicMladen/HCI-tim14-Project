@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Tim14HCI.Commands;
 using Tim14HCI.Contorls;
 using Tim14HCI.DAO;
+using Tim14HCI.Help.Providers;
 using Tim14HCI.Model;
 
 namespace Tim14HCI.Windows
@@ -58,6 +59,21 @@ namespace Tim14HCI.Windows
         private void Grid_GotFocus(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("Admin", this);
+            }
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
 
         public void fillStackDataWithTrains() {

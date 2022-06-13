@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
+        xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
         Icon="/Images/zeleznicesrbije.ico"
-        Title="Železnice Srbije - ADMIN" Height="689.312" Width="1158.063" Closing="Window_Closing">
+        Title="Železnice Srbije - ADMIN" Height="689.312" Width="1158.063" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120*"/>
@@ -31,7 +36,7 @@
 
             <Label x:Name="lbl_userRole" Content="uloga"  HorizontalAlignment="Center" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalAlignment="Top" Foreground="#FFBDB7B7" FontWeight="Bold" Height="33" Width="138" FontSize="16"   FontStyle="Italic" />
         </StackPanel>
-        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click">
+        <Button x:Name="btn_logOut" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="50" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFFD1010" Margin="0.2,10,-6.4,0" Click="btn_logOut_Click" l:HelpProvider.HelpKey="Admin">
             <StackPanel VerticalAlignment="Center" Height="42" Width="67">
                 <Image  Source="/Images/logout-icon.png" Height="23"/>
                 <TextBlock HorizontalAlignment="Center">Izloguj se</TextBlock>
@@ -46,7 +51,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 10" Click="Button_Click">
+            <Button Grid.Column="0" Margin="3 10" Click="Button_Click" l:HelpProvider.HelpKey="Admin">
                 <Button.Background>
                     <SolidColorBrush Color="#FFBF1616"/>
                 </Button.Background>
@@ -55,26 +60,26 @@
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozovi <TextBlock Foreground="#FF586358">(Q)</TextBlock></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="Button_Click_1">
+            <Button Grid.Column="1" Margin="3 10" Background="#FFBF1616" Click="Button_Click_1" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/station.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Stanice <TextBlock Foreground="#FF586358">(W)</TextBlock></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="2" Margin="3 10" Background="#FFBF1616" Click="Button_Click_2">
+            <Button Grid.Column="2" Margin="3 10" Background="#FFBF1616" Click="Button_Click_2" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/lines.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Vozne linije <TextBlock Foreground="#FF586358">(E)</TextBlock></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="3" Margin="3 10" Background="#FFBF1616" Click="Button_Click_4">
+            <Button Grid.Column="3" Margin="3 10" Background="#FFBF1616" Click="Button_Click_4" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/timeSchedule.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Red vožnje <TextBlock Foreground="#FF586358">(R)</TextBlock></TextBlock>
                 </StackPanel>
             </Button>
-            
-            <Button Grid.Column="4" Margin="3 10" Background="#FFBF1616" Click="Button_Click_5">
+
+            <Button Grid.Column="4" Margin="3 10" Background="#FFBF1616" Click="Button_Click_5" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/reports.png" Width="30"/>
                     <TextBlock Foreground="#FFFCFCFF" FontSize="16">Izveštaji <TextBlock Foreground="#FF586358">(T)</TextBlock></TextBlock>
@@ -100,9 +105,9 @@
             <Label x:Name="lbl_ShownData" FontSize="16" FontWeight="Bold" Margin="0,0,3.8,0.2" VerticalAlignment="Center" HorizontalAlignment="Center">Vozovi</Label>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0.2,0,1.8,0.2">
                 <Label VerticalAlignment="Center" >Naziv:</Label>
-                <TextBox Width="127" Margin="8"></TextBox>
+                <TextBox Width="127" Margin="8" l:HelpProvider.HelpKey="Admin"></TextBox>
             </StackPanel>
-            <Button Grid.Column="2" Margin="5" Background="#FF3B3EA9">
+            <Button Grid.Column="2" Margin="5" Background="#FF3B3EA9" l:HelpProvider.HelpKey="Admin">
                 <StackPanel Orientation="Horizontal">
                     <Label Height="24" HorizontalAlignment="Center" Foreground="White"  VerticalAlignment="Bottom">Pretraži</Label>
                     <Image Source="/Images/search.png" Margin="3"/>
@@ -113,7 +118,7 @@
                     <SolidColorBrush Color="#FFFFF9F9" Opacity="0.5"/>
                 </Grid.Background>
 
-                <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" >
+                <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" l:HelpProvider.HelpKey="Admin" >
                     <ListBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.2"/>
                     </ListBox.Background>
@@ -127,7 +132,7 @@
                             <UniformGrid />
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    <StackPanel x:Name="stack_Data" >
+                    <StackPanel x:Name="stack_Data" l:HelpProvider.HelpKey="Admin">
                         <Grid x:Name="grid_test" Margin="10"  >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="104*"/>
@@ -155,7 +160,7 @@
                 </ListBox>
             </Grid>
 
-            <Button Grid.Column="3" Grid.Row="1" Height="50" VerticalAlignment="Bottom" Foreground="White" Background="#FF3438B3" Margin="10" Click="Button_Click_3">
+            <Button Grid.Column="3" Grid.Row="1" Height="50" VerticalAlignment="Bottom" Foreground="White" Background="#FF3438B3" Margin="10" Click="Button_Click_3" l:HelpProvider.HelpKey="Admin">
                 <StackPanel>
                     <Image Source="/Images/add.png" Width="20"></Image>
                     <TextBlock x:Name="lbl_AddNew" Foreground="White" >Dodaj 

@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows" xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         mc:Ignorable="d"
-        Title="Izveštaji" Height="588.425" Width="1108.153" Closing="Window_Closing">
+        Title="Izveštaji" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Tim14HCI;component/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.4"/>
@@ -51,9 +56,9 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="detailsButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="detailsButton_Click" >Detalji</Button>
-            <Button x:Name="lineReportButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="departureReportButton_Click">Izveštaj po polascima</Button>
-            <Button x:Name="backButton" Grid.Column="2" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click">Povratak</Button>
+            <Button x:Name="detailsButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="detailsButton_Click" l:HelpProvider.HelpKey="Admin" >Detalji</Button>
+            <Button x:Name="lineReportButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="departureReportButton_Click" l:HelpProvider.HelpKey="Admin">Izveštaj po polascima</Button>
+            <Button x:Name="backButton" Grid.Column="2" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click" l:HelpProvider.HelpKey="Admin">Povratak</Button>
         </Grid>
     </Grid>
 </Window>

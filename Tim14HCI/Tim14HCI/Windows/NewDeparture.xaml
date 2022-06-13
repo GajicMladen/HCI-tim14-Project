@@ -4,10 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tim14HCI.Windows"
+        xmlns:l="clr-namespace:Tim14HCI.Help.Providers"
         xmlns:uc="clr-namespace:Tim14HCI.Contorls" xmlns:Syncfusion="http://schemas.syncfusion.com/wpf" xmlns:wpfx="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:xtnd1="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Dodavanje novog polaska" Height="588.425" Width="1108.153" Closing="Window_Closing">
+        Title="Dodavanje novog polaska" Height="588.425" Width="1108.153" Closing="Window_Closing" l:HelpProvider.HelpKey="Admin">
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.BrowseBack" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>
+        <!--<CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"/>-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Tim14HCI;component/Images/Optical-Transmission-in-Traffic_b.jpg" Opacity="0.4"/>
@@ -43,10 +48,10 @@
             <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="24">Podaci o polasku</Label>
 
             <Label x:Name="lineLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">Odaberite liniju:</Label>
-            <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="linesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="489" Height="118" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonDown" Margin="10,10,0,0"/>
+            <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="linesListBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="489" Height="118" PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseLeftButtonDown" Margin="10,10,0,0" l:HelpProvider.HelpKey="Admin"/>
 
             <Label x:Name="startTimeLabel" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Foreground="#000000" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" FontSize="16">Vreme polaska:</Label>
-            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="startDateTextBox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" Margin="10,19,0,20"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="startDateTextBox" HorizontalAlignment="Left" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="226" TabIndex="1" Margin="10,19,0,20" l:HelpProvider.HelpKey="Admin"/>
 
             <Label x:Name="endTimeLabel" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Foreground="#000000" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="16">Vreme polaska unesite u formatu dd.mm.yyyy. hh:mm</Label>
 
@@ -61,8 +66,8 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="addButton_Click">Kreiraj polazak</Button>
-            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click">Povratak</Button>
+            <Button x:Name="addButton" Grid.Column="0" Grid.Row="0" Margin="15" Background="#FF3B3EA9" Foreground="White" FontSize="16" Click="addButton_Click" l:HelpProvider.HelpKey="Admin">Kreiraj polazak</Button>
+            <Button x:Name="backButton" Grid.Column="1" Grid.Row="0" Margin="15" Background="#FF9B1C1C" Foreground="White" FontSize="16" Click="backButton_Click" l:HelpProvider.HelpKey="Admin" >Povratak</Button>
         </Grid>
 
     </Grid>

@@ -75,5 +75,25 @@ namespace Tim14HCI.Windows
             Visibility = Visibility.Hidden;
             parent.Show();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            parent.Show();
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(System.Windows.Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = Help.Providers.HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                Help.Providers.HelpProvider.ShowHelp("Client", this);
+            }
+        }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }

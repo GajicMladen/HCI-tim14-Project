@@ -302,7 +302,8 @@ namespace Tim14HCI.Windows
             List<SearchableDeparture> filtered = new List<SearchableDeparture>();
             if (this.endDatetimeSearch != "")
             {
-                DateTime dt = DateTime.ParseExact(this.endDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime dt; // = DateTime.ParseExact(this.endDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                bool success = DateTime.TryParseExact(this.startDatetimeSearch, this.acceptableDateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
                 foreach (SearchableDeparture departure in departures)
                 {                  
                     if (DateTime.Compare(departure.GetEndTime(), dt) <= 0)
@@ -323,7 +324,8 @@ namespace Tim14HCI.Windows
             List<SearchableDeparture> filtered = new List<SearchableDeparture>();
             if (this.startDatetimeSearch != "")
             {
-                DateTime dt = DateTime.ParseExact(this.startDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime dt; // = DateTime.ParseExact(this.startDatetimeSearch, "dd.MM.yyyy. HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                bool success = DateTime.TryParseExact(this.startDatetimeSearch, this.acceptableDateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out dt);
                 foreach (SearchableDeparture departure in departures)
                 {
                     if (DateTime.Compare(departure.GetStartTime(), dt) >= 0)

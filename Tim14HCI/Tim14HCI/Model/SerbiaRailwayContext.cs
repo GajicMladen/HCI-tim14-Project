@@ -179,7 +179,7 @@ namespace Tim14HCI.Model
 
 
             modelBuilder.Entity<TrainLine>().HasData(
-                new TrainLine() { TrainLineID = 1, StartStationID = 1, EndStationID = 1, TrainID = 1 },
+                new TrainLine() { TrainLineID = 1, StartStationID = 1, EndStationID = 2, TrainID = 1 },
                 new TrainLine() { TrainLineID = 2, StartStationID = 3, EndStationID = 6, TrainID = 4 }
                 );
 

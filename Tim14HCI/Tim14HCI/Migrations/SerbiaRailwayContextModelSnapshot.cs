@@ -585,7 +585,7 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             TrainLineID = 1,
-                            EndStationID = 1,
+                            EndStationID = 2,
                             StartStationID = 1,
                             TrainID = 1
                         },

@@ -283,9 +283,9 @@
       <DependentUpon>HelpViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAO\LinkedStationDAO.cs" />
-    <Compile Include="Migrations\20220613230452_addedTickets.cs" />
-    <Compile Include="Migrations\20220613230452_addedTickets.designer.cs">
-      <DependentUpon>20220613230452_addedTickets.cs</DependentUpon>
+    <Compile Include="Migrations\20220613231504_addedTickets.cs" />
+    <Compile Include="Migrations\20220613231504_addedTickets.designer.cs">
+      <DependentUpon>20220613231504_addedTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SerbiaRailwayContextModelSnapshot.cs" />
     <Compile Include="Model\DepartureTicketInfo.cs" />

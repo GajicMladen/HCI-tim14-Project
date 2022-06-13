@@ -10,7 +10,7 @@ using Tim14HCI.Model;
 namespace Tim14HCI.Migrations
 {
     [DbContext(typeof(SerbiaRailwayContext))]
-    [Migration("20220613230452_addedTickets")]
+    [Migration("20220613231504_addedTickets")]
     partial class addedTickets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -587,7 +587,7 @@ namespace Tim14HCI.Migrations
                         new
                         {
                             TrainLineID = 1,
-                            EndStationID = 1,
+                            EndStationID = 2,
                             StartStationID = 1,
                             TrainID = 1
                         },

@@ -241,7 +241,7 @@ namespace Tim14HCI.Migrations
                 columns: new[] { "TrainLineID", "EndStationID", "EndStationOnWayStationID", "StartStationID", "TrainID" },
                 values: new object[,]
                 {
-                    { 1, 1, null, 1, 1 },
+                    { 1, 2, null, 1, 1 },
                     { 2, 6, null, 3, 4 }
                 });
 

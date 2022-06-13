@@ -49,6 +49,10 @@ namespace Tim14HCI.Windows
 
                 mtl.Source = new Uri(@"C://Users/djord/Documents/Fakultet/6_semestar/HCI/Project/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/departures.mp4", UriKind.Absolute);
             }
+            else if (mode == "client")
+            {
+                mtl.Source = new Uri(@"C://Users/djord/Documents/Fakultet/6_semestar/HCI/Project/HCI-tim14-Project/Tim14HCI/Tim14HCI/Demo/client.mkv", UriKind.Absolute);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

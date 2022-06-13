@@ -237,7 +237,7 @@
                 </StackPanel>
                 <Button.ToolTip>
                     <ToolTip>
-                        Praznom pretragom mogu se dobiti svi entiteti, odnosno resetuje se pretraga.
+                        Pokretanje demonstracionog moda.
                     </ToolTip>
                 </Button.ToolTip>
                 <Button.Style>

@@ -220,9 +220,14 @@ namespace Tim14HCI.Windows
 
         private void DemoMode(object sender, RoutedEventArgs e)
         {
+            /*
             ClientDemo clientDemo = new ClientDemo(this);
             Visibility = Visibility.Hidden;
             clientDemo.Show();
+            */
+            DemoWindow dw = new DemoWindow(this, "client");
+            Visibility = Visibility.Hidden;
+            dw.Show();
         }
 
         private void ShowBoughtTickets(object sender, RoutedEventArgs e)

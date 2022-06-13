@@ -68,11 +68,30 @@
                 </ListBox>
             </Grid>
         </Grid>
-        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Width="100" Margin="50 5 0 5" Background="#FF575761" Click="BackClick"  l:HelpProvider.HelpKey="Client">
+        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Width="100" Margin="50 5 0 5" Cursor="Hand" Click="BackClick"  l:HelpProvider.HelpKey="Client">
             <StackPanel>
                 <Image Source="/Images/back.png" Width="30"/>
                 <TextBlock Foreground="#FFFCFCFF" FontSize="16">Nazad</TextBlock>
             </StackPanel>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF3438B3"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="CornflowerBlue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
     </Grid>
 </Window>

@@ -576,7 +576,6 @@
     <Content Include="Demo\stations.mp4" />
     <Content Include="Demo\trainlines.mp4" />
     <Content Include="Help\Pages\Login_Signup.html" />
-    <Resource Include="Images\play-icon.png" />
     <Content Include="Help\Pages\Admin.html" />
     <Content Include="Help\Pages\Client.html" />
   </ItemGroup>

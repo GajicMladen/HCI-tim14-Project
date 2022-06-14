@@ -87,6 +87,17 @@ namespace Tim14HCI.Windows
 
             stack_Data.Children.Clear();
 
+            OpComboBox.IsEnabled = true;
+            OpComboBox.Items.Clear();
+            OpComboBox.Items.Add(new ComboBoxItem { Content = "Filtriraj veće" });
+            OpComboBox.Items.Add(new ComboBoxItem { Content = "Filtriraj manje" });
+            OpComboBox.SelectedIndex = 0;
+            attributesComboBox.IsEnabled = true;
+            attributesComboBox.Items.Clear();
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Kapacitet" });
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Brzina" });
+            attributesComboBox.SelectedIndex = 0;
+
             List<Train> trains = TrainDAO.getAllTrains();
             
             foreach (Train train in trains) {
@@ -121,6 +132,9 @@ namespace Tim14HCI.Windows
         public void fillStackDataWithStations()
         {
             stack_Data.Children.Clear();
+
+            attributesComboBox.IsEnabled = false;
+            OpComboBox.IsEnabled = false;
 
             List<Station> stations = StationDAO.getAllStations();
             
@@ -157,7 +171,18 @@ namespace Tim14HCI.Windows
             stack_Data.Children.Clear();
 
             List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLinesNotDeleted();
-            
+
+            OpComboBox.IsEnabled = true;
+            OpComboBox.Items.Clear();
+            OpComboBox.Items.Add(new ComboBoxItem { Content = "Filtriraj veće" });
+            OpComboBox.Items.Add(new ComboBoxItem { Content = "Filtriraj manje" });
+            OpComboBox.SelectedIndex = 0;
+            attributesComboBox.IsEnabled = true;
+            attributesComboBox.Items.Clear();
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Ukupno vreme" });
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Ukupna cena" });
+            attributesComboBox.SelectedIndex = 0;
+
             foreach (TrainLine trainLine in trainLines)
             {
                 TrainLineControl stationControl = new TrainLineControl(trainLine,this);
@@ -170,7 +195,6 @@ namespace Tim14HCI.Windows
 
         private void fillStackDataWithTrainLinesSearch(string query)
         {
-            stack_Data.Children.Clear();
 
             List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLinesSearch(query);
 
@@ -191,7 +215,20 @@ namespace Tim14HCI.Windows
             stack_Data.Children.Clear();
             List<Departure> departures = DepartureDAO.GetAllDepartures();
 
-            foreach(Departure d in departures)
+            stack_Data.Children.Clear();
+
+            OpComboBox.IsEnabled = true;
+            OpComboBox.Items.Clear();
+            OpComboBox.Items.Add(new ComboBoxItem { Content = "Filtriraj buduće" });
+            OpComboBox.Items.Add(new ComboBoxItem { Content = "Filtriraj prošlo" });
+            OpComboBox.SelectedIndex = 0;
+            attributesComboBox.IsEnabled = true;
+            attributesComboBox.Items.Clear();
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Vreme polaska" });
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Vreme dolaska" });
+            attributesComboBox.SelectedIndex = 0;
+
+            foreach (Departure d in departures)
             {
                 DepartureManagerControl departureControl = new DepartureManagerControl(d);
                 stack_Data.Children.Add(departureControl);
@@ -207,6 +244,10 @@ namespace Tim14HCI.Windows
             stack_Data.Children.Clear();
             List<Departure> departures = DepartureDAO.getAllDeparturesSearch(query);
 
+            attributesComboBox.Items.Clear();
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Datum polaska" });
+            attributesComboBox.Items.Add(new ComboBoxItem { Content = "Datum dolaska" });
+
             foreach (Departure d in departures)
             {
                 DepartureManagerControl departureControl = new DepartureManagerControl(d);
@@ -220,6 +261,7 @@ namespace Tim14HCI.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            FilterButton.IsEnabled = true;
             showTrains();
         }
 
@@ -230,6 +272,7 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            FilterButton.IsEnabled = false;
             showStations();
         }
 
@@ -240,6 +283,7 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            FilterButton.IsEnabled = true;
             showTrainLines();
         }
 
@@ -257,6 +301,7 @@ namespace Tim14HCI.Windows
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
+            FilterButton.IsEnabled = true;
             showDepartures();
         }
 
@@ -368,6 +413,274 @@ namespace Tim14HCI.Windows
             if (e.Key == Key.Return)
             {
                 Button_Click_6(sender, e);
+            }
+        }
+
+        private void Filter_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if ((string)lbl_ShownData.Content == "Vozovi")
+            {
+                filterTrains();
+            }
+            else if ((string)lbl_ShownData.Content == "Vozne linije")
+            {
+                filterTrainLines();
+            }
+            else if ((string)lbl_ShownData.Content == "Red vožnje")
+            {
+                filterDepartures();
+            }
+        }
+
+        private void filterTrains()
+        {
+            if (searchTextBox.Text == "")
+            {
+                fillStackDataWithTrains();
+                return;
+            }
+            try
+            {
+                int.Parse(searchTextBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Neispravan unos parametra za filtriranje!", "Greška");
+                return;
+            }
+            if ((string)(OpComboBox.SelectedValue as ComboBoxItem).Content == "Filtriraj veće")
+            {
+                if ((string)(attributesComboBox.SelectedValue as ComboBoxItem).Content == "Brzina")
+                {
+                    List<Train> trains = TrainDAO.getAllTrains().Where(t => t.MaxSpeed > int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Train train in trains)
+                    {
+                        TrainControl trainControl = new TrainControl(train);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan voz ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+                else // Kapacitet
+                {
+                    List<Train> trains = TrainDAO.getAllTrains().Where(t => t.Capacity > int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Train train in trains)
+                    {
+                        TrainControl trainControl = new TrainControl(train);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan voz ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+            }
+            else
+            {
+                if ((string)(attributesComboBox.SelectedValue as ComboBoxItem).Content == "Brzina")
+                {
+                    List<Train> trains = TrainDAO.getAllTrains().Where(t => t.MaxSpeed < int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Train train in trains)
+                    {
+                        TrainControl trainControl = new TrainControl(train);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan voz ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+                else // Kapacitet
+                {
+                    List<Train> trains = TrainDAO.getAllTrains().Where(t => t.Capacity < int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Train train in trains)
+                    {
+                        TrainControl trainControl = new TrainControl(train);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan voz ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+            }
+        }
+
+        private void filterTrainLines()
+        {
+            if (searchTextBox.Text == "")
+            {
+                fillStackDataWithTrainLines();
+                return;
+            }
+            try
+            {
+                int.Parse(searchTextBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Neispravan unos parametra za filtriranje!", "Greška");
+                return;
+            }
+            if ((string)(OpComboBox.SelectedValue as ComboBoxItem).Content == "Filtriraj veće")
+            {
+                if ((string)(attributesComboBox.SelectedValue as ComboBoxItem).Content == "Ukupno vreme")
+                {
+                    List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines().Where(t => t.getTotalTime() > int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (TrainLine tl in trainLines)
+                    {
+                        TrainLineControl trainControl = new TrainLineControl(tl, this);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedna linija ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+                else // Cena
+                {
+                    List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines().Where(t => t.getTotalPrice() > int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (TrainLine tl in trainLines)
+                    {
+                        TrainLineControl trainControl = new TrainLineControl(tl, this);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedna linija ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+            }
+            else
+            {
+                if ((string)(attributesComboBox.SelectedValue as ComboBoxItem).Content == "Ukupno vreme")
+                {
+                    List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines().Where(t => t.getTotalTime() < int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (TrainLine tl in trainLines)
+                    {
+                        TrainLineControl trainControl = new TrainLineControl(tl, this);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedna linija ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+                else // Cena
+                {
+                    List<TrainLine> trainLines = TrainLinesDAO.getAllTrainLines().Where(t => t.getTotalPrice() < int.Parse(searchTextBox.Text)).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (TrainLine tl in trainLines)
+                    {
+                        TrainLineControl trainControl = new TrainLineControl(tl, this);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedna linija ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+            }
+        }
+
+        private void filterDepartures()
+        {
+            if (searchTextBox.Text == "")
+            {
+                fillStackDataWithDepartures();
+                return;
+            }
+            try
+            {
+                DateTime.ParseExact(searchTextBox.Text, "dd.MM.yyyy. HH:mm", null);
+            }
+            catch
+            {
+                MessageBox.Show("Neispravan unos parametra za filtriranje!\nPotrebno je uneti datum u formatu 'dd.mm.yyyy. hh:mm'", "Greška");
+                return;
+            }
+            if ((string)(OpComboBox.SelectedValue as ComboBoxItem).Content == "Filtriraj buduće")
+            {
+                if ((string)(attributesComboBox.SelectedValue as ComboBoxItem).Content == "Vreme polaska")
+                {
+                    List<Departure> deps = DepartureDAO.GetAllDepartures().Where(t => t.StartTime.CompareTo(DateTime.ParseExact(searchTextBox.Text, "dd.MM.yyyy. HH:mm", null)) > 0).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Departure d in deps)
+                    {
+                        DepartureManagerControl trainControl = new DepartureManagerControl(d);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan polazak ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+                else // Vreme dolaska
+                {
+                    List<Departure> deps = DepartureDAO.GetAllDepartures().Where(t => t.GetEndTime().CompareTo(DateTime.ParseExact(searchTextBox.Text, "dd.MM.yyyy. HH:mm", null)) > 0).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Departure d in deps)
+                    {
+                        DepartureManagerControl trainControl = new DepartureManagerControl(d);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan polazak ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+            }
+            else
+            {
+                if ((string)(attributesComboBox.SelectedValue as ComboBoxItem).Content == "Vreme polaska")
+                {
+                    List<Departure> deps = DepartureDAO.GetAllDepartures().Where(t => t.StartTime.CompareTo(DateTime.ParseExact(searchTextBox.Text, "dd.MM.yyyy. HH:mm", null)) < 0).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Departure d in deps)
+                    {
+                        DepartureManagerControl trainControl = new DepartureManagerControl(d);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan polazak ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
+                else // Vreme dolaska
+                {
+                    List<Departure> deps = DepartureDAO.GetAllDepartures().Where(t => t.GetEndTime().CompareTo(DateTime.ParseExact(searchTextBox.Text, "dd.MM.yyyy. HH:mm", null)) < 0).ToList();
+
+                    stack_Data.Children.Clear();
+                    foreach (Departure d in deps)
+                    {
+                        DepartureManagerControl trainControl = new DepartureManagerControl(d);
+                        stack_Data.Children.Add(trainControl);
+                    }
+                    if (stack_Data.Children.Count == 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Nijedan polazak ne odgovara filteru! ", FontSize = 32, HorizontalAlignment = HorizontalAlignment.Center });
+                    }
+                }
             }
         }
     }

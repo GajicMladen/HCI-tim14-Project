@@ -507,6 +507,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\filter.png" />
     <Resource Include="Images\Optical-Transmission-in-Traffic_b.jpg" />
   </ItemGroup>
   <ItemGroup>

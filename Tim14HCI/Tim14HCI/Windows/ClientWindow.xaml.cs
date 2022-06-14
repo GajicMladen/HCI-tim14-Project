@@ -280,19 +280,49 @@ namespace Tim14HCI.Windows
             List<SearchableDeparture> endDateFiltered = FilterByEndDatetime(startDateFiltered);
 
             stack_Data.Children.Clear();
-            DepartureHeaderControl dhc = new DepartureHeaderControl();
-            stack_Data.Children.Add(dhc);
-            foreach (SearchableDeparture departure in endDateFiltered)
+            if (endDateFiltered.Count > 0)
             {
-                if (departure.DepartureKind == DepartureEnum.Departure)
+                DepartureHeaderControl dhc = new DepartureHeaderControl();
+                stack_Data.Children.Add(dhc);
+                foreach (SearchableDeparture departure in endDateFiltered)
                 {
-                    DepartureControl departureControl = new DepartureControl(departure.Departure, departure.EndLocation);
-                    stack_Data.Children.Add(departureControl);
+                    if (departure.DepartureKind == DepartureEnum.Departure)
+                    {
+                        DepartureControl departureControl = new DepartureControl(departure.Departure, departure.EndLocation);
+                        stack_Data.Children.Add(departureControl);
+                    }
+                    else
+                    {
+                        DepartureControl departureControl = new DepartureControl(departure.Departure, departure.StartLocation, departure.EndLocation);
+                        stack_Data.Children.Add(departureControl);
+                    }
                 }
-                else
+            }
+            else {
+                stack_Data.Children.Add(new Label() { Content = "Trenutno nema takvih polazaka!", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+                TrainLine existingTrainLine = TrainLinesDAO.checkExistLine(startLocationSearch, endLocationSearch);
+                if (existingTrainLine != null)
                 {
-                    DepartureControl departureControl = new DepartureControl(departure.Departure, departure.StartLocation, departure.EndLocation);
-                    stack_Data.Children.Add(departureControl);
+                    stack_Data.Children.Add(new Label() { Content = "U sistemu postoji takva direktna linija.\nSamo trenutno nema polazaka.", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+
+                }
+                else {
+                    stack_Data.Children.Add(new Label() { Content = "U sistemu nema direktna linija!", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+
+                    
+                    List<Station> connectedStations = StationDAO.GetConnectedStations(startLocationSearch, endLocationSearch);
+                    if (connectedStations.Count > 0)
+                    {
+                        stack_Data.Children.Add(new Label() { Content = "Od vaše polazne stanice POKUŠAJTE da stignete do cilja sa presedanjem u stanicama:", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+                        foreach (Station s in connectedStations) {
+                            stack_Data.Children.Add(new Label() { Content = startLocationSearch.ToUpper() +" => "+s.Name.ToUpper()+" => "+endLocationSearch.ToUpper(), FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+                        }
+                    }
+                    else {
+                        stack_Data.Children.Add(new Label() { Content = "Od vaše polazne stanice do cilja je nemoguće stići sa jednim presedanjem... :(\n U skorijoj budućnosti potrudićemo se da Vam to omogućimo,\n proširujući našu infrastrukturu.", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+                        stack_Data.Children.Add(new Label() { Content = "Proverite da li ste lepo uneli podatke.", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+
+                    }
                 }
             }
         }

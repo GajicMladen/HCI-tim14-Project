@@ -194,5 +194,21 @@ namespace Tim14HCI.DAO
             return retVal;
         }
 
+
+        public static TrainLine checkExistLine(string s1, string s2) {
+
+            foreach (TrainLine trainLine in getAllTrainLines()) {
+                if (trainLineHasStation(trainLine, s1) && trainLineHasStation(trainLine, s2))
+                    return trainLine;                
+            }
+            return null;
+        }
+
+        private static bool trainLineHasStation(TrainLine tr, string s_name) {
+            foreach (OnWayStation ow in tr.OnWayStations) {
+                if (ow.Station.Name.Equals(s_name)) return true;
+            }
+            return tr.StartStation.Name.Equals(s_name) || tr.EndStation.Station.Name.Equals(s_name);
+        }
     }
 }

@@ -151,5 +151,38 @@ namespace Tim14HCI.DAO
             }
             return time;
         }
+
+        public static List<Station> GetConnectedStations(string s1, string s2) {
+
+            List<Station> ret = new List<Station>();
+            try
+            {
+                Station startStation = GetStationByName(s1);
+                Station endStation = GetStationByName(s2);
+
+                List<Station> n1 = getLinkedStations(startStation);
+                List<Station> n2 = getLinkedStations(endStation);
+
+                foreach (Station ss1 in n1)
+                {
+                    if (!ret.Contains(ss1))
+                    {
+                        foreach (Station ss2 in n2)
+                        {
+                            if (ss1.Name.Equals(ss2.Name))
+                            {
+                                ret.Add(ss1);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch { 
+            
+            }
+            return ret;
+
+        }
     }
 }

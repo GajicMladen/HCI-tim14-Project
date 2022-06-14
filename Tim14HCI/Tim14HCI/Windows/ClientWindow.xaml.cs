@@ -319,7 +319,7 @@ namespace Tim14HCI.Windows
                         }
                     }
                     else {
-                        stack_Data.Children.Add(new Label() { Content = "Od vaše polazne stanice do cilja je nemoguće stići sa jednim presedanjem... :(\n U skorijoj budućnosti potrudićemo se da Vam to omogućimo,\n proširujući našu infrastrukturu.", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
+                        stack_Data.Children.Add(new Label() { Content = "Od vaše polazne stanice do odredišta je nemoguće stići sa jednim presedanjem.", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
                         stack_Data.Children.Add(new Label() { Content = "Proverite da li ste lepo uneli podatke.", FontSize = 25, HorizontalAlignment = HorizontalAlignment.Center });
 
                     }

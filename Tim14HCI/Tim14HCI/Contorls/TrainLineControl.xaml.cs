@@ -66,8 +66,12 @@ namespace Tim14HCI.Contorls
 
             List<Station> stations = new List<Station>();
             stations.Add(trainLine.StartStation);
-            foreach (OnWayStation onw in trainLine.OnWayStations) {
-                stations.Add(onw.Station);
+            if (trainLine.OnWayStations != null)
+            {
+                foreach (OnWayStation onw in trainLine.OnWayStations)
+                {
+                    stations.Add(onw.Station);
+                }
             }
             stations.Add(trainLine.EndStation.Station);
 
